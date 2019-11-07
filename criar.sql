@@ -7,8 +7,8 @@ create table Indisponibilidade(
 
 );
 
-drop table if exists Utilizador;
 
+drop table if exists Utilizador;
 create table Utilizador(
 	idUtilizador INTEGER PRIMARY KEY AUTOINCREMENT,
 	username TEXT UNIQUE,
@@ -19,8 +19,8 @@ create table Utilizador(
 	idImage INTEGER REFERENCES ImagemUtilizador(idImage) ON DELETE set null ON UPDATE cascade
 );
 
-drop table if exists Moradia;
 
+drop table if exists Moradia;
 create table Moradia(
 	idMoradia INTEGER PRIMARY KEY AUTOINCREMENT,
 	nome TEXT,
@@ -32,57 +32,65 @@ create table Moradia(
 	idUtilizador INTEGER REFERENCES Utilizador(idUtilizador) ON DELETE set null ON UPDATE cascade
 );
 
-drop table if exists Reserva;
 
+drop table if exists Reserva;
 create table Reserva (
 	idReserva INTEGER PRIMARY KEY AUTOINCREMENT, 
 	precoTotal INTEGER,
 	dataInicio DATE,
 	dataFim Date,
-	idReserva INTEGER REFERENCES Reserva(idReserva) ON DELETE set null ON UPDATE cascade,
+	idMoradia INTEGER REFERENCES Moradia(idMoradia) ON DELETE set null ON UPDATE cascade,
 	idUtilizador INTEGER REFERENCES Utilizador(idUtilizador) ON DELETE set null ON UPDATE cascade
 );
 
-drop table if exists ImagemMoradia;
 
+drop table if exists ImagemMoradia;
 create table ImagemMoradia (
 	caminho TEXT
 	idMoradia INTEGER REFERENCES Moradia(idMoradia) ON DELETE set null ON UPDATE cascade	
 );
 
-drop table if exists ImagemMoradia;
 
+drop table if exists ImagemUtilizador;
 create table ImagemUtilizador(
 	idImage INTEGER PRIMARY KEY AUTOINCREMENT,
 	idUtilizador INTEGER REFERENCES Utilizador(idUtilizador) ON DELETE set null ON UPDATE cascade
 	
 );
 
-drop table if exists Comodidade;
 
+drop table if exists Comodidade;
 create table Comodidade(
 	idComodidade INTEGER PRIMARY KEY AUTOINCREMENT,
-	tipo TEXT,
+	tipo TEXT
 );
 
-drop table if exists MoradiaComodidade;
 
+drop table if exists MoradiaComodidade;
 create table MoradiaComodidade(
 	idMoradia INTEGER REFERENCES Moradia(idMoradia) ON DELETE set null ON UPDATE cascade,
 	idComodidade INTEGER REFERENCES Comodidade(idComodidade) ON DELETE set null ON UPDATE cascade,
 	PRIMARY KEY (idMoradia,idComodidade)
 );
 
-drop table if exists MoradiaInd;
 
-create table MoradiaInd(
+drop table if exists Calendario;
+create table Calendario(
 	idInd INTEGER REFERENCES Indisponibilidade(idInd) ON DELETE set null ON UPDATE cascade,
 	idMoradia INTEGER REFERENCES Moradia(idMoradia) ON DELETE set null ON UPDATE cascade,
 	PRIMARY KEY (idInd, idMoradia)
 );
 
 
+drop table if exists Critica;
+create table Critica(
+	
+	comentario TEXT,
+	rating DOUBLE,
+	idUtilizador INTEGER REFERENCES Utilizador(idUtilizador) ON DELETE set null ON UPDATE cascade,
+	idMoradia INTEGER REFERENCES Moradia(idMoradia) ON DELETE set null ON UPDATE cascade,
+	PRIMARY KEY (idUtilizador,idMoradia)
 
-
+);
 
 
