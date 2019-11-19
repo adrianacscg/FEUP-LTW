@@ -12,6 +12,7 @@ drop table if exists Utilizador;
 create table Utilizador(
 	idUtilizador INTEGER PRIMARY KEY AUTOINCREMENT,
 	username TEXT UNIQUE,
+	nomeCompleto TEXT,
 	password TEXT UNIQUE NOT NULL,
 	dataNasc DATE,
 	cartaoCred TEXT,
