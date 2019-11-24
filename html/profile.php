@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en-US">
 
@@ -22,12 +25,10 @@
         </ul>
     </nav>
     <section id="MyProfile">
-        <?php
-        include_once('database/db_recipes.php')
-
+        <h1><a> <?php echo htmlentities($_SESSION['userinfo']['nomeCompleto']) ?> </a></h1>
+        <h2><a>Email: <?php echo htmlentities($_SESSION['userinfo']['email']) ?></a></h2>
         
-        ?>
-        <h1><a> </a></h1>
+
     </section>
 </body>
 

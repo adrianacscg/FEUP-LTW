@@ -1,3 +1,9 @@
+PRAGMA foreign_keys = ON;
+.mode columns
+.headers on
+.nullvalue NULL
+
+BEGIN TRANSACTION;
 
 drop table if exists Indisponibilidade;
 create table Indisponibilidade(
@@ -13,6 +19,7 @@ create table Utilizador(
 	idUtilizador INTEGER PRIMARY KEY AUTOINCREMENT,
 	username TEXT UNIQUE,
 	nomeCompleto TEXT,
+	email TEXT UNIQUE,
 	password TEXT UNIQUE NOT NULL,
 	dataNasc DATE,
 	cartaoCred TEXT,
@@ -172,7 +179,7 @@ INSERT INTO Moradia (
                         'Apartamento',
                         'Sim',
                         '9,8',
-                        4541604
+                        1
                     );
 
 INSERT INTO MoradiaComodidade (
@@ -198,13 +205,14 @@ INSERT INTO Reserva (
                         '2019-05-01',
                         '2019-05-05',
                         455182,
-                        4541604
+                        1
                     );
 
 INSERT INTO Utilizador (
                            idUtilizador,
                            username,
                            nomeCompleto,
+						   email,
                            password,
                            dataNasc,
                            cartaoCred,
@@ -212,10 +220,11 @@ INSERT INTO Utilizador (
                            idImage
                        )
                        VALUES (
-                           4541604,
+                           1,
                            'joaonunes999',
                            'João Paulo Ribeiro Nunes',
-                           'joao01',
+						   'joaopaulo_n@hotmail.com',
+                           'b013a5c475a3838d8628690e0e89845526912b4eca4ccadd143caa61d8f7b3fd',
                            '1999-09-02',
                            '4714144125892589',
                            'https://bompenteados.com/wp-content/uploads/2018/04/fcf0bf8ef14804fa059853968871d654.jpeg',
