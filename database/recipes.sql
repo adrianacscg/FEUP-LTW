@@ -128,8 +128,8 @@ INSERT INTO Critica (
                     )
                     VALUES (
                         'Fantástico! 5*',
-                        10.0,
-                        4541604,
+                        5,
+                        1,
                         455182
                     );
 
@@ -147,7 +147,7 @@ INSERT INTO ImagemUtilizador (
                              )
                              VALUES (
                                  1521,
-                                 4541604
+                                 1
                              );
 
 INSERT INTO Indisponibilidade (
@@ -178,7 +178,7 @@ INSERT INTO Moradia (
                         'Lisboa',
                         'Apartamento',
                         'Sim',
-                        '9,8',
+                        '5',
                         1
                     );
 

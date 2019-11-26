@@ -1,0 +1,360 @@
+/*Header*/
+body > header{
+    text-align: center;
+    color: white;  
+    margin-bottom: 2em;
+    border-bottom: 2px solid white;     
+}
+
+body > header a{
+    padding: 1rem;
+    position: relative;
+    top: 35px;  
+    text-decoration: none;
+    color: white;
+    background: #b3dfde;
+        
+}
+
+/*Menu*/
+
+#menu input{
+    display: none;
+}
+
+#menu .hamburger {
+    display: block;
+    color: white;
+    padding: 1em;
+    position: relative;
+    left: 700px;
+
+}
+
+#menu .hamburger:before {
+    content:'\2630';
+}
+
+#menu ul {
+    flex-direction: column;
+    margin: 0 auto 0 500px;
+    padding: 0;
+    color: white;
+  }
+
+#hamburger:checked + .hamburger + ul li{
+    max-height: 1em;
+    float: right;
+    display: flex;
+}
+
+#hamburger:checked + .hamburger:before {
+    content:'\2715';
+}  
+
+#menu li {
+    max-height: 0;
+    padding: 1em 2em;
+    background-color: #2a2f33;
+    display: none;
+}
+
+#menu li:nth-child(1) {
+    border-left: 2px solid white;
+    border-right: 2px solid white;  
+    border-top: 2px solid white;
+}
+
+#menu li:nth-child(2) {
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    border-top: 2px solid white;
+}
+
+#menu li:nth-child(3) {
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    border-top: 2px solid white;
+}
+
+#menu li:nth-child(4) {
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+}
+
+#menu a {
+    color: white;
+    text-decoration: none;
+}
+
+/*Body*/
+
+body {
+    max-width: 750px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    margin: 0 auto;
+    left: 25%;
+    margin-right: -50%;
+    background-color: #b3dfde;
+    color: white;
+    font-family: Franklin Gothic;
+}
+
+/*Section*/
+
+#MyProfile img[src$=".jpg"] { 
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background:#b3dfde;
+    position: relative;
+    bottom: 50px;
+    left: 60px;
+    border-color: white;
+    
+}
+
+#MyProfile h1 {
+    position: absolute;
+    padding: 1rem;
+    top:118px;
+    left: 250px;  
+    color: white;
+    background: #b3dfde;
+  
+}
+
+#MyProfile h2{
+    padding: 1em 0em;
+}
+
+#MyProfile h2 a {
+    border-bottom: 2px solid white;   
+}
+
+#MyProfile {
+    border-top: 2px solid white; 
+}
+
+#MyBookings{
+    border-top: 2px solid white; 
+}
+
+#MyProperties{
+    border-top: 2px solid white; 
+}
+
+#MyProfile h3 a{
+  
+    text-decoration: none;
+    color: white;
+}
+
+#MyProfile .mail{
+    position: absolute;
+    top:277px;
+    left: 70px;  
+}
+
+#MyProfile .card { 
+    position: absolute;
+    top:453px;
+    left: 60px;  
+}
+
+#MyProfile img + img{
+    width: 5px;
+    height: 5px;
+}
+
+#MyProfile h3 a[href^="newcard"]{
+    position: absolute;
+    top:517px;
+    left: 65px; 
+}
+
+#MyBookings .slider {
+    display: block;
+    padding: 1em 0em;
+    height: 250px;
+     width: 480px;
+    margin: auto;
+    margin-top: 20px;
+    position: relative;   
+}
+
+#MyBookings .slider li {
+     list-style: none;
+     position: absolute;
+}
+
+#MyBookings .slider img {
+     margin: auto;
+     height: 250px;
+     width: 480px;
+     border-radius: 5%;
+     vertical-align: top;
+} 
+
+#MyBookings .slider input {
+    display: none;
+}
+
+#MyBookings .slider label {
+    background-color: #b3dfde;
+    bottom: 10px; 
+    cursor: pointer;
+    display: block;
+    height: 10px;
+    position: absolute;
+    width: 10px;
+    z-index: 10;
+}
+
+#MyBookings .slider li:nth-child(3) label {
+    top: 20px;
+    right: 20px;
+}
+
+#MyBookings .slider li:nth-child(2) label {
+    top: 20px;
+    right: 40px;
+}
+
+#MyBookings .slider li:nth-child(1) label {
+    top: 20px;
+    right: 60px;
+} 
+
+#MyBookings .slider img {
+    opacity: 0;
+    visibility: hidden;
+}
+
+#MyBookings .slider li input:checked ~ img {
+    opacity: 1;
+    visibility: visible;
+    z-index: 10;
+} 
+
+.imageHolder {
+    position: relative;
+    width: 385px;
+    height: 275px;
+  }
+
+.imageHolder .fundo {
+    position: absolute;
+    width: 480px;
+    height: 65px;
+    bottom: 0px;
+    left: 0px;
+    color: #ffffff;
+    background: #bcbcbc;
+    text-align: left;
+    font-weight:bold;
+    opacity:1;
+    border-radius: 10%;
+}
+
+.imageHolder .caption1 {
+    position: absolute;
+    width: 480px;
+    height: 65px;
+    bottom: 0px;
+    left: 0px;
+    color: #ffffff;
+    text-align: left;
+    opacity:1;
+    margin-left: 1.2em;
+    margin-bottom: -0.6em;
+}
+
+.imageHolder .star1{
+    position: absolute;
+    width: 480px;
+    height: 65px;
+    bottom: -35px;
+    left: 20px;
+    opacity: 1;
+}
+
+.imageHolder .star2{
+    position: absolute;
+    width: 480px;
+    height: 65px;
+    bottom: -35px;
+    left: 40px;
+    opacity: 1;
+}
+
+.imageHolder .star3{
+    position: absolute;
+    width: 480px;
+    height: 65px;
+    bottom: -35px;
+    left: 60px;
+    opacity: 1;
+}
+
+.imageHolder .star4{
+    position: absolute;
+    width: 480px;
+    height: 65px;
+    bottom: -35px;
+    left: 80px;
+    opacity: 1;
+}
+
+.imageHolder .star5{
+    position: absolute;
+    width: 480px;
+    height: 65px;
+    bottom: -35px;
+    left: 100px;
+    opacity: 1;
+}
+
+.imageHolder .forday {
+    position: absolute;
+    width: 480px;
+    height: 65px;
+    bottom: -5px;
+    left: 420px;
+    color: #ffffff;
+    opacity:1;
+}
+
+.imageHolder .price {
+    position: absolute;
+    width: 480px;
+    height: 64px;
+    bottom: -5px;
+    left: 380px;
+    color: #ffffff;
+    opacity:1;
+}
+
+#MyBookings h3{
+    margin:2em;
+}
+
+#MyBookings .dateInitial {
+    position: relative;
+    bottom:56px;
+    left: 100px;
+}
+
+#MyBookings .dateFinal {
+    position: relative;
+    bottom: 91px;
+    left: 225px;
+}
+
+
+
+
