@@ -5,7 +5,6 @@ h1{
     text-align: center;   
     margin: auto;
     width: 10em;
-    
 }
 
 h2{
@@ -26,12 +25,12 @@ body{
 section{
     
     margin: auto;
-    background-color: rgb(173, 171, 171);
+    background-color: grey;
     width: 20em;
     padding: 1em 10em;
     border-radius: 10px;
     color:white;
-    opacity: 0.85;
+    
 }
 
 form{
@@ -55,12 +54,5 @@ input{
     padding: 5px;
     border-style: solid;
     border-color: white;
-    color:inherit;
-    background-color: inherit;
-}
-
-#idSubmit{
-    background-color: white;
-    color:  rgb(173, 171, 171);
-    font-weight: bold;
+    background-color: grey;
 }
