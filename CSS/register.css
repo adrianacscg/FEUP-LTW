@@ -42,6 +42,7 @@ form{
 label{
     text-align: left;
     padding-left: 25px;
+    color: white;
 }
 
 input, label{

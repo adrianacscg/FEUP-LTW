@@ -1,6 +1,7 @@
 <?php
 
   include_once('database/connection.php');
+  
   function isLoginCorrect($username, $password) {
     
     global $dbh;
