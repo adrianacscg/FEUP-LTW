@@ -1,7 +1,7 @@
 <?php
 
-  include_once('database/connection.php');
-  
+  include_once('../database/database.php');
+
   function isLoginCorrect($username, $password) {
     
     global $dbh;
@@ -20,27 +20,34 @@
     }
   }
 
-  function createUser($password, $name, $email, $profilePhoto, $creditcard) {
+  //Função que adiciona um utilizador na base de dados
+  function createUser($password, $name, $email, $creditcard) {
+    
     $passwordhashed = hash('sha256', $password);
-    global $dbh;
-    try {
-  	  $stmt = $dbh->prepare('INSERT INTO Utilizador(idUtilizador, username, nomeCompleto, email, password, dataNasc, cartaoCred, imagem, idImage)
-         VALUES (NULL, :Name,  :Email, :Password, :CreditCard)');
-  	  $stmt->bindParam(':Password', $passwordhashed);
-  	  $stmt->bindParam(':Name', $name);
-      $stmt->bindParam(':Email', $email);
-      $stmt->bindParam(':CreditCard', $creditcard);
+    
+    $dbh= Database::instance()->db();
+    
+    //try {
+    $stmt = $dbh->prepare('INSERT INTO Utilizador(idUtilizador, nomeCompleto, email, password, cartaoCred, idImage)
+        VALUES (:Name,  :Email, :Password, :CreditCard), NULL');
+    $stmt->bindParam(':Password', $passwordhashed);
+    $stmt->bindParam(':Name', $name);
+    $stmt->bindParam(':Email', $email);
+    $stmt->bindParam(':CreditCard', $creditcard);
 
-      if($stmt->execute()){
-        $id = getID($username);
-        return $id;
-      }
+    if($stmt->execute()){
+      $id = getID($email);
+      return $id;
+    }
+      /*
       else
         return -1;
     }catch(PDOException $e) {
       
       return -1;
     }
+    */
+    return -1;
     
   }
   function getUser($username) {
