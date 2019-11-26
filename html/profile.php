@@ -40,7 +40,7 @@ session_start();
         <h3><a href="newcard.php">Add New Card</a></h3>
     </section>
     <section id="MyBookings">
-        <h2>My Bookings</h2>
+        <h2<a>My Bookings</a></h2>
         <!-- <img src="<?php echo  htmlentities('../bookingsPictures/' . $_SESSION['reserva']['mybooking']) ?>" alt="Booking Picture"> -->
         <div class="imageHolder">
         <ul class="slider">
