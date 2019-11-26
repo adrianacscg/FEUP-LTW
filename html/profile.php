@@ -7,7 +7,7 @@ session_start();
 <head>
     <title>Tavel Crib - Profile</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/CSS" href="../html/profile.css">
+    <link rel="stylesheet" type="text/CSS" href="../CSS/profile.css">
 </head>
 
 <body>
@@ -115,6 +115,8 @@ session_start();
         <h2>My Properties</h2>
         <h3><a href="addproperty.php">Add Property </a></h3>
         <h3><a href="editproperty.php">Edit Existing Property </a></h3>
+        <a href="moreprop.php"><img src="../icons/+.png" alt="Symbol More"> </a>
+        <a href="edit.php"> <img src="../icons/lapis.png" alt="Pencil"> </a>
     </section>
 </body>
 
