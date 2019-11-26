@@ -19,7 +19,6 @@ create table Utilizador(
 	nomeCompleto TEXT,
 	email TEXT UNIQUE,
 	password TEXT UNIQUE NOT NULL,
-	dataNasc DATE,
 	cartaoCred TEXT,
 	imagem TEXT,
 	idImage INTEGER REFERENCES ImagemUtilizador(idImage) ON DELETE set null ON UPDATE cascade

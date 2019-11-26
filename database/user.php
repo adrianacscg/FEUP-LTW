@@ -19,17 +19,15 @@
     }
   }
 
-  function createUser($username, $password, $name, $email, $profilePhoto, $datebirthday, $creditcard) {
+  function createUser($password, $name, $email, $profilePhoto, $creditcard) {
     $passwordhashed = hash('sha256', $password);
     global $dbh;
     try {
   	  $stmt = $dbh->prepare('INSERT INTO Utilizador(idUtilizador, username, nomeCompleto, email, password, dataNasc, cartaoCred, imagem, idImage)
-         VALUES (NULL, :Username, :Name,  :Email, :Password, :DateBirt, :CreditCard)');
-  	  $stmt->bindParam(':Username', $username);
+         VALUES (NULL, :Name,  :Email, :Password, :DateBirt, :CreditCard)');
   	  $stmt->bindParam(':Password', $passwordhashed);
   	  $stmt->bindParam(':Name', $name);
       $stmt->bindParam(':Email', $email);
-      $stmt->bindParam(':DateBirt', $datebirthday);
       $stmt->bindParam(':CreditCard', $creditcard);
 
       if($stmt->execute()){
@@ -68,11 +66,11 @@
     }
   }
 
-  function getID($username) {
+  function getID($email) {
     global $dbh;
     try {
-      $stmt = $dbh->prepare('SELECT idUtilizador FROM Utilizador WHERE username = ?');
-      $stmt->execute(array($username));
+      $stmt = $dbh->prepare('SELECT idUtilizador FROM Utilizador WHERE email = ?');
+      $stmt->execute(array($email));
       if($row = $stmt->fetch()){
         return $row['ID'];
       }
