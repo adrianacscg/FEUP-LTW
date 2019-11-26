@@ -26,7 +26,7 @@ body{
 section{
     
     margin: auto;
-    background-color: rgb(173, 171, 171);
+    background-color:rgb(51, 45, 45);
     width: 20em;
     padding: 1em 10em;
     border-radius: 10px;
@@ -61,6 +61,6 @@ input{
 
 #idSubmit{
     background-color: white;
-    color:  rgb(173, 171, 171);
+    color:  rgb(51, 45, 45);
     font-weight: bold;
 }
