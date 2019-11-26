@@ -75,16 +75,40 @@ session_start();
         <div class="dateFinal"><br>21/3/2019</div>
         <h3>Total Amount paid:</h3>
         <div class="total"><br>5100€</div>
-    
-        <p> Luxury Resort </p>
-        <p> 5 </p>
-        <p> 500 </p>
-        <p>Dates: </p>
-        <p> 15/3/2019 </p>
-        <p> to </p>
-        <p> 21/3/2019 </p>
-        <p> Total Amount paid: </p>
-        <p> 5100 </p>
+    <!-- <img src="<?php echo  htmlentities('../bookingsPictures/' . $_SESSION['reserva']['mybooking']) ?>" alt="Booking Picture"> -->
+    <div class="imageHolder">
+        <ul class="slider">
+            <li>
+                <input type="radio" id="slide1" name="slide" checked>
+                <label for="slide1"></label>   
+                <img src="../img/Bookings/booking1.jpg" />
+            </li>
+            <li>
+                <input type="radio" id="slide2" name="slide"> 
+                <label for="slide2"></label>  
+                <img src="../img/Bookings/booking2.jpg" />
+            </li>
+            <li>
+                <input type="radio" id="slide3" name="slide">
+                <label for="slide3"></label>
+                <img src="../img/Bookings/booking3.jpg" />
+            </li>
+        </ul>
+        <div class="fundo"><br></div>
+        <div class="caption1"><a>Suite Star</a></div>
+        <div class="forday"><br>&nbsp;/&nbsp;day</div>
+        <div class="price"><br>850€</div>
+        <div class="star1"> <img src="../icons/star.png" width="15px" height="15px"/> </div>
+        <div class="star2"> <img src="../icons/star.png" width="15px" height="15px"/> </div>
+        <div class="star3"> <img src="../icons/star.png" width="15px" height="15px"/> </div>
+        <div class="star4"> <img src="../icons/star.png" width="15px" height="15px"/> </div>
+        <div class="star5"> <img src="../icons/star.png" width="15px" height="15px"/> </div>
+        </div>
+        <h3> Dates:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to</h3>
+        <div class="dateInitial"><a>15/3/2019</a> </div>
+        <div class="dateFinal"><br>21/3/2019</div>
+        <h3>Total Amount paid:</h3>
+        <div class="total"><br>5100€</div>
     </section>
 
     <section id="MyProperties">

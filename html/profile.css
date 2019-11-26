@@ -104,6 +104,8 @@ body {
     font-family: Franklin Gothic;
 }
 
+
+
 /*Section*/
 
 #MyProfile img[src$=".jpg"] { 
@@ -344,17 +346,22 @@ body {
 }
 
 #MyBookings .dateInitial {
-    position: relative;
-    bottom:56px;
+    position: absolute;
+    top:958px;
     left: 100px;
 }
 
 #MyBookings .dateFinal {
-    position: relative;
-    bottom: 91px;
+    position: absolute;
+    top: 941px;
     left: 225px;
 }
 
+#MyBookings .total{
+    position: absolute;
+    top: 998px;
+    left: 210px;
+}
 
 
 
