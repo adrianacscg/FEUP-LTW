@@ -20,7 +20,6 @@ create table Utilizador(
 	email TEXT UNIQUE,
 	password TEXT UNIQUE NOT NULL,
 	cartaoCred TEXT,
-	imagem TEXT,
 	idImage INTEGER REFERENCES ImagemUtilizador(idImage) ON DELETE set null ON UPDATE cascade
 );
 

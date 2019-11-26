@@ -24,7 +24,7 @@
     global $dbh;
     try {
   	  $stmt = $dbh->prepare('INSERT INTO Utilizador(idUtilizador, username, nomeCompleto, email, password, dataNasc, cartaoCred, imagem, idImage)
-         VALUES (NULL, :Name,  :Email, :Password, :DateBirt, :CreditCard)');
+         VALUES (NULL, :Name,  :Email, :Password, :CreditCard)');
   	  $stmt->bindParam(':Password', $passwordhashed);
   	  $stmt->bindParam(':Name', $name);
       $stmt->bindParam(':Email', $email);
