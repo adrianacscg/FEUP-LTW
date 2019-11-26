@@ -3,7 +3,7 @@
     <head>
         <title>Travel Crib - Register</title>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="register.css">
+        <link rel="stylesheet" href="../CSS/register.css">
     </head>
     <body>
         <header>
@@ -12,38 +12,36 @@
         </header>
         
         <section>
-            <form >
-                <label>First Name
-                    <input type="text" name="firstName" autocomplete="off" required>
-                </label>
+            <form method="POST" action="../PHP/action_register.php">
+                <label for="fstName" >First Name</label>
+                    <input id="fstName" type="text" name="firstName" autocomplete="off" required>
                 
                 <br><br>
 
-                <label>Last Name
-                    <input type="text" name="lastName" autocomplete="off" required>
-                </label>
+                <label for= "lstName">Last Name</label>
+                    <input id="lstName" type="text" name="lastName" autocomplete="off" required>
+                
+                <br><br>
+
+                <label for="idEmail">Email</label>
+                    <input id="idEmail" type="email" name="email" autocomplete="off" required>
+                
 
                 <br><br>
 
-                <label>Email
-                    <input type="email" name="email" autocomplete="off" required>
-                </label>
+                <label for="idPassword">Password</label>
+                    <input id="idPassword" type="password" name="password" autocomplete="off" required>
+                
 
                 <br><br>
 
-                <label>Password
-                    <input type="password" name="password" autocomplete="off" required>
-                </label>
-
-                <br><br>
-
-                <label>Repeat Password
-                    <input type="password" name="Rpassword" autocomplete="off" required>
-                </label>
+                <label for="idPasswordR">Repeat Password</label>
+                    <input id="idPasswordR" type="password" name="Rpassword" autocomplete="off" required>
+                
 
                 <br><br>    
 
-                <input type="submit" value="Register">
+                <input id="idSubmit" type="submit" value="Register"  >
             </form>
         </section>
 
