@@ -172,7 +172,7 @@ body {
 
 #MyProfile .card { 
     position: absolute;
-    top:453px;
+    top:440px;
     left: 60px;  
 }
 
@@ -183,7 +183,7 @@ body {
 
 #MyProfile h3 a[href^="newcard"]{
     position: absolute;
-    top:517px;
+    top:505px;
     left: 65px; 
 }
 

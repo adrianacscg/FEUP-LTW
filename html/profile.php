@@ -19,7 +19,7 @@ session_start();
         <label class="hamburger" for="hamburger"></label>
         <ul>
             <li><a href="#MyProfile">My Profile</a></li>
-            <li><a href="#MyBookings">My Booking</a></li>
+            <li><a href="#MyBookings">My Bookings</a></li>
             <li><a href="#MyProperties">My Properties</a></li>
             <li><a href="main.html">Logout</a></li>
         </ul>
