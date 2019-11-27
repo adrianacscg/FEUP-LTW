@@ -150,15 +150,17 @@ body {
 }
 
 #MyBookings{
-    border-top: 2px solid white;    
+    border-top: 2px solid white; 
 }
 
 #MyBookings h2 a{
-   background: #b3dfde;
-   position: absolute;
-   top: 500px;
-    
+    background: #b3dfde;
+    position: absolute;
+    top: 548px;
+    left: 50px;
+    padding: 0em 0.5em;
 }
+
 
 #MyProperties{
     border-top: 2px solid white; 
@@ -361,19 +363,19 @@ body {
 
 #MyBookings .dateInitial {
     position: absolute;
-    top:958px;
+    top:898px;
     left: 100px;
 }
 
 #MyBookings .dateFinal {
     position: absolute;
-    top: 941px;
+    top: 881px;
     left: 225px;
 }
 
 #MyBookings .total{
     position: absolute;
-    top: 998px;
+    top: 938px;
     left: 210px;
 }
 
@@ -382,7 +384,7 @@ body {
     color: white;
     position: absolute;
     padding: 0.5em;
-    top: 1454px;
+    top: 1394px;
     left: 50px;
 }
 
