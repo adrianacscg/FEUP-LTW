@@ -3,14 +3,20 @@
     include_once('../database/places.php');
     
     //info tem a informacao sobre o sitio
-    $info = getPlace($_GET['id']);
+    $place = getPlace($_GET['id']);
 
         
     
-    if($info==-1){
+    if($place==-1){
         die(header('Location: ../html/main.html'));
     }
-    $img= get
+
+    $imgs= getPlace($place['id']);
+    if($imgs == -1){
+        $imgs == [];
+    }
+
+    /
         
 ?>
 
@@ -29,9 +35,9 @@
 
     <h2> <?= $info['nome']?></h2>
 
+    <!--perguntar ao joao como fez para fazer Display das imagens-->
 
-
-
+    
 
 
         
