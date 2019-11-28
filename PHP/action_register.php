@@ -12,11 +12,11 @@
 
     }catch(PDOException $e){
         //do something
-        
+        echo $e->getMessage();
         
     }catch(Exception $e){
         //do something
-        echo 'Error:' . $e->getMessage() ;
+        echo $e->getMessage();
     }
 
     //Vai para a pagina inicial

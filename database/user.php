@@ -28,8 +28,8 @@
     $dbh= Database::instance()->db();
     
     //try {
-    $stmt = $dbh->prepare('INSERT INTO Utilizador(idUtilizador, nomeCompleto, email, password, cartaoCred, idImage)
-        VALUES (:Name,  :Email, :Password, :CreditCard), NULL');
+    $stmt = $dbh->prepare('INSERT INTO Utilizador(nomeCompleto, email, password, cartaoCred, idImage)
+        VALUES (:Name,  :Email, :Password, :CreditCard, NULL');
     $stmt->bindParam(':Password', $passwordhashed);
     $stmt->bindParam(':Name', $name);
     $stmt->bindParam(':Email', $email);
