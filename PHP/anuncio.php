@@ -16,7 +16,7 @@
         $imgs == [];
     }
 
-    /
+    
         
 ?>
 
@@ -37,7 +37,7 @@
 
     <!--perguntar ao joao como fez para fazer Display das imagens-->
 
-    
+
 
 
         
