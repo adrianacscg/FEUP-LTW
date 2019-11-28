@@ -17,18 +17,11 @@ session_start();
             
             $name= $_POST['firstName'] . $_POST['lastName'];
             
-            try{
+           
                 
-                createUser($_POST['password'], $name, $_POST['email'], NULL);
+            $info_user = createUser($_POST['password'], $name, $_POST['email'], NULL);
 
-            }catch(PDOException $e){
-                //do something  
-                echo $e->getMessage();
-                die(header('Location: ../html/main.html'));
-                
-            }catch(Exception $e){
-                //do something
-                echo $e->getMessage();
+            if($info_user==-1){
                 die(header('Location: ../html/main.html'));
             }
 

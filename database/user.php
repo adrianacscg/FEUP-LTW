@@ -24,30 +24,37 @@
   function createUser($password, $name, $email, $creditcard) {
     
     $passwordhashed = hash('sha256', $password);
-    
-    $dbh= Database::instance()->db();
-    
-    //try {
-    $stmt = $dbh->prepare('INSERT INTO Utilizador(nomeCompleto, email, password, cartaoCred, idImage)
-        VALUES (:Name,  :Email, :Password, :CreditCard, NULL');
-    $stmt->bindParam(':Password', $passwordhashed);
-    $stmt->bindParam(':Name', $name);
-    $stmt->bindParam(':Email', $email);
-    $stmt->bindParam(':CreditCard', $creditcard);
 
-    if($stmt->execute()){
-      $id = getID($email);
-      return $id;
+    //tenta ligar à base de dados
+    try{
+      $dbh= Database::instance()->db();
+
+    }catch(Exception $e){
+      return -1;
     }
-      /*
-      else
-        return -1;
+
+    //tenta correr a query
+    try {
+      
+      $stmt = $dbh->prepare('INSERT INTO Utilizador(nomeCompleto, email, password, cartaoCred, idImage)
+          VALUES (:Name,  :Email, :Password, :CreditCard, NULL');
+      $stmt->bindParam(':Password', $passwordhashed);
+      $stmt->bindParam(':Name', $name);
+      $stmt->bindParam(':Email', $email);
+      $stmt->bindParam(':CreditCard', $creditcard);
+
+      $stmt->execute();
+      
+  
     }catch(PDOException $e) {
       
       return -1;
     }
-    */
-    return -1;
+
+    //vai buscar o id (mudar isto)
+    $id = getID($email);
+    return $id;
+  }
     
   }
   function getUser($username) {
