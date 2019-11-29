@@ -1,0 +1,67 @@
+/*Header*/
+h1{
+    border-bottom-style: solid;
+    border-color: white;
+    text-align: center;   
+    margin: auto;
+    width: 10em;
+    
+}
+
+h2{
+    text-align: center; 
+}
+h1, h2{
+    color:white;
+}
+
+/*Body*/
+
+body{
+    background-image: url(../img/register3.jpg);
+}
+
+/*Section*/
+
+section{
+    
+    margin: auto;
+    background-color:rgba(219, 216, 216, 0.733);
+    width: 20em;
+    padding: 1em 10em;
+    border-radius: 10px;
+    color:white;
+    
+}
+
+form{
+    display: block;
+    text-align: center;
+}
+
+label{
+    text-align: left;
+    padding-left: 25px;
+    color: white;
+}
+
+input, label{
+    margin: auto;
+    display: block;
+}
+
+input{
+    border-radius: 10px;
+    width: 20em;
+    padding: 5px;
+    border-style: solid;
+    border-color: white;
+    color:inherit;
+    background-color: inherit;
+}
+
+#idSubmit{
+    background-color: white;
+    color:  rgb(51, 45, 45);
+    font-weight: bold;
+}

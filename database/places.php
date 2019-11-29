@@ -9,7 +9,7 @@
 
         }catch (Exception $e){
             echo $e->getMessage();
-            return -1;
+            return array();
         }
 
         //tenta fazer a query
@@ -20,7 +20,7 @@
 
         }catch (PDOException $e){
             echo $e->getMessage();
-            return -1;
+            return array();
         }
         
         return $stmt->fetch();
@@ -34,7 +34,7 @@
 
         }catch (Exception $e){
             echo $e->getMessage();
-            return -1;
+            return array();
         }
 
         //tenta fazer a query
@@ -45,12 +45,14 @@
 
         }catch (PDOException $e){
             echo $e->getMessage();
-            return -1;
+            return array();
         }
 
         return $stmt->fetchAll();
 
     }
+
+
     function getComodidades($id){
 
         try{
@@ -58,7 +60,7 @@
 
         }catch (Exception $e){
             echo $e->getMessage();
-            return -1;
+            return array();
         }
 
         try{
@@ -69,7 +71,7 @@
 
         }catch (PDOException $e){
             echo $e->getMessage();
-            return -1;
+            return array();
         }
 
         return $stmt->fetchAll();
