@@ -47,7 +47,7 @@ session_start();
             <li>
                 <input type="radio" id="slide1" name="slide" checked>
                 <label for="slide1"></label>   
-                <img src="../img/Bookings/booking1.jpg" />
+                <img src="../img        /Bookings/booking1.jpg" />
             </li>
             <li>
                 <input type="radio" id="slide2" name="slide"> 

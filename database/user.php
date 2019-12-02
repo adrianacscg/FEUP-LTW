@@ -56,7 +56,6 @@
     return $id;
   }
     
-  }
   function getUser($username) {
     global $dbh;
     try {
