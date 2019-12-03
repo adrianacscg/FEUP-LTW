@@ -21,7 +21,7 @@
   }
 
   //Função que adiciona um utilizador na base de dados
-  function createUser($password, $name, $email, $creditcard) {
+  function createUser($password, $name, $email) {
     
     $passwordhashed = hash('sha256', $password);
 
@@ -30,25 +30,30 @@
       $dbh= Database::instance()->db();
 
     }catch(Exception $e){
-      return -1;
+      return $e;
     }
 
     //tenta correr a query
     try {
+
       
-      $stmt = $dbh->prepare('INSERT INTO Utilizador(nomeCompleto, email, password, cartaoCred, idImage)
-          VALUES (:Name,  :Email, :Password, :CreditCard, NULL');
-      $stmt->bindParam(':Password', $passwordhashed);
+      
+      $stmt = $dbh->prepare('INSERT INTO Utilizador(nomeCompleto, email, password)
+          VALUES (:Name,  :Email, :Password)');
+        
       $stmt->bindParam(':Name', $name);
       $stmt->bindParam(':Email', $email);
-      $stmt->bindParam(':CreditCard', $creditcard);
+      $stmt->bindParam(':Password', $passwordhashed);
+      
+      
+      
 
       $stmt->execute();
       
   
     }catch(PDOException $e) {
       
-      return -1;
+      return $e;
     }
 
     //vai buscar o id (mudar isto)
