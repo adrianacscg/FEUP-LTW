@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once('../PHP/session.php'); 
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -25,9 +26,8 @@ session_start();
         </ul>
     </nav>
     <section id="MyProfile">
-        <!-- <h1><a>  <?php echo htmlentities($_SESSION['userinfo']['nomeCompleto']) ?> </a></h1> -->
         <img src="../img/ProfilePictures/profilepicture1.jpg" alt=" ">
-        <h1><a> João Paulo Ribeiro Nunes </a></h1>
+        <h1><a> <?php echo htmlentities($_SESSION['Name']) ?> </a></h1>
         <!-- <h3><a>Email: <?php echo htmlentities($_SESSION['userinfo']['email']) ?></a></h3> -->
         <h3><a>Email: </a></h3>
         <p class="mail">joaopaulo_n@hotmail.com</p>
@@ -38,7 +38,7 @@ session_start();
         <p class="card"> ************1472 </p>
         <a href="newcard.php"> <img src="../icons/+.png" alt="Symbol More"> </a>
         <h3><a href="newcard.php">Add New Card</a></h3>
-    </section>
+    </section>  
     <section id="MyBookings">
         <h2><a>My Bookings</a></h2>
         <!-- <img src="<?php echo  htmlentities('../bookingsPictures/' . $_SESSION['reserva']['mybooking']) ?>" alt="Booking Picture"> -->
