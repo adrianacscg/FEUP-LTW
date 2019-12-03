@@ -1,19 +1,13 @@
 <?php
 session_start();                         // starts the session
-include_once('database/connection.php'); // connects to the database
-include_once('database/user.php');      // loads the functions responsible for the users table
+include_once('../database/connection.php'); // connects to the database
+include_once('../database/user.php');      // loads the functions responsible for the users table
 
-if(($userID = isLoginCorrect($_POST['username'], $_POST['password'])) != -1){  // test if user exists
-    setCurrentUser($userID, $_POST['username']);            // store the username
-    header("Location:../pages/lists.php");
-} else {
-	$_SESSION['ERROR'] = 'Incorrect username or password';
-	header("Location:".$_SERVER['HTTP_REFERER']."");
-}
 
-function setCurrentUser($userID, $username)
+
+function setCurrentUser($userID, $email)
 {
-    $_SESSION['username'] = $username;
+    $_SESSION['email'] = $email;
     $_SESSION['userID'] = $userID;
 }
 
@@ -26,10 +20,10 @@ function getUserID()
     }
 }
 
-function getUsername()
+function getEmail()
 {
-    if (isset($_SESSION['username'])) {
-        return $_SESSION['username'];
+    if (isset($_SESSION['email'])) {
+        return $_SESSION['email'];
     } else {
         return null;
     }
