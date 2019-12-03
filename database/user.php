@@ -52,7 +52,7 @@
     }
 
     //vai buscar o id (mudar isto)
-    $id = getID($email);
+    $id = $dbh->lastInsertId();
     return $id;
   }
     
