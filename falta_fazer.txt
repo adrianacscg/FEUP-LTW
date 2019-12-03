@@ -1,5 +1,5 @@
 Falta fazer:
-- Session.php :Ricardo
+- Session.php :Ricardo done(ish)! falta entender
 - Login and logout : Adriana 
 - Profile (ajustes js) : Joao
 - Register (styling and js) :Ricardo
