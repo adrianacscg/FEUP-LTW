@@ -15,7 +15,7 @@
     $_SESSION['email'] = $_POST['email'];
 
     //Redirect to main page
-    header('Location: main.html');
+    header('Location: ../pages/main.html');
 
 ?>
 

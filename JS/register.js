@@ -38,25 +38,24 @@ function checkEmail(event){
 
     request.addEventListener("load",function(){
         
-        
+
         let response= JSON.parse(this.responseText)
         console.log(response)
 
         if(response=="1"){
             document.getElementById('checked').style.display = "inline"
+            event.preventDefault()
         }else{
-            window.location.href = "../actions/action_register.php"
-            console.log ("hello")
-        }
+            console.log("hello")
+        }   
 
     })
 
-    request.open('POST', "../api/api_user_exists.php",true)
+    request.open('POST', "../api/api_user_exists.php",false)
     request.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
     request.send(encodeForAjax({'email': email}))
     console.log(request)
 
-    event.preventDefault()
     
 }
 
