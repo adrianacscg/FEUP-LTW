@@ -36,8 +36,6 @@
     //tenta correr a query
     try {
 
-      
-      
       $stmt = $dbh->prepare('INSERT INTO Utilizador(nomeCompleto, email, password)
           VALUES (:Name,  :Email, :Password)');
         
@@ -45,9 +43,6 @@
       $stmt->bindParam(':Email', $email);
       $stmt->bindParam(':Password', $passwordhashed);
       
-      
-      
-
       $stmt->execute();
       
   
@@ -56,10 +51,35 @@
       return $e;
     }
 
-    //vai buscar o id (mudar isto)
+    //vai buscar o id 
     $id = $dbh->lastInsertId();
     return $id;
   }
+  function user_exists($email){
+
+    //tenta ligar à base de dados
+    try{
+      $dbh= Database::instance()->db();
+
+    }catch(Exception $e){
+      return $e;
+    }
+    
+    try{
+      $stmt = $dbh->prepare('SELECT * FROM Utilizador WHERE email = ?');
+      $stmt->execute(array($email));
+      $stmt->fetch();
+    }catch(PDOException $e) {
+      return $e;
+    }
+
+    if($stmt){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
     
 
 
@@ -176,4 +196,6 @@
       return null;
     }
   }
+
+
 ?>
