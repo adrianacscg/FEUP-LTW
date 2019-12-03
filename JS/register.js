@@ -35,24 +35,29 @@ function checkEmail(event){
     
     //Ajax Request
     let request = new XMLHttpRequest()
-    request.open("post", "../api/api_user_exists.php",true)
-    request.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
-    request.send(encodeForAjax({'email': email}))
-    console.log(request)
 
     request.addEventListener("load",function(){
+        
         
         let response= JSON.parse(this.responseText)
         console.log(response)
 
-        if(response){
-            document.getElementById('checked').display = "inline"
-            //document.getElementById('idForm').preventDefault()
+        if(response=="1"){
+            document.getElementById('checked').style.display = "inline"
+        }else{
+            window.location.href = "../actions/action_register.php"
+            console.log ("hello")
         }
 
     })
-    event.preventDefault()  
-   
+
+    request.open('POST', "../api/api_user_exists.php",true)
+    request.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
+    request.send(encodeForAjax({'email': email}))
+    console.log(request)
+
+    event.preventDefault()
+    
 }
 
 // Helper function

@@ -72,17 +72,18 @@
 
       $stmt = $dbh->prepare('SELECT * FROM Utilizador WHERE email = ?');
       $stmt->execute(array($email));
-      $stmt->fetchAll();
 
+      //fecth retorna falso se nao houver linhas a buscar
+      if($stmt->fetch()){
+        return 1;
+      }else{
+        return 0;
+      }
     }catch(PDOException $e) {
       return $e;
     }
 
-    if(empty($stmt)){
-      return false;
-    }else{
-      return true;
-    }
+    
   }
 
     
