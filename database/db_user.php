@@ -69,9 +69,11 @@
     }
     
     try{
+
       $stmt = $dbh->prepare('SELECT * FROM Utilizador WHERE email = ?');
       $stmt->execute(array($email));
-      $stmt->fetch();
+      $stmt->fetchAll();
+
     }catch(PDOException $e) {
       return $e;
     }

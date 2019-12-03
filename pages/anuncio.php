@@ -1,6 +1,7 @@
 
 <?php
-    include_once('../database/places.php');
+    include_once('../includes/session.php');
+    include_once('../database/db_places.php');
     
     //info tem a informacao sobre o sitio
     $place = getPlace($_GET['id']);

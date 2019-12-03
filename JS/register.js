@@ -38,9 +38,10 @@ function checkEmail(event){
     request.open("post", "../api/api_user_exists.php",true)
     request.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
     request.send(encodeForAjax({'email': email}))
-    //console.log(request)
-    request.addEventListener("load",function(){
+    console.log(request)
 
+    request.addEventListener("load",function(){
+        
         let response= JSON.parse(this.responseText)
         console.log(response)
 
