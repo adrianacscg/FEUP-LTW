@@ -18,7 +18,7 @@ create table Utilizador(
 	idUtilizador INTEGER PRIMARY KEY AUTOINCREMENT,
 	nomeCompleto TEXT,
 	email TEXT UNIQUE,
-	password TEXT UNIQUE NOT NULL,
+	password TEXT NOT NULL,
 	cartaoCred TEXT,
 	idImage INTEGER REFERENCES ImagemUtilizador(idImage) ON DELETE set null ON UPDATE cascade
 );
