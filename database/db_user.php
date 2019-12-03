@@ -1,6 +1,6 @@
 <?php
 
-  include_once('../database/database.php');
+  include_once('../includes/database.php');
 
   function isLoginCorrect($username, $password) {
     
@@ -55,6 +55,9 @@
     $id = $dbh->lastInsertId();
     return $id;
   }
+
+
+  //Verifica se o utilizador existe
   function user_exists($email){
 
     //tenta ligar à base de dados
@@ -73,10 +76,10 @@
       return $e;
     }
 
-    if($stmt){
-      return true;
-    }else{
+    if(empty($stmt)){
       return false;
+    }else{
+      return true;
     }
   }
 

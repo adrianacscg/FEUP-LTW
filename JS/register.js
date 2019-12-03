@@ -23,19 +23,35 @@ function PassMatching(event){
     }
 }
 
-let submit= document.getElementById('idSubmit')
+let submit= document.getElementById('idForm')
 
-submit.addEventListener('click',checkEmail)
+submit.addEventListener('submit',checkEmail)
 
 function checkEmail(event){
-    let btn=event.target
-    let email= document.getElementById('idEmail').value     // email value
 
+    
+
+    let email= document.getElementById('idEmail').value     // email value
+    
     //Ajax Request
     let request = new XMLHttpRequest()
     request.open("post", "../api/api_user_exists.php",true)
     request.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
     request.send(encodeForAjax({'email': email}))
+    //console.log(request)
+    request.addEventListener("load",function(){
+
+        let response= JSON.parse(this.responseText)
+        console.log(response)
+
+        if(response){
+            document.getElementById('checked').display = "inline"
+            //document.getElementById('idForm').preventDefault()
+        }
+
+    })
+    event.preventDefault()  
+   
 }
 
 // Helper function
@@ -45,11 +61,4 @@ function encodeForAjax(data) {
     }).join('&')
 }
 
-function checkResponse(){
-    let response= JSON.parse(this.responseText)
-    if(!response){
-        document.getElementById('checked').display = "inline"
-        document.getElementById('idForm').preventDefault()
-    }
-}
 
