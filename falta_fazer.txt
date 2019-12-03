@@ -1,0 +1,8 @@
+Falta fazer:
+- Session.php :Ricardo
+- Login and logout : Adriana 
+- Profile (ajustes js) : Joao
+- Register (styling and js) :Ricardo
+- templates (footer e headers) : Joao
+- places (mt coisa) : Ricardo
+- lis_places/procura (TUDO)
