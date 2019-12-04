@@ -29,6 +29,15 @@ include_once('../PHP/userinfo.php');
         <img src="../img/ProfilePictures/perfilPadrao.jpg" alt=" ">
         <h1><a> <?php echo htmlentities(getName($_SESSION['email'])) ?> </a></h1>
         <h3><a href="#changemail">Change Email |&nbsp; </a></h3>
+        <div id="changemail" class="modalmail">
+            <a href="#close" title="Close" class="close">X</a>
+            <form id="formchangemail" method="POST" action="../actions/action_change_mail.php">
+                <label for="idEmail">Email</label>
+                <input id="idEmail" type="email" name="email" autocomplete="off" required>
+                <p id="checked">Email já registrado!</p>
+                <input id="updatemail" type="submit" value="Update">
+            </form>
+        </div>
         <h3><a href="#changeprofilepic">Change Profile Picture </a></h3>
         <h3><a>Email: </a></h3>
         <p class="mail"><?php echo htmlentities($_SESSION['email']) ?></p>
@@ -42,7 +51,8 @@ include_once('../PHP/userinfo.php');
                 <label for="idPasswordR">Repeat Password</label>
                 <input id="idPasswordR" type="password" name="Rpassword" autocomplete="off" required>
                 <p id="match">As palavras-passe devem ser identicas!</p>
-                <input id="update" type="submit" value="Update">
+                <input id="updatepass" type="submit" value="Update">
+            </form>
         </div>
         <h2><a>Payment Methods</a></h2>
         <h3><a><?php
@@ -52,8 +62,8 @@ include_once('../PHP/userinfo.php');
                     echo htmlentities('Card:' . ' ' . $card);
                 } else echo 'No credit cards';
                 ?></a></h3>
-        <a href="newcard.php"> <img src="../icons/+.png" alt="Symbol More"> </a>
-        <h3><a href="newcard.php">Add New Card</a></h3>
+        <a href="#addnewcard"> <img src="../icons/+.png" alt="Symbol More"> </a>
+        <h3><a href="#addnewcard.php">Add New Card</a></h3>
     </section>
     <section id="MyBookings">
         <h2><a>My Bookings</a></h2>

@@ -109,6 +109,31 @@
     }
 }
 
+function updateUserEmail($email, $newemail){
+  //tenta ligar à base de dados
+  try{
+    $dbh= Database::instance()->db();
+
+  }catch(Exception $e){
+    return $e;
+  }
+
+  try {
+    $stmt = $dbh->prepare('UPDATE Utilizador SET email = ? WHERE email = ?');
+    if($stmt->execute(array($newemail, $email))){
+      $_SESSION['email'] = $newemail;
+      return true;
+    }
+        
+    else{
+      return false;
+    }  
+
+  }catch(PDOException $e) {
+    return false;
+  }
+}
+
 
   function getUser($username) {
     global $dbh;
@@ -169,20 +194,6 @@
     
     }catch(PDOException $e) {
       return true;
-    }
-  }
-
-  function updateUserInfo($userID, $name, $username, $email){
-    global $dbh;
-    try {
-      $stmt = $dbh->prepare('UPDATE Utilizador SET Name = ?, username = ?, email = ? WHERE idUtilizador = ?');
-      if($stmt->execute(array($name, $username, $email, $userID)))
-          return true;
-      else{
-        return false;
-      }   
-    }catch(PDOException $e) {
-      return false;
     }
   }
   

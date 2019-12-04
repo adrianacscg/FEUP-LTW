@@ -189,7 +189,7 @@ body {
     height: 5px;
 }
 
-#MyProfile h3 a[href^="newcard"]{
+#MyProfile h3 a[href^="#addnewcard"]{
     position: absolute;
     top:505px;
     left: 65px; 
@@ -455,10 +455,27 @@ footer p{
     top: 1810px;
 }
 
+/* modals */
+
 .modal {
     position: fixed;
     right: 0;
     bottom: 70px;
+    left: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: rgba(0,0,0,0.8);
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+  }
+
+  .modalmail {
+    position: fixed;
+    right: 0;
+    bottom: 200px;
     left: 0;
     font-family: Arial, Helvetica, sans-serif;
     background: rgba(0,0,0,0.8);
@@ -475,7 +492,19 @@ footer p{
     pointer-events: auto;
   }
 
+  .modalmail:target {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
  div#changepass {
+    width: 400px;
+    margin: 10% auto;
+    padding: 15px 20px;
+    color: white;
+ }
+
+ div#changemail {
     width: 400px;
     margin: 10% auto;
     padding: 15px 20px;
