@@ -86,7 +86,28 @@
     
   }
 
+  function updateUserPassword($email, $newpassword) {
+    $passwordhashed = hash('sha256', $newpassword);
     
+    //tenta ligar à base de dados
+    try{
+      $dbh= Database::instance()->db();
+
+    }catch(Exception $e){
+      return $e;
+    }
+
+    try {
+      $stmt = $dbh->prepare('UPDATE Utilizador SET Password = ? WHERE email = ?');
+      if($stmt->execute(array($passwordhashed, $email)))
+          return true;
+      else{
+        return false;
+      }   
+    }catch(PDOException $e) {
+      return false;
+    }
+}
 
 
   function getUser($username) {
@@ -164,20 +185,7 @@
       return false;
     }
   }
-  function updateUserPassword($userID, $newpassword){
-    $passwordhashed = hash('sha256', $newpassword);
-    global $dbh;
-    try {
-      $stmt = $dbh->prepare('UPDATE Utilizador SET Password = ? WHERE idUtilizador = ?');
-      if($stmt->execute(array($passwordhashed, $userID)))
-          return true;
-      else{
-        return false;
-      }   
-    }catch(PDOException $e) {
-      return false;
-    }
-  }
+  
   function updateUserPhoto($userID, $photoPath) {
     global $dbh;
     try {

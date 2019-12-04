@@ -28,81 +28,97 @@ include_once('../PHP/userinfo.php');
     <section id="MyProfile">
         <img src="../img/ProfilePictures/perfilPadrao.jpg" alt=" ">
         <h1><a> <?php echo htmlentities(getName($_SESSION['email'])) ?> </a></h1>
-        <!-- <h3><a>Email: <?php echo htmlentities($_SESSION['userinfo']['email']) ?></a></h3> -->
+        <h3><a href="#changemail">Change Email |&nbsp; </a></h3>
+        <h3><a href="#changeprofilepic">Change Profile Picture </a></h3>
         <h3><a>Email: </a></h3>
-        <p class="mail">joaopaulo_n@hotmail.com</p>
-        <h3><a href="changepass.php">Change Password</a></h3>
+        <p class="mail"><?php echo htmlentities($_SESSION['email']) ?></p>
+        <h3><a href="#changepass">Change Password</a></h3>
+        <div id="changepass" class="modal">
+            <a href="#close" title="Close" class="close">X</a>
+            <form id="formchangepass" method="POST" action="../actions/action_change_password.php">
+                <label for="idPassword">Password</label>
+                <input id="idPassword" type="password" name="password" autocomplete="off" required>
+                <br><br>
+                <label for="idPasswordR">Repeat Password</label>
+                <input id="idPasswordR" type="password" name="Rpassword" autocomplete="off" required>
+                <p id="match">As palavras-passe devem ser identicas!</p>
+                <input id="update" type="submit" value="Update">
+        </div>
         <h2><a>Payment Methods</a></h2>
-        <!-- <h3><a>Card:  <?php echo htmlentities($_SESSION['userinfo']['cartaoCred']) ?></a></h3> -->
-        <h3>Card: </h3>
-        <p class="card"> ************1472 </p>
+        <h3><a><?php
+                if (getCard($_SESSION['email']) != null) {
+
+                    $card = str_replace(substr(getCard($_SESSION['email']), 0, -4), '************', getCard($_SESSION['email']));
+                    echo htmlentities('Card:' . ' ' . $card);
+                } else echo 'No credit cards';
+                ?></a></h3>
         <a href="newcard.php"> <img src="../icons/+.png" alt="Symbol More"> </a>
         <h3><a href="newcard.php">Add New Card</a></h3>
-    </section>  
+    </section>
     <section id="MyBookings">
         <h2><a>My Bookings</a></h2>
         <!-- <img src="<?php echo  htmlentities('../bookingsPictures/' . $_SESSION['reserva']['mybooking']) ?>" alt="Booking Picture"> -->
         <div class="imageHolder">
-        <ul class="slider">
-            <li>
-                <input type="radio" id="slide1" name="slide" checked>
-                <label for="slide1"></label>   
-                <img src="../img        /Bookings/booking1.jpg" />
-            </li>
-            <li>
-                <input type="radio" id="slide2" name="slide"> 
-                <label for="slide2"></label>  
-                <img src="../img/Bookings/booking2.jpg" />
-            </li>
-            <li>
-                <input type="radio" id="slide3" name="slide">
-                <label for="slide3"></label>
-                <img src="../img/Bookings/booking3.jpg" />
-            </li>
-        </ul>
-        <div class="fundo"><br></div>
-        <div class="caption1"><a>Suite Star</a></div>
-        <div class="forday"><br>&nbsp;/&nbsp;day</div>
-        <div class="price"><br>850€</div>
-        <div class="star1"> <img src="../icons/star.png" width="15px" height="15px"/> </div>
-        <div class="star2"> <img src="../icons/star.png" width="15px" height="15px"/> </div>
-        <div class="star3"> <img src="../icons/star.png" width="15px" height="15px"/> </div>
-        <div class="star4"> <img src="../icons/star.png" width="15px" height="15px"/> </div>
-        <div class="star5"> <img src="../icons/star.png" width="15px" height="15px"/> </div>
+            <ul class="slider">
+                <li>
+                    <input type="radio" id="slide1" name="slide" checked>
+                    <label for="slide1"></label>
+                    <img src="../img/Bookings/booking1.jpg" />
+                </li>
+                <li>
+                    <input type="radio" id="slide2" name="slide">
+                    <label for="slide2"></label>
+                    <img src="../img/Bookings/booking2.jpg" />
+                </li>
+                <li>
+                    <input type="radio" id="slide3" name="slide">
+                    <label for="slide3"></label>
+                    <img src="../img/Bookings/booking3.jpg" />
+                </li>
+            </ul>
+            <div class="fundo"><br></div>
+            <div class="caption1"><a>Suite Star</a></div>
+            <div class="forday"><br>&nbsp;/&nbsp;day</div>
+            <div class="price"><br>850€</div>
+            <div class="star1"> <img src="../icons/star.png" width="15px" height="15px" /> </div>
+            <div class="star2"> <img src="../icons/star.png" width="15px" height="15px" /> </div>
+            <div class="star3"> <img src="../icons/star.png" width="15px" height="15px" /> </div>
+            <div class="star4"> <img src="../icons/star.png" width="15px" height="15px" /> </div>
+            <div class="star5"> <img src="../icons/star.png" width="15px" height="15px" /> </div>
         </div>
         <h3> Dates:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to</h3>
         <div class="dateInitial"><a>15/3/2019</a> </div>
         <div class="dateFinal"><br>21/3/2019</div>
         <h3>Total Amount paid:</h3>
         <div class="total"><br>5100€</div>
-    <!-- <img src="<?php echo  htmlentities('../bookingsPictures/' . $_SESSION['reserva']['mybooking']) ?>" alt="Booking Picture"> -->
-    <div class="imageHolder">
-        <ul class="slider">
-            <li>
-                <input type="radio" id="slide1" name="slide" checked>
-                <label for="slide1"></label>   
-                <img src="../img/Bookings/booking1.jpg" />
-            </li>
-            <li>
-                <input type="radio" id="slide2" name="slide"> 
-                <label for="slide2"></label>  
-                <img src="../img/Bookings/booking2.jpg" />
-            </li>
-            <li>
-                <input type="radio" id="slide3" name="slide">
-                <label for="slide3"></label>
-                <img src="../img/Bookings/booking3.jpg" />
-            </li>
-        </ul>
-        <div class="fundo"><br></div>
-        <div class="caption1"><a>Suite Star</a></div>
-        <div class="forday"><br>&nbsp;/&nbsp;day</div>
-        <div class="price"><br>850€</div>
-        <div class="star1"> <img src="../icons/star.png" width="15px" height="15px"/> </div>
-        <div class="star2"> <img src="../icons/star.png" width="15px" height="15px"/> </div>
-        <div class="star3"> <img src="../icons/star.png" width="15px" height="15px"/> </div>
-        <div class="star4"> <img src="../icons/star.png" width="15px" height="15px"/> </div>
-        <div class="star5"> <img src="../icons/star.png" width="15px" height="15px"/> </div>
+        <!-- <img src="<?php echo  htmlentities('../bookingsPictures/' . $_SESSION['reserva']['mybooking']) ?>" alt="Booking Picture"> -->
+        <div class="imageHolder">
+            <ul class="slider">
+                <li>
+                    <input type="radio" id="slide1" name="slide" checked>
+                    <label for="slide1"></label>
+                    <img src="../img/Bookings/booking1.jpg" />
+                </li>
+                <li>
+                    <input type="radio" id="slide2" name="slide">
+                    <label for="slide2"></label>
+                    <img src="../img/Bookings/booking2.jpg" />
+                </li>
+                <li>
+                    <input type="radio" id="slide3" name="slide">
+                    <label for="slide3"></label>
+                    <img src="../img/Bookings/booking3.jpg" />
+                </li>
+            </ul>
+            <div class="fundo"><br></div>
+            <div class="caption1"><a>Suite Star</a></div>
+            <div class="forday"><br>&nbsp;/&nbsp;day</div>
+            <div class="price"><br>850€</div>
+            <div class="star1"> <img src="../icons/star.png" width="15px" height="15px" /> </div>
+            <div class="star2"> <img src="../icons/star.png" width="15px" height="15px" /> </div>
+            <div class="star3"> <img src="../icons/star.png" width="15px" height="15px" /> </div>
+            <div class="star4"> <img src="../icons/star.png" width="15px" height="15px" /> </div>
+            <div class="star5"> <img src="../icons/star.png" width="15px" height="15px" /> </div>
         </div>
         <h3> Dates:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to</h3>
         <div class="dateInitial"><a>15/3/2019</a> </div>
@@ -123,6 +139,6 @@ include_once('../PHP/userinfo.php');
     <h1> Travel Crib </h1>
     <a href="main.html#about">About Us</a>
     <p> made with &#10084 2019 &#9400 Copyright </p>
-    </footer>
+</footer>
 
 </html>
