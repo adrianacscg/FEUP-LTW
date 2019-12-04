@@ -26,7 +26,7 @@ include_once('../PHP/userinfo.php');
         </ul>
     </nav>
     <section id="MyProfile">
-        <img src="../img/ProfilePictures/profilepicture1.jpg" alt=" ">
+        <img src="../img/ProfilePictures/perfilPadrao.jpg" alt=" ">
         <h1><a> <?php echo htmlentities(getName($_SESSION['email'])) ?> </a></h1>
         <!-- <h3><a>Email: <?php echo htmlentities($_SESSION['userinfo']['email']) ?></a></h3> -->
         <h3><a>Email: </a></h3>
