@@ -15,7 +15,7 @@ function getName($email)
       $stmt = $dbh->prepare('SELECT nomeCompleto FROM Utilizador WHERE email = :email');
       $stmt->bindParam(':email', $email);
       $stmt->execute();
-      return $stmt->fetch();
+      return $stmt->fetchColumn();
     
     }catch(PDOException $e) {
       return null;
