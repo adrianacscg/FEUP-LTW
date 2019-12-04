@@ -120,11 +120,9 @@ include_once('../PHP/userinfo.php');
     </section>
 </body>
 <footer>
-    <p> Travel Crib </p>
-    <div id="informations">
-        <a href="main.html#about">About Us</a>
-</div>
-    <p>made with &#10084 2019 &#9400 Copyright</p>
+    <h1> Travel Crib </h1>
+    <a href="main.html#about">About Us</a>
+    <p> made with &#10084 2019 &#9400 Copyright </p>
     </footer>
 
 </html>
