@@ -119,5 +119,12 @@ include_once('../PHP/userinfo.php');
         <a href="edit.php"> <img src="../icons/lapis.png" alt="Pencil"> </a>
     </section>
 </body>
+<footer>
+    <p> Travel Crib </p>
+    <div id="informations">
+        <a href="main.html#about">About Us</a>
+</div>
+    <p>made with &#10084 2019 &#9400 Copyright</p>
+    </footer>
 
 </html>
