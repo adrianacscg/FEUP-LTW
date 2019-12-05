@@ -9,6 +9,7 @@ include_once('../PHP/userinfo.php');
     <title>Tavel Crib - Profile</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/CSS" href="../CSS/profile.css">
+    <script src="../JS/changesuser.js" defer></script>
 </head>
 
 <body>
