@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>Travel Crib</title>
+
+        <link rel="stylesheet" href="../CSS/v-slider.css">
+
+        <style>
+            #slide1 {
+                background: linear-gradient(225deg, #ffc27d, #ff8e93);
+            }
+
+            #slide2 {
+                background: linear-gradient(#f3defc, #63a3e6);
+            }
+
+            #slide3 {
+                background: linear-gradient(#d2fcad, #22eaeb);
+            }
+
+            #slide4 {
+                background: linear-gradient(#f0bed4, #a163f5);
+            }
+
+
+            section>span {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 7vw;
+                font-family: sans-serif;
+                text-transform: uppercase;
+                color: #fff;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="slides">
+            <section id="slide1">
+                <button id="id_login" type="button">Login</button>
+            
+                <button id="id_register" type="button">Register</button>
+                <span>Travel Crib</span>
+                <div id="search_bar" >
+                    <input type="search">
+                </div>
+            </section>
+
+            <section id="slide2">
+                <span>Why book with us?</span>
+            </section>
+
+            <section id="slide3">
+                <span>How does it work?</span>
+            </section>
+
+            <section id="slide4">
+                <span>Find your crib or rent on our platform</span>
+            </section>
+
+        </div>
+
+        <script src="../JS/v-slider.js"></script>
+        
+        <script>
+            slider('.slides');
+        </script>
+        
+    </body>
+
+</html>
