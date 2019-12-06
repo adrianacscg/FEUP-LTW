@@ -10,11 +10,13 @@ include_once('../PHP/userinfo.php');
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/CSS" href="../CSS/profile.css">
     <script src="../JS/changesuser.js" defer></script>
+    <script src="../JS/changecard.js" defer></script>
+    <script src="../JS/showslides.js" async></script>
 </head>
 
 <body>
     <header>
-        <h1><a href="main.html">Travel Crib</a></h1>
+        <h1><a href="../html/index.html">Travel Crib</a></h1>
     </header>
     <nav id="menu">
         <input type="checkbox" id="hamburger">
@@ -63,79 +65,65 @@ include_once('../PHP/userinfo.php');
                     echo htmlentities('Card:' . ' ' . $card);
                 } else echo 'No credit cards';
                 ?></a></h3>
-        <a href="#addnewcard"> <img src="../icons/+.png" alt="Symbol More"> </a>
-        <h3><a href="#addnewcard.php">Add New Card</a></h3>
+        <a href="#changecard"> <img src="../icons/lapis.png" alt="Symbol More"> </a>
+        <h3><a href="#changecard">Edit Card</a></h3>
+        <div id="changecard" class="modalcard">
+            <a href="#close" title="Close" class="close">X</a>
+            <form id="formchangecard" method="POST" action="../actions/action_change_card.php">
+                <label for="idcard">Card</label>
+                <input id="idcard" type="number" name="card" autocomplete="off" required>
+                <p id="message">Introduza um cartão valido!</p>
+                <input id="updatecard" type="submit" value="Update">
+            </form>
+        </div>
     </section>
     <section id="MyBookings">
         <h2><a>My Bookings</a></h2>
+        <p id="nobookgs"> No Bookings!</p>
         <!-- <img src="<?php echo  htmlentities('../bookingsPictures/' . $_SESSION['reserva']['mybooking']) ?>" alt="Booking Picture"> -->
-        <div class="imageHolder">
-            <ul class="slider">
-                <li>
-                    <input type="radio" id="slide1" name="slide" checked>
-                    <label for="slide1"></label>
-                    <img src="../img/Bookings/booking1.jpg" />
-                </li>
-                <li>
-                    <input type="radio" id="slide2" name="slide">
-                    <label for="slide2"></label>
-                    <img src="../img/Bookings/booking2.jpg" />
-                </li>
-                <li>
-                    <input type="radio" id="slide3" name="slide">
-                    <label for="slide3"></label>
-                    <img src="../img/Bookings/booking3.jpg" />
-                </li>
-            </ul>
+        <div class="slideshow-container">
+            <!-- Full-width images with number and caption text -->
+            <div class="mySlides fade">
+                <div class="numbertext">1 / 3</div>
+                <img src="../img/Bookings/booking1.jpg" width="100%" height="380px">
+            </div>
+            <div class="mySlides fade">
+                <div class="numbertext">2 / 3</div>
+                <img src="../img/Bookings/booking2.jpg" width="100%" height="380px">
+                <div class="text">Caption Two</div>
+            </div>
+            <div class="mySlides fade">
+                <div class="numbertext">3 / 3</div>
+                <img src="../img/Bookings/booking3.jpg" width="100%" height="380px">
+            </div>
+            <div class="text"><?php echo htmlentities($_SESSION['email']) ?></div>
+
+            <!-- Next and previous buttons -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+            <!-- caption -->
             <div class="fundo"><br></div>
             <div class="caption1"><a>Suite Star</a></div>
             <div class="forday"><br>&nbsp;/&nbsp;day</div>
             <div class="price"><br>850€</div>
-            <div class="star1"> <img src="../icons/star.png" width="15px" height="15px" /> </div>
-            <div class="star2"> <img src="../icons/star.png" width="15px" height="15px" /> </div>
-            <div class="star3"> <img src="../icons/star.png" width="15px" height="15px" /> </div>
-            <div class="star4"> <img src="../icons/star.png" width="15px" height="15px" /> </div>
-            <div class="star5"> <img src="../icons/star.png" width="15px" height="15px" /> </div>
+            <div class="star1"> <img src="../icons/star.png" width="25px" height="25px" /> </div>
+            <div class="star2"> <img src="../icons/star.png" width="25px" height="25px" /> </div>
+            <div class="star3"> <img src="../icons/star.png" width="25px" height="25px" /> </div>
+            <div class="star4"> <img src="../icons/star.png" width="25px" height="25px" /> </div>
+            <div class="star5"> <img src="../icons/star.png" width="25px" height="25px" /> </div>
         </div>
-        <h3> Dates:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to</h3>
-        <div class="dateInitial"><a>15/3/2019</a> </div>
-        <div class="dateFinal"><br>21/3/2019</div>
-        <h3>Total Amount paid:</h3>
-        <div class="total"><br>5100€</div>
-        <!-- <img src="<?php echo  htmlentities('../bookingsPictures/' . $_SESSION['reserva']['mybooking']) ?>" alt="Booking Picture"> -->
-        <div class="imageHolder">
-            <ul class="slider">
-                <li>
-                    <input type="radio" id="slide1" name="slide" checked>
-                    <label for="slide1"></label>
-                    <img src="../img/Bookings/booking1.jpg" />
-                </li>
-                <li>
-                    <input type="radio" id="slide2" name="slide">
-                    <label for="slide2"></label>
-                    <img src="../img/Bookings/booking2.jpg" />
-                </li>
-                <li>
-                    <input type="radio" id="slide3" name="slide">
-                    <label for="slide3"></label>
-                    <img src="../img/Bookings/booking3.jpg" />
-                </li>
-            </ul>
-            <div class="fundo"><br></div>
-            <div class="caption1"><a>Suite Star</a></div>
-            <div class="forday"><br>&nbsp;/&nbsp;day</div>
-            <div class="price"><br>850€</div>
-            <div class="star1"> <img src="../icons/star.png" width="15px" height="15px" /> </div>
-            <div class="star2"> <img src="../icons/star.png" width="15px" height="15px" /> </div>
-            <div class="star3"> <img src="../icons/star.png" width="15px" height="15px" /> </div>
-            <div class="star4"> <img src="../icons/star.png" width="15px" height="15px" /> </div>
-            <div class="star5"> <img src="../icons/star.png" width="15px" height="15px" /> </div>
+        <!-- The dots/circles -->
+        <div class = "circle">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
         </div>
+
         <h3> Dates:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to</h3>
-        <div class="dateInitial"><a>15/3/2019</a> </div>
-        <div class="dateFinal"><br>21/3/2019</div>
         <h3>Total Amount paid:</h3>
-        <div class="total"><br>5100€</div>
+        </div>  
+        <br>
     </section>
 
     <section id="MyProperties">

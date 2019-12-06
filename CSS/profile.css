@@ -43,7 +43,7 @@ body > header a{
   }
 
 #hamburger:checked + .hamburger + ul li{
-    max-height: 1em;
+    max-height: 5em;
     float: right;
     display: flex;
 }
@@ -149,23 +149,6 @@ body {
     border-top: 2px solid white; 
 }
 
-#MyBookings{
-    border-top: 2px solid white; 
-}
-
-#MyBookings h2 a{
-    background: #b3dfde;
-    position: absolute;
-    top: 548px;
-    left: 50px;
-    padding: 0em 0.5em;
-}
-
-
-#MyProperties{
-    border-top: 2px solid white; 
-}
-
 #MyProfile h3 a{
   
     text-decoration: none;
@@ -189,7 +172,7 @@ body {
     height: 5px;
 }
 
-#MyProfile h3 a[href^="#addnewcard"]{
+#MyProfile h3 a[href^="#changecard"]{
     position: absolute;
     top:505px;
     left: 65px; 
@@ -207,188 +190,32 @@ body {
     
 }
 
-#MyBookings .slider {
-    display: block;
-    padding: 1em 0em;
-    height: 250px;
-     width: 480px;
-    margin: auto;
-    margin-top: 20px;
-    position: relative;   
+#MyBookings{
+    border-top: 2px solid white; 
+    padding: 2em;
 }
 
-#MyBookings .slider li {
-     list-style: none;
-     position: absolute;
+#MyBookings h2 a{
+    background: #b3dfde;
+    position: absolute;
+    top: 548px;
+    left: 50px;
+    padding: 0em 0.5em;
+    
 }
 
-#MyBookings .slider img {
-     margin: auto;
-     height: 250px;
-     width: 480px;
-     border-radius: 5%;
-     vertical-align: top;
-} 
-
-#MyBookings .slider input {
+#MyBookings #nobookgs {
+    color: red;
+    font-weight: bold;
     display: none;
-}
-
-#MyBookings .slider label {
-    background-color: #b3dfde;
-    bottom: 10px; 
-    cursor: pointer;
-    display: block;
-    height: 10px;
-    position: absolute;
-    width: 10px;
-    z-index: 10;
-}
-
-#MyBookings .slider li:nth-child(3) label {
-    top: 20px;
-    right: 20px;
-}
-
-#MyBookings .slider li:nth-child(2) label {
-    top: 20px;
-    right: 40px;
-}
-
-#MyBookings .slider li:nth-child(1) label {
-    top: 20px;
-    right: 60px;
-} 
-
-#MyBookings .slider img {
-    opacity: 0;
-    visibility: hidden;
-}
-
-#MyBookings .slider li input:checked ~ img {
-    opacity: 1;
-    visibility: visible;
-    z-index: 10;
-} 
-
-.imageHolder {
-    position: relative;
-    width: 385px;
-    height: 275px;
-  }
-
-.imageHolder .fundo {
-    position: absolute;
-    width: 480px;
-    height: 65px;
-    bottom: 0px;
-    left: 0px;
-    color: #ffffff;
-    background: #bcbcbc;
-    text-align: left;
-    font-weight:bold;
-    opacity:1;
-    border-radius: 10%;
-}
-
-.imageHolder .caption1 {
-    position: absolute;
-    width: 480px;
-    height: 65px;
-    bottom: 0px;
-    left: 0px;
-    color: #ffffff;
-    text-align: left;
-    opacity:1;
-    margin-left: 1.2em;
-    margin-bottom: -0.6em;
-}
-
-.imageHolder .star1{
-    position: absolute;
-    width: 480px;
-    height: 65px;
-    bottom: -35px;
-    left: 20px;
-    opacity: 1;
-}
-
-.imageHolder .star2{
-    position: absolute;
-    width: 480px;
-    height: 65px;
-    bottom: -35px;
-    left: 40px;
-    opacity: 1;
-}
-
-.imageHolder .star3{
-    position: absolute;
-    width: 480px;
-    height: 65px;
-    bottom: -35px;
-    left: 60px;
-    opacity: 1;
-}
-
-.imageHolder .star4{
-    position: absolute;
-    width: 480px;
-    height: 65px;
-    bottom: -35px;
-    left: 80px;
-    opacity: 1;
-}
-
-.imageHolder .star5{
-    position: absolute;
-    width: 480px;
-    height: 65px;
-    bottom: -35px;
-    left: 100px;
-    opacity: 1;
-}
-
-.imageHolder .forday {
-    position: absolute;
-    width: 480px;
-    height: 65px;
-    bottom: -5px;
-    left: 420px;
-    color: #ffffff;
-    opacity:1;
-}
-
-.imageHolder .price {
-    position: absolute;
-    width: 480px;
-    height: 64px;
-    bottom: -5px;
-    left: 380px;
-    color: #ffffff;
-    opacity:1;
 }
 
 #MyBookings h3{
     margin:2em;
 }
 
-#MyBookings .dateInitial {
-    position: absolute;
-    top:898px;
-    left: 100px;
-}
-
-#MyBookings .dateFinal {
-    position: absolute;
-    top: 881px;
-    left: 225px;
-}
-
-#MyBookings .total{
-    position: absolute;
-    top: 938px;
-    left: 210px;
+#MyProperties{
+    border-top: 2px solid white; 
 }
 
 #MyProperties h2{
@@ -396,7 +223,7 @@ body {
     color: white;
     position: absolute;
     padding: 0.5em;
-    top: 1394px;
+    top: 1217px;
     left: 50px;
 }
 
@@ -428,6 +255,212 @@ body {
     
 }
 
+
+/* SLIDES */
+
+* {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {  
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+.slideshow-container img{ 
+  border-radius: 5%; 
+    
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+
+.circle{
+    text-align: center;
+    padding: 1.4em;
+}
+
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 3px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+.slideshow-container .fundo {
+    position: absolute;
+    width: 100%;
+    height: 90px;
+    bottom: 0px;
+    left: 0px;
+    color: #ffffff;
+    background: #bcbcbc;
+    text-align: left;
+    font-weight:bold;
+    opacity:1;
+    border-radius: 5%;
+}
+
+.slideshow-container .caption1 {
+    position: absolute;
+    width: 480px;
+    height: 65px;
+    bottom: 20px;
+    left: 0px;
+    color: #ffffff;
+    text-align: left;
+    opacity:1;
+    margin-left: 1.2em;
+    margin-bottom: -0.6em;
+    font-size: 25px;
+}
+
+.slideshow-container .star1{
+    position: absolute;
+    width: 480px;
+    height: 65px;
+    bottom: -30px;
+    left: 35px;
+    opacity: 1;
+}
+
+.slideshow-container .star2{
+    position: absolute;
+    width: 480px;
+    height: 65px;
+    bottom: -30px;
+    left: 65px;
+    opacity: 1;
+}
+
+.slideshow-container .star3{
+    position: absolute;
+    width: 480px;
+    height: 65px;
+    bottom: -30px;
+    left: 95px;
+    opacity: 1;
+}
+
+.slideshow-container .star4{
+    position: absolute;
+    width: 480px;
+    height: 65px;
+    bottom: -30px;
+    left: 125px;
+    opacity: 1;
+}
+
+.slideshow-container .star5{
+    position: absolute;
+    width: 480px;
+    height: 65px;
+    bottom: -30px;
+    left: 155px;
+    opacity: 1;
+}
+
+.slideshow-container .forday {
+    position: absolute;
+    width: 480px;
+    height: 65px;
+    bottom: 10px;
+    left: 600px;
+    color: #ffffff;
+    opacity:1;
+    font-size: 18px;
+}
+
+.slideshow-container .price {
+    position: absolute;
+    width: 480px;
+    height: 64px;
+    bottom: 10px;
+    left: 550px;
+    color: #ffffff;
+    opacity:1;
+    font-size: 18px;
+}
+
+/* footer */
+
 footer{
     background: #aeaeae;
     font-family: Franklin Gothic;
@@ -446,13 +479,13 @@ footer a{
     color: white;
     position: absolute;
     left:665px;
-    top:1775px;
+    top:1575px;
 }
 
 footer p{
     position: absolute;
     left: 505px;
-    top: 1810px;
+    top: 1610px;
 }
 
 /* modals */
@@ -487,12 +520,32 @@ footer p{
     pointer-events: none;
   }
 
+  .modalcard {
+    position: fixed;
+    right: 0;
+    bottom: 0px;
+    left: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: rgba(0,0,0,0.8);
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+  }
+
   .modal:target {
     opacity: 1;
     pointer-events: auto;
   }
 
   .modalmail:target {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .modalcard:target {
     opacity: 1;
     pointer-events: auto;
   }
@@ -510,6 +563,14 @@ footer p{
     padding: 15px 20px;
     color: white;
   }
+
+  div#changecard {
+    width: 400px;
+    margin: 10% auto;
+    padding: 15px 20px;
+    color: white;
+  }
+  
   
   #MyProfile .close{
     position: absolute;
@@ -537,3 +598,7 @@ footer p{
     color: red;
 }
 
+#message{
+    display: none;
+    color: red;
+}

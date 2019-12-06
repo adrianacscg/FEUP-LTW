@@ -1,5 +1,7 @@
 'use strict'
 
+// change password
+
 let passR = document.getElementById('idPasswordR')
 
 //Event Listener adicionado
@@ -22,6 +24,8 @@ function PassMatching(event){
 
     }
 }
+
+// change email
 
 let submit= document.getElementById('formchangemail')
 

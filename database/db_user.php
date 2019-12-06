@@ -121,7 +121,31 @@ function updateUserEmail($email, $newemail){
   try {
     $stmt = $dbh->prepare('UPDATE Utilizador SET email = ? WHERE email = ?');
     if($stmt->execute(array($newemail, $email))){
-      $_SESSION['email'] = $newemail;
+      $_SESSION['email'] = $newemail; // atualiza na sessão atual
+      return true;
+    }
+        
+    else{
+      return false;
+    }  
+
+  }catch(PDOException $e) {
+    return false;
+  }
+}
+
+function updateUserCard($email, $newcard){
+  //tenta ligar à base de dados
+  try{
+    $dbh= Database::instance()->db();
+
+  }catch(Exception $e){
+    return $e;
+  }
+
+  try {
+    $stmt = $dbh->prepare('UPDATE Utilizador SET cartaocred = ? WHERE email = ?');
+    if($stmt->execute(array($newcard, $email))){
       return true;
     }
         
@@ -173,30 +197,6 @@ function updateUserEmail($email, $newemail){
     }
   }
 
-  function duplicateUsername($username) {
-    global $dbh;
-    try {
-      $stmt = $dbh->prepare('SELECT idUtilizador FROM Utilizador WHERE username = ?');
-      $stmt->execute(array($username));
-      return $stmt->fetch()  !== false;
-    
-    }catch(PDOException $e) {
-      return true;
-    }
-  }
-
-  function duplicateEmail($email) {
-    global $dbh;
-    try {
-      $stmt = $dbh->prepare('SELECT idUtilizador FROM Utilizador WHERE email = ?');
-      $stmt->execute(array($email));
-      return $stmt->fetch()  !== false;
-    
-    }catch(PDOException $e) {
-      return true;
-    }
-  }
-  
   function updateUserPhoto($userID, $photoPath) {
     global $dbh;
     try {
