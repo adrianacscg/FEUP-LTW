@@ -78,5 +78,36 @@
 
     }
 
+    function get_places($location, $checkin=0, $checkout=0){
+
+        try{
+            $dbh = Database::instance()->db();
+
+        }catch (Exception $e){
+            echo $e->getMessage();
+            return array();
+        }
+
+        try
+        {
+            if($checkin===0){
+                $stmt = $dbh->prepare('SELECT M.idMoradia, nome, rating, preco FROM Moradia M, Reserva R WHERE M.idMoradia= R.idMoradia AND M.localizacao = ?');
+                $stmt ->execute(array($location));
+
+            }else {
+                $stmt = $dbh->prepare('SELECT * 
+                                    FROM Moradia M, Reserva R 
+                                    WHERE M.idMoradia= R.idMoradia AND M.localizacao = ? AND (? < dataInicio OR ? > dataFim)');
+                $stmt-> execute(array($location,$checkout,$checkin));
+
+            }
+            return $stmt->fetchAll();
+
+        }catch (PDOException $e){
+            echo $e->getMessage();
+            return array();
+        }
+
+    }
 
 ?>
