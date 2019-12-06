@@ -17,7 +17,7 @@
 
         <?php
         if(isset($_GET['loc'])){
-            list_places($_GET['loc'],$_GET['ci'], $_GET['co']);
+            list_places($_GET['loc']);
         }else{
             echo '<p>Pesquisa alguma coisa oh banana de merda</p>';
         }

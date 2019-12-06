@@ -1,5 +1,5 @@
 <?php
-    include_once('../database/database.php');
+    include_once('../includes/database.php');
 
     function getPlace( $id){
 
@@ -90,7 +90,7 @@
 
         try
         {
-            if($checkin===0){
+            if($checkin==0){
                 $stmt = $dbh->prepare('SELECT M.idMoradia, nome, rating, preco FROM Moradia M, Reserva R WHERE M.idMoradia= R.idMoradia AND M.localizacao = ?');
                 $stmt ->execute(array($location));
 
