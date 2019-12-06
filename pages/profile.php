@@ -84,16 +84,12 @@ include_once('../PHP/userinfo.php');
         <div class="slideshow-container">
             <!-- Full-width images with number and caption text -->
             <div class="mySlides fade">
-                <div class="numbertext">1 / 3</div>
                 <img src="../img/Bookings/booking1.jpg" width="100%" height="380px">
             </div>
             <div class="mySlides fade">
-                <div class="numbertext">2 / 3</div>
                 <img src="../img/Bookings/booking2.jpg" width="100%" height="380px">
-                <div class="text">Caption Two</div>
             </div>
             <div class="mySlides fade">
-                <div class="numbertext">3 / 3</div>
                 <img src="../img/Bookings/booking3.jpg" width="100%" height="380px">
             </div>
             <div class="text"><?php echo htmlentities($_SESSION['email']) ?></div>
