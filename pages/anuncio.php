@@ -6,18 +6,20 @@
     //info tem a informacao sobre o sitio
     $place = getPlace($_GET['id']);
 
-        
+    
     
     if($place==array()){
         die(header('Location: ../html/main.html'));
     }
 
-    $imgs= getPlace($place['id']);
+    $imgs= getPlace($place['idMoradia']);
 
+    
 
-    $comodidades = getComodidades($id);
+    $comodidades = getComodidades($_GET['id']);
+    
 
-        
+   
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +35,7 @@
         <h1><a href="main.html">Travel Crib</a></h1>
     </header>
 
-    <h2> <?= $info['nome'];?></h2>
+    <h2> <?= $place['nome'];?></h2>
 
     <!--perguntar ao joao como fez para fazer Display das imagens-->
 
@@ -41,10 +43,11 @@
 
     
     <!-- lista as comodidades existentes -->
+    <h3>Comodidades:</h3>
     <ul>
         <?php 
             foreach ($comodidades as $comod){
-                echo '<li>'.$comod.'</li>';
+                echo '<li>'. $comod['tipo'] .'</li>';
             }
         ?>
     </ul>

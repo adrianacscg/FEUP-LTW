@@ -66,7 +66,7 @@
         try{
 
             //verificar se query funciona
-            $stmt = $dbh->prepare('SELECT C.tipo FROM Moradia M, MoradiaComodidade A, Comodidade C WHERE idMoradia = ? AND M.idMoradia=A.idMoadia AND A.idComodidade=C.idComodidade');
+            $stmt = $dbh->prepare('SELECT C.tipo FROM Moradia M, MoradiaComodidade A, Comodidade C WHERE M.idMoradia=A.idMoradia AND A.idComodidade=C.idComodidade AND M.idMoradia= ?');
             $stmt ->execute(array($id));
 
         }catch (PDOException $e){
