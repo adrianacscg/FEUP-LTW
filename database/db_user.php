@@ -158,6 +158,49 @@ function updateUserCard($email, $newcard){
   }
 }
 
+function getID($email) {
+   
+  //tenta ligar à base de dados
+   try{
+    $dbh= Database::instance()->db();
+
+  }catch(Exception $e){
+    return $e;
+  }
+
+  try {
+    $stmt = $dbh->prepare('SELECT idUtilizador FROM Utilizador WHERE email = ?');
+    $stmt->execute(array($email));
+    if($row = $stmt->fetch()){
+      return $row['idUtilizador'];
+    }
+  
+  }catch(PDOException $e) {
+    return -1;
+  }
+}
+
+function updateUserPhoto($userID, $photoPath) {
+  
+  //tenta ligar à base de dados
+  try{
+    $dbh= Database::instance()->db();
+
+  }catch(Exception $e){
+    return $e;
+  }
+
+  try {
+      $stmt = $dbh->prepare('UPDATE Utilizador SET caminho = ? WHERE idUtilizador = ?');
+      if($stmt->execute(array($photoPath, $userID)))
+          return true;
+      else{
+          return false;
+      }
+    }catch(PDOException $e) {
+      return false;
+    }
+} 
 
   function getUser($username) {
     global $dbh;
@@ -182,33 +225,6 @@ function updateUserCard($email, $newcard){
       return false;
     }
   }
-
-  function getID($email) {
-    global $dbh;
-    try {
-      $stmt = $dbh->prepare('SELECT idUtilizador FROM Utilizador WHERE email = ?');
-      $stmt->execute(array($email));
-      if($row = $stmt->fetch()){
-        return $row['ID'];
-      }
-    
-    }catch(PDOException $e) {
-      return -1;
-    }
-  }
-
-  function updateUserPhoto($userID, $photoPath) {
-    global $dbh;
-    try {
-      $stmt = $dbh->prepare('UPDATE Utilizador SET Photo = ? WHERE idUtilizador = ?');
-      if($stmt->execute(array($photoPath, $userID)))
-          return true;
-      else
-          return false;
-    }catch(PDOException $e) {
-      return false;
-    }
-  } 
   
   function getUserPhoto($userID) {
     global $dbh;

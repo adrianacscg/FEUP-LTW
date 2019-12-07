@@ -29,7 +29,11 @@ include_once('../PHP/userinfo.php');
         </ul>
     </nav>
     <section id="MyProfile">
-        <img src="../img/ProfilePictures/perfilPadrao.jpg" alt=" ">
+        <img src="<?php 
+        if(strlen(getProfliePic($_SESSION['email'])) != 0)
+            echo htmlentities(getProfliePic($_SESSION['email']));
+        else echo htmlentities("../img/ProfilePictures/perfilPadrao.jpg");        
+        ?>" alt="ProfilePic">
         <h1><a> <?php echo htmlentities(getName($_SESSION['email'])) ?> </a></h1>
         <h3><a href="#changemail">Change Email |&nbsp; </a></h3>
         <div id="changemail" class="modalmail">
@@ -42,6 +46,13 @@ include_once('../PHP/userinfo.php');
             </form>
         </div>
         <h3><a href="#changeprofilepic">Change Profile Picture </a></h3>
+        <div id="changeprofilepic" class="modalpic">
+            <a href="#close" title="Close" class="close">X</a>
+            <form action="../actions/action_change_pic.php" method="post" enctype="multipart/form-data">
+                <input type="file" name="image">
+                <input type="submit" value="Upload">
+            </form>
+        </div>
         <h3><a>Email: </a></h3>
         <p class="mail"><?php echo htmlentities($_SESSION['email']) ?></p>
         <h3><a href="#changepass">Change Password</a></h3>
@@ -110,7 +121,7 @@ include_once('../PHP/userinfo.php');
             <div class="star5"> <img src="../icons/star.png" width="25px" height="25px" /> </div>
         </div>
         <!-- The dots/circles -->
-        <div class = "circle">
+        <div class="circle">
             <span class="dot" onclick="currentSlide(1)"></span>
             <span class="dot" onclick="currentSlide(2)"></span>
             <span class="dot" onclick="currentSlide(3)"></span>
@@ -118,7 +129,7 @@ include_once('../PHP/userinfo.php');
 
         <h3> Dates:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to</h3>
         <h3>Total Amount paid:</h3>
-        </div>  
+        </div>
         <br>
     </section>
 
