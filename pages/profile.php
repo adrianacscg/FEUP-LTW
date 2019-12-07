@@ -1,6 +1,9 @@
 <?php
 session_start();
 include_once('../PHP/userinfo.php');
+include_once('../PHP/moradiasinfo.php');
+include_once('../database/db_user.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -29,11 +32,11 @@ include_once('../PHP/userinfo.php');
         </ul>
     </nav>
     <section id="MyProfile">
-        <img src="<?php 
-        if(strlen(getProfliePic($_SESSION['email'])) != 0)
-            echo htmlentities(getProfliePic($_SESSION['email']));
-        else echo htmlentities("../img/ProfilePictures/perfilPadrao.jpg");        
-        ?>" alt="ProfilePic">
+        <img src="<?php
+                    if (strlen(getProfliePic($_SESSION['email'])) != 0)
+                        echo htmlentities(getProfliePic($_SESSION['email']));
+                    else echo htmlentities("../img/ProfilePictures/perfilPadrao.jpg");
+                    ?>" alt="ProfilePic">
         <h1><a> <?php echo htmlentities(getName($_SESSION['email'])) ?> </a></h1>
         <h3><a href="#changemail">Change Email |&nbsp; </a></h3>
         <div id="changemail" class="modalmail">
@@ -90,47 +93,73 @@ include_once('../PHP/userinfo.php');
     </section>
     <section id="MyBookings">
         <h2><a>My Bookings</a></h2>
-        <p id="nobookgs"> No Bookings!</p>
-        <!-- <img src="<?php echo  htmlentities('../bookingsPictures/' . $_SESSION['reserva']['mybooking']) ?>" alt="Booking Picture"> -->
-        <div class="slideshow-container">
-            <!-- Full-width images with number and caption text -->
-            <div class="mySlides fade">
-                <img src="../img/Bookings/booking1.jpg" width="100%" height="380px">
-            </div>
-            <div class="mySlides fade">
-                <img src="../img/Bookings/booking2.jpg" width="100%" height="380px">
-            </div>
-            <div class="mySlides fade">
-                <img src="../img/Bookings/booking3.jpg" width="100%" height="380px">
-            </div>
-            <div class="text"><?php echo htmlentities($_SESSION['email']) ?></div>
+    
+        <!-- Full-width images with number and caption text -->
+        <?php
+        $iduser = getID($_SESSION['email']);
+        $bookings = getBookings($iduser);
+        $counterbookings = -1;
 
-            <!-- Next and previous buttons -->
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        if($bookings == null) {
+            echo("<p style='font-weight: bold'>No Bookings!</p>");
+        } 
 
-            <!-- caption -->
-            <div class="fundo"><br></div>
-            <div class="caption1"><a>Suite Star</a></div>
-            <div class="forday"><br>&nbsp;/&nbsp;day</div>
-            <div class="price"><br>850€</div>
-            <div class="star1"> <img src="../icons/star.png" width="25px" height="25px" /> </div>
-            <div class="star2"> <img src="../icons/star.png" width="25px" height="25px" /> </div>
-            <div class="star3"> <img src="../icons/star.png" width="25px" height="25px" /> </div>
-            <div class="star4"> <img src="../icons/star.png" width="25px" height="25px" /> </div>
-            <div class="star5"> <img src="../icons/star.png" width="25px" height="25px" /> </div>
-        </div>
-        <!-- The dots/circles -->
-        <div class="circle">
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
-        </div>
+        foreach ($bookings as $idBooking) {
+            foreach ($idBooking as $booking)
+                $idBooking = $booking;
 
-        <h3> Dates:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to</h3>
-        <h3>Total Amount paid:</h3>
-        </div>
-        <br>
+            echo ('<div class="slideshow-container">');
+            $images = getImgsMoradia($idBooking);
+            $counterimg = 0;
+            $counterbookings++;
+
+            foreach ($images as $image) {
+                foreach ($image as $pathimage)
+                    $image = $pathimage;
+
+                echo ("<div class='mySlides$counterbookings'>");
+                echo ("<img src={$image}" . ' ' . 'width="100%" height="380px">');
+                echo ('</div>');
+                $counterimg++;
+            }
+
+            // Next and previous buttons 
+            echo ("<a class='prev' onclick='plusSlides(-1,$counterbookings)'>&#10094;</a>");
+            echo ("<a class='next' onclick='plusSlides(1,$counterbookings)''>&#10095;</a>");
+
+            // caption
+            echo ('<div class="fundo"><br></div>');
+            echo ('<div class="caption1"><a>');
+            echo (getNameMoradia($idBooking));
+            echo ('</a></div>');
+            echo ('<div class="forday"><br>&nbsp;/&nbsp;night</div>');
+            echo ('<div class="price"><br>');
+            echo (getPrice($idBooking));
+            echo ('</div>');
+
+            $Rating = getRating($idBooking);
+
+            for($i=1; $i <= $Rating; $i++)
+            {
+                echo("<div class='star{$i}'>");
+                echo('<img src="../icons/star.png" width="25px" height="25px" /> </div>');
+            }
+            echo('</div>');
+
+            //Dates and Total Amount Paid
+            echo('<h3> Dates: ');
+            echo(getDateStart($idBooking));
+            echo(" to ");
+            echo(getDateFinish($idBooking));
+            echo('</h3>');
+
+            echo('<h3>Total Amount paid: ');
+            echo(getTotalPrice($idBooking));
+            echo('</h3>');
+
+            echo('</div>');
+        }
+        ?>
     </section>
 
     <section id="MyProperties">
