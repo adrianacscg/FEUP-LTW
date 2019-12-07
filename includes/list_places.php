@@ -3,7 +3,7 @@ include_once('../database/db_places.php');
 
 function list_places($localidade,$checkin=0,$checkout=0){
 
-    $places=get_places($localidade,$checkin,$checkout);
+    $places=get_places($localidade);
     
     echo '<ul>';
     foreach($places as $place){
@@ -16,4 +16,25 @@ function list_places($localidade,$checkin=0,$checkout=0){
 
 }
 
+function list_comodidades($id){
+
+    $comodidades = getComodidades($_GET['id']);
+    echo '<ul>';
+    
+    foreach ($comodidades as $comod){
+        echo '<li>'. $comod['tipo'] .'</li>';
+    }
+
+    echo '</ul>';
+}
+
+function list_images($id){
+
+    //contem imagens da moradia
+    $imgs= getImagesPlaces($_GET['id']);   
+    
+    foreach($imgs as $img){
+        echo '<img src="'. $img . '" >';  
+    }
+}
 ?>

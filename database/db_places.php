@@ -40,7 +40,7 @@
         //tenta fazer a query
         try{
 
-            $stmt = $dbh->prepare('SELECT * FROM ImagemMoradia WHERE idMoradia = ?');
+            $stmt = $dbh->prepare('SELECT caminho FROM ImagemMoradia WHERE idMoradia = ?');
             $stmt ->execute(array($id));
 
         }catch (PDOException $e){
@@ -78,7 +78,7 @@
 
     }
 
-    function get_places($location, $checkin=0, $checkout=0){
+    function get_places($location){
 
         try{
             $dbh = Database::instance()->db();
@@ -90,20 +90,21 @@
 
         try
         {
-            if($checkin==0){
-                $stmt = $dbh->prepare('SELECT idMoradia, nome, rating, preco 
-                                        FROM Moradia
-                                        WHERE localizacao = ?');
-                $stmt ->execute(array($location));
+            //if($checkin==0){
+            $stmt = $dbh->prepare('SELECT * 
+                                   FROM Moradia M, Reserva R
+                                   WHERE M.idMoradia= R.idMoradia AND M.localizacao = ?');
+                                   
+            $stmt ->execute(array($location));
                 
-            }else {
+            /*}else {
                 
                 $stmt = $dbh->prepare('SELECT M.idMoradia, nome, rating, preco  
                                     FROM Moradia M, Reserva R 
                                     WHERE M.idMoradia= R.idMoradia AND M.localizacao = ? AND (? < dataInicio OR ? > dataFim)');
                 $stmt-> execute(array($location,$checkout,$checkin));
 
-            }
+            }*/
             $result= $stmt->fetchAll();
             return $result;
 
