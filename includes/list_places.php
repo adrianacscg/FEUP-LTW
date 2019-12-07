@@ -34,7 +34,8 @@ function list_images($id){
     $imgs= getImagesPlaces($_GET['id']);   
     
     foreach($imgs as $img){
-        echo '<img src="'. $img . '" >';  
+        
+        echo '<img src="'. $img['caminho'] . '" width="200" height= "200" >';  
     }
 }
 ?>

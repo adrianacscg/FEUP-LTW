@@ -14,8 +14,14 @@ let dateF = document.getElementById('datFim')
 dateI.value= dataAtualS
 
 dateI.addEventListener('change', dateChange)
+dateF.addEventListener('change', dateChange)
 
 function dateChange(event){
 
-    console.log(event)
+    let DateToChange= new Date(event.target.value)
+    if(DateToChange < dataAtual){
+        event.target.value=dataAtualS
+        //nao será com alert
+        alert("Hey dumbass, introduce a fucking valid date")
+    }
 }
