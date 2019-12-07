@@ -16,8 +16,11 @@
         </form>
 
         <?php
-        if(isset($_GET['loc'])){
+        if(isset($_GET['loc']) && !isset($_GET['c1'])){
             list_places($_GET['loc']);
+        }else if (isset($_GET['c1']))
+        {
+
         }else{
             echo '<p>Pesquisa alguma coisa oh banana de merda</p>';
         }

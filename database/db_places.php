@@ -91,17 +91,21 @@
         try
         {
             if($checkin==0){
-                $stmt = $dbh->prepare('SELECT M.idMoradia, nome, rating, preco FROM Moradia M, Reserva R WHERE M.idMoradia= R.idMoradia AND M.localizacao = ?');
+                $stmt = $dbh->prepare('SELECT idMoradia, nome, rating, preco 
+                                        FROM Moradia
+                                        WHERE localizacao = ?');
                 $stmt ->execute(array($location));
-
+                
             }else {
-                $stmt = $dbh->prepare('SELECT * 
+                
+                $stmt = $dbh->prepare('SELECT M.idMoradia, nome, rating, preco  
                                     FROM Moradia M, Reserva R 
                                     WHERE M.idMoradia= R.idMoradia AND M.localizacao = ? AND (? < dataInicio OR ? > dataFim)');
                 $stmt-> execute(array($location,$checkout,$checkin));
 
             }
-            return $stmt->fetchAll();
+            $result= $stmt->fetchAll();
+            return $result;
 
         }catch (PDOException $e){
             echo $e->getMessage();

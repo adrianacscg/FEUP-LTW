@@ -20,7 +20,7 @@ create table Utilizador(
 	email TEXT UNIQUE,
 	password TEXT NOT NULL,	
 	cartaoCred TEXT,
-	idImage INTEGER REFERENCES ImagemUtilizador(idImage) ON DELETE set null ON UPDATE cascade
+	caminho TEXT
 );
 
 
@@ -50,16 +50,8 @@ create table Reserva (
 
 drop table if exists ImagemMoradia;
 create table ImagemMoradia (
-	caminho TEXT
+	caminho TEXT,
 	idMoradia INTEGER REFERENCES Moradia(idMoradia) ON DELETE set null ON UPDATE cascade	
-);
-
-
-drop table if exists ImagemUtilizador;
-create table ImagemUtilizador(
-	idImage INTEGER PRIMARY KEY AUTOINCREMENT,
-	idUtilizador INTEGER REFERENCES Utilizador(idUtilizador) ON DELETE set null ON UPDATE cascade
-	
 );
 
 
