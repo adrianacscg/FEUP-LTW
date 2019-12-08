@@ -131,7 +131,7 @@ body {
 }
 
 #MyProfile h2{
-    margin-bottom: 2.65em;
+    margin-bottom: 1.4em;
     margin-top: 1.5em;
     border-bottom: 2px solid white;  
 }
@@ -174,7 +174,7 @@ body {
 
 #MyProfile h3 a[href^="#changecard"]{
     position: absolute;
-    top:505px;
+    top:473px;
     left: 65px; 
 }
 
@@ -198,7 +198,7 @@ body {
 #MyBookings h2 a{
     background: #b3dfde;
     position: absolute;
-    top: 548px;
+    top: 515px;
     left: 50px;
     padding: 0em 0.5em;
     
@@ -210,17 +210,16 @@ body {
 
 #MyProperties{
     border-top: 2px solid white; 
+    padding: 2em;
 }
 
 #MyProperties h2{
     background: #b3dfde;
     color: white;
-    padding: 0.5em;
-    
+     
 }
 
 #MyProperties h3{
-    margin-top: 2em;
     margin-left: 4em;
 }
 
@@ -229,23 +228,23 @@ body {
     color: white;
 }
 
-#MyProperties img { 
-    width: 50px;
-    height: 50px;    
-}
-
 #MyProperties img[src$="+.png"] { 
     position: relative;
-    bottom: 110px; 
-    left: 10px;   
+    bottom: 52px; 
+    left: 7px;  
+    width: 58px;
+    height: 55px;  
 }
 
-#MyProperties  img[src$="lapis.png"] { 
+#MyProperties img[src$="lapis.png"] { 
     position: relative;
     bottom: 55px; 
-    left: -45px;
-    
+    left: 10px;
+    width: 50px;
+    height: 50px;     
 }
+
+
 
 
 /* SLIDES */
@@ -506,7 +505,7 @@ footer p{
   .modalcard {
     position: fixed;
     right: 0;
-    bottom: 0px;
+    bottom: 50px;
     left: 0;
     font-family: Arial, Helvetica, sans-serif;
     background: rgba(0,0,0,0.8);
@@ -611,4 +610,5 @@ footer p{
 #message{
     display: none;
     color: red;
+    
 }

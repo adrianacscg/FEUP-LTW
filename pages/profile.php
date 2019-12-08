@@ -2,9 +2,10 @@
 session_start();
 include_once('../PHP/userinfo.php');
 include_once('../PHP/moradiasinfo.php');
+include_once('../PHP/propertiesinfo.php');
 include_once('../database/db_user.php');
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en-US">
 
@@ -77,7 +78,7 @@ include_once('../database/db_user.php');
 
                     $card = str_replace(substr(getCard($_SESSION['email']), 0, -4), '************', getCard($_SESSION['email']));
                     echo htmlentities('Card:' . ' ' . $card);
-                } else echo 'No credit cards';
+                } else echo("No credit cards!");
                 ?></a></h3>
         <a href="#changecard"> <img src="../icons/lapis.png" alt="Symbol More"> </a>
         <h3><a href="#changecard">Edit Card</a></h3>
@@ -101,7 +102,7 @@ include_once('../database/db_user.php');
         $counterbookings = -1;
 
         if($bookings == null) {
-            echo("<p style='font-weight: bold'>No Bookings!</p>");
+            echo("<a style='font-weight:bold'>No Bookings!</a>");
         } 
 
         foreach ($bookings as $idBooking) {
@@ -125,7 +126,7 @@ include_once('../database/db_user.php');
 
             // Next and previous buttons 
             echo ("<a class='prev' onclick='plusSlides(-1,$counterbookings)'>&#10094;</a>");
-            echo ("<a class='next' onclick='plusSlides(1,$counterbookings)''>&#10095;</a>");
+            echo ("<a class='next' onclick='plusSlides(1,$counterbookings)'>&#10095;</a>");
 
             // caption
             echo ('<div class="fundo"><br></div>');
@@ -164,10 +165,66 @@ include_once('../database/db_user.php');
 
     <section id="MyProperties">
         <h2>My Properties</h2>
+        <?php 
+        
+        $iduser = getID($_SESSION['email']);
+        $properties = getProperties($iduser);
+        $counterproperties = -1;
+
+        if($properties == null) {
+            echo("<a style='font-weight:bold'>No Properties!</a>");
+        } 
+        
+        foreach ($properties as $idproperty) {
+            foreach ($idproperty as $property)
+                $idproperty = $property;
+
+                echo ('<div class="slideshow-container">');
+                $images = getImgsMoradia($idproperty);
+                $counterimg = 0;
+                $counterproperties++;
+    
+                foreach ($images as $image) {
+                    foreach ($image as $pathimage)
+                        $image = $pathimage;
+    
+                    echo ("<div class='PmySlides$counterproperties'>");
+                    echo ("<img src={$image}" . ' ' . 'width="100%" height="380px">');
+                    echo ('</div>');
+                    $counterimg++;
+                }
+    
+                // Next and previous buttons 
+                echo ("<a class='prev' onclick='plusSlidesP(-1,$counterproperties)'>&#10094;</a>");
+                echo ("<a class='next' onclick='plusSlidesP(1,$counterproperties)'>&#10095;</a>");
+    
+                // caption
+                echo ('<div class="fundo"><br></div>');
+                echo ('<div class="caption1"><a>');
+                echo (getNameMoradia($idproperty));
+                echo ('</a></div>');
+                echo ('<div class="forday"><br>&nbsp;/&nbsp;night</div>');
+                echo ('<div class="price"><br>');
+                echo (getPrice($idproperty));
+                echo ('</div>');
+    
+                $Rating = getRating($idproperty);
+    
+                for($i=1; $i <= $Rating; $i++)
+                {
+                    echo("<div class='star{$i}'>");
+                    echo('<img src="../icons/star.png" width="25px" height="25px" /> </div>');
+                }
+                echo('</div>');  
+                echo('<br>');
+                echo('<h3><a href="editproperty.php">Edit Existing Property </a></h3>');
+                echo('<a href="edit.php"> <img src="../icons/lapis.png" alt="Pencil"> </a>');
+                
+        }
+        ?>
+
         <h3><a href="addproperty.php">Add Property </a></h3>
-        <h3><a href="editproperty.php">Edit Existing Property </a></h3>
         <a href="moreprop.php"><img src="../icons/+.png" alt="Symbol More"> </a>
-        <a href="edit.php"> <img src="../icons/lapis.png" alt="Pencil"> </a>
     </section>
 </body>
 <footer>
