@@ -103,6 +103,7 @@ include_once('../database/db_user.php');
 
         if($bookings == null) {
             echo("<a style='font-weight:bold'>No Bookings!</a>");
+            echo("<br><br>");
         } 
 
         foreach ($bookings as $idBooking) {
@@ -169,10 +170,17 @@ include_once('../database/db_user.php');
         
         $iduser = getID($_SESSION['email']);
         $properties = getProperties($iduser);
+        $bookings = getBookings($iduser);
         $counterproperties = -1;
 
         if($properties == null) {
             echo("<a style='font-weight:bold'>No Properties!</a>");
+                echo("<br><br>");
+            if($bookings == null) {
+                echo("<br>");
+                echo("<style> #MyProperties h2 { position: absolute; bottom:55px; padding: 0em 0.5em; left:50px;}
+            </style>");
+            }
         } 
         
         foreach ($properties as $idproperty) {
