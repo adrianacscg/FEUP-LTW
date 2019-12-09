@@ -19,7 +19,9 @@ dateF.addEventListener('change', dateChangeF)
 function dateChangeI(event){
 
     let DateToChange= new Date(event.target.value)
-    if(DateToChange < dataAtual){
+    let DateFinal= new Date(dateF.value)
+
+    if(DateToChange < dataAtual || DateToChange > DateFinal){
         event.target.value=dataAtualS
         //nao será com alert
         alert("Hey dumbass, introduce a fucking valid date")
