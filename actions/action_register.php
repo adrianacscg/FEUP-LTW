@@ -13,6 +13,7 @@
 
     //guarda na Session o email
     $_SESSION['email'] = $_POST['email'];
+    $_SESSION['id'] = $id_user;
 
     //Redirect to main page
     header('Location: ../pages/main.html');

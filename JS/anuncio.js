@@ -53,4 +53,20 @@ function dateChangeF(event){
     }
 }
 
+//Button submit
+
+let submit=document.getElementById('Sform')
+
+
+submit.addEventListener('submit',LetsSubmit)
+
+function LetsSubmit(event){
+
+    
+    if( dateI.value=="" || dateF.value=="" ){
+        event.preventDefault()
+        alert("Get your fucking shit together and input some fcking dates")
+    }
+}
+
 

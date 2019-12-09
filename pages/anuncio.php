@@ -1,12 +1,14 @@
 
 <?php
+    include_once('../includes/session.php');
     include_once('../includes/list_places.php');
 
     
     if(!isset($_GET['id'])){
         die(header('Location: ../html/main.html'));
     }
-
+    
+    
 ?>
 
 <!DOCTYPE html>

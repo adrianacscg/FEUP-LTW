@@ -6,3 +6,7 @@ Falta fazer:
 - templates (footer e headers) : Joao
 - places (mt coisa) : Ricardo
 - lis_places/procura (TUDO)
+
+
+Testar:
+- testar se o addReservation funciona (necessario SESSION)

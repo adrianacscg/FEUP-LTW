@@ -34,7 +34,9 @@ function list_place($id){
     list_comodidades($id);
     
     // disponibilidades
-    echo '<form action= "../PHP/action_reserva.php" method="GET">';
+    echo '<form id="Sform" action= "../actions/action_add_reser.php" method="POST">';
+        
+        echo '<input type="text" name="idM" value="' . $id . '" hidden>';
 
         echo '<label for= "datIni">Data de Inicio</label>';
         echo '<input type= "date" name= "dataInicio" id= "datIni">';
@@ -42,17 +44,19 @@ function list_place($id){
         echo '<label for = "dataFim">Data de Fim</label>';
         echo '<input type= "date" name= "dataFim" id= "datFim" >';
         
+        echo '<p>Preco por noite:</p> <p id="precoD">' . $place['preco'] . '</p>';
+        echo '<p>Preco Total:</p>';
+        echo '<input type="text" name= "precoT" id="precoT" readonly>';
         
-        
+        echo '<br></br>';
+
         echo '<input type= "submit" value= "Book Now">';
     echo '</form>';
 
     //Preço (utilizar javascript)
     
     
-    echo '<p>Preco por noite:</p> <p id="precoD">' . $place['preco'] . '</p>';
-    echo '<p>Preco Total:</p>';
-    echo '<input type="text" readonly id="precoT">';
+    
 
         
 
