@@ -13,10 +13,10 @@ let dateF = document.getElementById('datFim')
 
 dateI.value= dataAtualS
 
-dateI.addEventListener('change', dateChange)
-dateF.addEventListener('change', dateChange)
+dateI.addEventListener('change', dateChangeI)
+dateF.addEventListener('change', dateChangeF)
 
-function dateChange(event){
+function dateChangeI(event){
 
     let DateToChange= new Date(event.target.value)
     if(DateToChange < dataAtual){
@@ -25,3 +25,30 @@ function dateChange(event){
         alert("Hey dumbass, introduce a fucking valid date")
     }
 }
+
+function dateChangeF(event){
+    let DateToChange= new Date(event.target.value)
+    let DateInicial= new Date(dateI.value)
+
+    if(DateInicial > DateToChange){
+        event.target.value=dateI
+        //nao será com alert
+        alert("Hey dumbshit, introduce a fucking valid date") 
+    }else{
+        
+        let Difference_In_Time = DateToChange.getTime() - DateInicial.getTime(); 
+
+        let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); 
+
+        
+        
+        if(event.target.value!=""){
+            document.getElementById('precoT').value= Difference_In_Days* document.getElementById('precoD').innerHTML
+        }else{
+            document.getElementById('precoT').value=""
+        }
+
+    }
+}
+
+
