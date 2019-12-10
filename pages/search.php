@@ -20,7 +20,7 @@
             list_places($_GET['loc']);
         }else if (isset($_GET['c1']))
         {
-
+        
         }else{
             echo '<p>Pesquisa alguma coisa oh banana de merda</p>';
         }

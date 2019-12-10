@@ -2,7 +2,17 @@ Falta fazer:
 - Session.php :Ricardo done(ish)! falta entender
 - Login and logout : Adriana 
 - Profile (ajustes js) : Joao
-- Register (styling and js) :Ricardo
+- Register (styling) :Ricardo 
 - templates (footer e headers) : Joao
-- places (mt coisa) : Ricardo
-- lis_places/procura (TUDO)
+- Tornar esta merda toda super mega hiper segura
+
+Testar:
+- testar se o addReservation funciona (necessario SESSION)
+
+Extras faziveis:
+- Owners and tourists should be able to cancel a reservation if done in time.
+- Owners and tourists should be able to upload photos of a place. 
+  Photos uploaded by tourists need to be approved by the owner. (parte dos donos já feita)
+- Tourists should be able to send messages to owners, and owners should be able to reply.
+- Tourists should be able to rate and add comments to places they have stayed there. 
+  Owners should be able to reply to those comments.
