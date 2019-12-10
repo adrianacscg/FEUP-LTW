@@ -6,13 +6,14 @@
 <html lang="en-US">
     <head>
         <title>RentAHouse</title>
+        
         <meta charset="UTF-8">
     </head>
     <body>
-        <form method="GET" action= "search.php">
+        <form id= "Sform" method="GET" action= "search.php">
             <input type="text" placeholder="where do you want to go?" name= "loc" required>
-            <input type="date" placeholder="check-in" name="ci">
-            <input type="date" placeholder="check-out" name="co">
+            <input type="date" id="datIni" placeholder="check-in" name="ci">
+            <input type="date" id="datFim" placeholder="check-out" name="co">
         </form>
 
         <?php
