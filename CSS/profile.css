@@ -434,7 +434,7 @@ body {
     position: absolute;
     width: 480px;
     height: 64px;
-    bottom: 9px;
+    bottom: 10px;
     left: 565px;
     color: #ffffff;
     opacity:1;
@@ -532,6 +532,20 @@ footer p{
     pointer-events: none;
   }
 
+  .modalproperty {
+    position: fixed;
+    right: 0;
+    bottom: 100px;
+    left: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: rgba(0,0,0,0.8);
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+  }
 
   .modal:target {
     opacity: 1;
@@ -549,6 +563,11 @@ footer p{
   }
 
   .modalpic:target {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .modalproperty:target {
     opacity: 1;
     pointer-events: auto;
   }
@@ -580,8 +599,37 @@ footer p{
     padding: 15px 20px;
     color: white;
   }
+
+  [id^=changeproperty] {
+    width: 400px;
+   margin: 10% auto;
+   padding: 15px 20px;
+   color: white;
+}
+
+  div#addproperty{
+    width: 400px;
+    margin: 10% auto;
+    padding: 15px 20px;
+    color: white;
+  }
     
   #MyProfile .close{
+    position: absolute;
+    width: 30px;
+    right: -15px;
+    top: -20px;
+    text-align: center;
+    line-height: 30px;
+    margin-top: 5px;
+    background: white;
+    border-radius: 50%;
+    font-size: 16px;
+    color: black;
+    text-decoration: none;
+  }
+
+  #MyProperties .close{
     position: absolute;
     width: 30px;
     right: -15px;

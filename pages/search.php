@@ -17,7 +17,10 @@
 
         <?php
         if(isset($_GET['loc']) && !isset($_GET['c1'])){
-            list_places($_GET['loc']);
+
+            //filtra caracteres que nao sao letras
+            list_places(preg_replace ("/[^a-zA-Z\s]/", '', $_GET['loc']),$_GET['ci'],$_GET['co']);
+            
         }else if (isset($_GET['c1']))
         {
         

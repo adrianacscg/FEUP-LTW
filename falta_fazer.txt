@@ -5,6 +5,7 @@ Falta fazer:
 - Register (styling) :Ricardo 
 - templates (footer e headers) : Joao
 - Tornar esta merda toda super mega hiper segura
+- Pesquisar por datas
 
 Testar:
 - testar se o addReservation funciona (necessario SESSION)

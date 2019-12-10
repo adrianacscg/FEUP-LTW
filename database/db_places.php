@@ -78,7 +78,7 @@
 
     }
 
-    function get_places($location){
+    function get_places($location,$checkin=0,$checkout=0){
 
         try{
             $dbh = Database::instance()->db();
@@ -90,23 +90,24 @@
 
         try
         {
-            //if($checkin==0){
-            $stmt = $dbh->prepare('SELECT * 
-                                   FROM Moradia M, Reserva R
-                                   WHERE M.idMoradia= R.idMoradia AND M.localizacao = ?');
+            if($checkin==0){
+                $stmt = $dbh->prepare('SELECT * 
+                                   FROM Moradia M
+                                   WHERE M.localizacao = ?');
                                    
-            $stmt ->execute(array($location));
+                $stmt ->execute(array($location));
                 
-            /*}else {
+            }else {
                 
-                $stmt = $dbh->prepare('SELECT M.idMoradia, nome, rating, preco  
-                                    FROM Moradia M, Reserva R 
-                                    WHERE M.idMoradia= R.idMoradia AND M.localizacao = ? AND (? < dataInicio OR ? > dataFim)');
-                $stmt-> execute(array($location,$checkout,$checkin));
-
-            }*/
-            $result= $stmt->fetchAll();
-            return $result;
+                $stmt = $dbh->prepare('SELECT * 
+                                   FROM Moradia M
+                                   WHERE M.localizacao = ? AND idMoradia NOT IN
+                                            ( SELECT idMoradia FROM Reserva WHERE ( ? BETWEEN dataInicio AND dataFim) AND (? BETWEEN dataInicio AND dataFim)');
+                                   
+                $stmt ->execute(array($location,$checkin,$checkout));
+            }
+            
+            return $stmt->fetchAll();
 
         }catch (PDOException $e){
             echo $e->getMessage();

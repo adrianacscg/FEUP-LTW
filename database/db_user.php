@@ -99,11 +99,7 @@
 
     try {
       $stmt = $dbh->prepare('UPDATE Utilizador SET Password = ? WHERE email = ?');
-      if($stmt->execute(array($passwordhashed, $email)))
-          return true;
-      else{
-        return false;
-      }   
+        
     }catch(PDOException $e) {
       return false;
     }

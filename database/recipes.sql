@@ -31,6 +31,7 @@ create table Moradia(
 	descricao TEXT,
 	preco INTEGER,
 	localizacao TEXT,
+	morada TEXT,
 	tipo TEXT,
 	cancelamento INTEGER check (cancelamento>=0),
 	rating REAL check (rating>=0),

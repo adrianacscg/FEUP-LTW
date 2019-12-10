@@ -78,7 +78,7 @@ include_once('../database/db_user.php');
 
                     $card = str_replace(substr(getCard($_SESSION['email']), 0, -4), '************', getCard($_SESSION['email']));
                     echo htmlentities('Card:' . ' ' . $card);
-                } else echo("No credit cards!");
+                } else echo ("No credit cards!");
                 ?></a></h3>
         <a href="#changecard"> <img src="../icons/lapis.png" alt="Symbol More"> </a>
         <h3><a href="#changecard">Edit Card</a></h3>
@@ -94,17 +94,17 @@ include_once('../database/db_user.php');
     </section>
     <section id="MyBookings">
         <h2><a>My Bookings</a></h2>
-    
+
         <!-- Full-width images with number and caption text -->
         <?php
         $iduser = getID($_SESSION['email']);
         $bookings = getBookings($iduser);
         $counterbookings = -1;
 
-        if($bookings == null) {
-            echo("<a style='font-weight:bold'>No Bookings!</a>");
-            echo("<br><br>");
-        } 
+        if ($bookings == null) {
+            echo ("<a style='font-weight:bold'>No Bookings!</a>");
+            echo ("<br><br>");
+        }
 
         foreach ($bookings as $idBooking) {
             foreach ($idBooking as $booking)
@@ -141,98 +141,166 @@ include_once('../database/db_user.php');
 
             $Rating = getRating($idBooking);
 
-            for($i=1; $i <= $Rating; $i++)
-            {
-                echo("<div class='star{$i}'>");
-                echo('<img src="../icons/star.png" width="25px" height="25px" /> </div>');
+            for ($i = 1; $i <= $Rating; $i++) {
+                echo ("<div class='star{$i}'>");
+                echo ('<img src="../icons/star.png" width="25px" height="25px" /> </div>');
             }
-            echo('</div>');
+            echo ('</div>');
 
             //Dates and Total Amount Paid
-            echo('<h3> Dates: ');
-            echo(getDateStart($idBooking));
-            echo(" to ");
-            echo(getDateFinish($idBooking));
-            echo('</h3>');
+            echo ('<h3> Dates: ');
+            echo (getDateStart($idBooking));
+            echo (" to ");
+            echo (getDateFinish($idBooking));
+            echo ('</h3>');
 
-            echo('<h3>Total Amount paid: ');
-            echo(getTotalPrice($idBooking));
-            echo('</h3>');
+            echo ('<h3>Total Amount paid: ');
+            echo (getTotalPrice($idBooking));
+            echo ('€');
+            echo ('</h3>');
 
-            echo('</div>');
+            echo ('</div>');
         }
         ?>
     </section>
 
     <section id="MyProperties">
         <h2>My Properties</h2>
-        <?php 
-        
+
+        <?php
+
         $iduser = getID($_SESSION['email']);
         $properties = getProperties($iduser);
         $bookings = getBookings($iduser);
         $counterproperties = -1;
 
-        if($properties == null) {
-            echo("<a style='font-weight:bold'>No Properties!</a>");
-                echo("<br><br>");
-            if($bookings == null) {
-                echo("<br>");
-                echo("<style> #MyProperties h2 { position: absolute; bottom:55px; padding: 0em 0.5em; left:50px;}
+        if ($properties == null) {
+            echo ("<a style='font-weight:bold'>No Properties!</a>");
+            echo ("<br><br>");
+            if ($bookings == null) {
+                echo ("<br>");
+                echo ("<style> #MyProperties h2 { position: absolute; bottom:55px; padding: 0em 0.5em; left:50px;}
             </style>");
             }
-        } 
-        
+        }
+
         foreach ($properties as $idproperty) {
             foreach ($idproperty as $property)
                 $idproperty = $property;
 
-                echo ('<div class="slideshow-container">');
-                $images = getImgsMoradia($idproperty);
-                $counterimg = 0;
-                $counterproperties++;
-    
-                foreach ($images as $image) {
-                    foreach ($image as $pathimage)
-                        $image = $pathimage;
-    
-                    echo ("<div class='PmySlides$counterproperties'>");
-                    echo ("<img src={$image}" . ' ' . 'width="100%" height="380px">');
-                    echo ('</div>');
-                    $counterimg++;
-                }
-    
-                // Next and previous buttons 
-                echo ("<a class='prev' onclick='plusSlidesP(-1,$counterproperties)'>&#10094;</a>");
-                echo ("<a class='next' onclick='plusSlidesP(1,$counterproperties)'>&#10095;</a>");
-    
-                // caption
-                echo ('<div class="fundo"><br></div>');
-                echo ('<div class="caption1"><a>');
-                echo (getNameMoradia($idproperty));
-                echo ('</a></div>');
-                echo ('<div class="forday"><br>&nbsp;/&nbsp;night</div>');
-                echo ('<div class="price"><br>');
-                echo (getPrice($idproperty));
+            echo ('<div class="slideshow-container">');
+            $images = getImgsMoradia($idproperty);
+            $counterimg = 0;
+            $counterproperties++;
+
+            foreach ($images as $image) {
+                foreach ($image as $pathimage)
+                    $image = $pathimage;
+
+                echo ("<div class='PmySlides$counterproperties'>");
+                echo ("<img src={$image}" . ' ' . 'width="100%" height="380px">');
                 echo ('</div>');
-    
-                $Rating = getRating($idproperty);
-    
-                for($i=1; $i <= $Rating; $i++)
-                {
-                    echo("<div class='star{$i}'>");
-                    echo('<img src="../icons/star.png" width="25px" height="25px" /> </div>');
-                }
-                echo('</div>');  
-                echo('<br>');
-                echo('<h3><a href="editproperty.php">Edit Existing Property </a></h3>');
-                echo('<a href="edit.php"> <img src="../icons/lapis.png" alt="Pencil"> </a>');
-                
+                $counterimg++;
+            }
+
+            // Next and previous buttons 
+            echo ("<a class='prev' onclick='plusSlidesP(-1,$counterproperties)'>&#10094;</a>");
+            echo ("<a class='next' onclick='plusSlidesP(1,$counterproperties)'>&#10095;</a>");
+
+            // caption
+            echo ('<div class="fundo"><br></div>');
+            echo ('<div class="caption1"><a>');
+            echo (getNameMoradia($idproperty));
+            echo ('</a></div>');
+            echo ('<div class="forday"><br>&nbsp;/&nbsp;night</div>');
+            echo ('<div class="price"><br>');
+            echo (getPrice($idproperty));
+            echo ('</div>');
+
+            $Rating = getRating($idproperty);
+
+            for ($i = 1; $i <= $Rating; $i++) {
+                echo ("<div class='star{$i}'>");
+                echo ('<img src="../icons/star.png" width="25px" height="25px" /> </div>');
+            }
+            echo ('</div>');
+            echo ('<br>');
+            echo ("<div id='changeproperty$idproperty' class='modalproperty'>");
+            echo ('
+            <a href="#close" title="Close" class="close">X</a>
+            <form action="../actions/action_change_property.php" method="POST" enctype="multipart/form-data">
+                <a>Preencha só o que quer alterar!! </a> 
+                <br><br>');
+            echo ("<input type='hidden' id='propertyId' name='propertyId' value='$idproperty'>");
+            echo ('
+                <label for="idNome">Nome da Propriedade</label>
+                <input id="idNome" type="text" name="nome" autocomplete="on" >
+                <br><br>
+                <label for="idPreco">Preço</label>
+                <input id="idPreco" type="number" name="preco" autocomplete="on" >
+                <br><br>
+                <label for="idLocalizacao">Localização</label>
+                <input id="idLocalizacao" type="text" name="localizacao" autocomplete="on" >
+                <br><br>
+                <label for="idTipo">Tipo de Moradia</label>
+                <input id="idTipo" type="text" name="tipo" autocomplete="on" >
+                <br><br>
+                <label for="idcancelamento">Cancelamento Gratuito</label>
+                <input id="idcancelamento" type="text" name="cancelamento" autocomplete="on" >
+                <br><br>
+                <label for="idrating">Rating</label>
+                <input id="idrating" type="number" name="rating" autocomplete="on" >
+                <a>1 a 5</a> 
+                <br><br>
+                <label for="fotos">Adicione Fotos á Moradia</label>
+                <input type="file" name="foto[]" multiple="multiple" >
+                <br>
+                <label class="bt-file">Pode selecionar mais que uma!</label>
+                <br><br>');
+
+            echo ('<input id="updateproperty" type="submit" value="Update">
+                <br><br>
+            </form>
+        </div>');
+            
+            echo ("<h3><a href='#changeproperty$idproperty'>Edit Existing Property</a></h3>");
+            echo ("<a href='#changeproperty$idproperty'> <img src='../icons/lapis.png' alt='Pencil'> </a>");
         }
         ?>
 
-        <h3><a href="addproperty.php">Add Property </a></h3>
-        <a href="moreprop.php"><img src="../icons/+.png" alt="Symbol More"> </a>
+        <div id="addproperty" class="modalproperty">
+            <a href="#close" title="Close" class="close">X</a>
+            <form action="../actions/action_add_property.php" method="POST" enctype="multipart/form-data">
+                <label for="idNome">Nome da Propriedade</label>
+                <input id="idNome" type="text" name="nome" autocomplete="on" required>
+                <br><br>
+                <label for="idPreco">Preço</label>
+                <input id="idPreco" type="number" name="preco" autocomplete="on" required>
+                <br><br>
+                <label for="idLocalizacao">Localização</label>
+                <input id="idLocalizacao" type="text" name="localizacao" autocomplete="on" required>
+                <br><br>
+                <label for="idTipo">Tipo de Moradia</label>
+                <input id="idTipo" type="text" name="tipo" autocomplete="on" required>
+                <br><br>
+                <label for="idcancelamento">Cancelamento Gratuito</label>
+                <input id="idcancelamento" type="text" name="cancelamento" autocomplete="on" required>
+                <br><br>
+                <label for="idrating">Rating</label>
+                <input id="idrating" type="number" name="rating" autocomplete="on" required>
+                <a>1 a 5</a>
+                <br><br>
+                <label for="fotos">Fotos</label>
+                <input type="file" name="foto[]" multiple="multiple" required />
+                <br>
+                <label class="bt-file">Pode selecionar mais que uma!</label>
+                <br><br>
+                <input id="addproperty" type="submit" name="adicionar" value="Adicionar">
+                <br><br>
+            </form>
+        </div>
+        <h3><a href="#addproperty">Add Property </a></h3>
+        <a href="#addproperty"><img src="../icons/+.png" alt="Symbol More"> </a>
     </section>
 </body>
 <footer>
