@@ -121,7 +121,7 @@ window.addEventListener("load", () => {
 
                 <br><br>    
 
-                <input id="idSubmit" type="submit" value="Login">
+                <input id="idSubmit" name="login" type="submit" value="Login">
             </form>
         </div>
     `;
