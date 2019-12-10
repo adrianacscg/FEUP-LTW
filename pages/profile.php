@@ -234,22 +234,22 @@ include_once('../database/db_user.php');
             echo ("<input type='hidden' id='propertyId' name='propertyId' value='$idproperty'>");
             echo ('
                 <label for="idNome">Nome da Propriedade</label>
-                <input id="idNome" type="text" name="nome" autocomplete="on" norequired>
+                <input id="idNome" type="text" name="nome" autocomplete="on" >
                 <br><br>
                 <label for="idPreco">Preço</label>
-                <input id="idPreco" type="number" name="preco" autocomplete="on" norequired>
+                <input id="idPreco" type="number" name="preco" autocomplete="on" >
                 <br><br>
                 <label for="idLocalizacao">Localização</label>
-                <input id="idLocalizacao" type="text" name="localizacao" autocomplete="on" norequired>
+                <input id="idLocalizacao" type="text" name="localizacao" autocomplete="on" >
                 <br><br>
                 <label for="idTipo">Tipo de Moradia</label>
-                <input id="idTipo" type="text" name="tipo" autocomplete="on" norequired>
+                <input id="idTipo" type="text" name="tipo" autocomplete="on" >
                 <br><br>
                 <label for="idcancelamento">Cancelamento Gratuito</label>
-                <input id="idcancelamento" type="text" name="cancelamento" autocomplete="on" norequired>
+                <input id="idcancelamento" type="text" name="cancelamento" autocomplete="on" >
                 <br><br>
                 <label for="idrating">Rating</label>
-                <input id="idrating" type="number" name="rating" autocomplete="on" norequired>
+                <input id="idrating" type="number" name="rating" autocomplete="on" >
                 <a>1 a 5</a> 
                 <br><br>
                 <label for="fotos">Adicione Fotos á Moradia</label>
