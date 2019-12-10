@@ -16,7 +16,7 @@ function list_places($localidade,$checkin,$checkout){
         echo '<li>' . $place['nome'] . '</li>';
         list_images($place['idMoradia']);
         echo '<li>Preco/dia: ' . $place['preco'] .'</li>';
-        echo '<li>' . "<a href=../pages/anuncio.php?id=". $place['idMoradia'] .">Ver Casa</a>" . '</li>';
+        echo '<li>' . "<a href=../pages/anuncio.php?id=". $place['idMoradia'] . '&ci=' . $checkin . '&co=' . $checkout .">Ver Casa</a>" . '</li>';
         
         echo '<br></br>';
     }
@@ -24,8 +24,8 @@ function list_places($localidade,$checkin,$checkout){
 
 }
 
-function list_place($id){
-
+function list_place($id,$checkin,$checkout){
+    
     $place = getPlace($id);  
 
     echo '<h2>' . $place['nome'] .'</h2>';
@@ -41,24 +41,32 @@ function list_place($id){
 
     list_comodidades($id);
     
+    echo '<br></br>';
     // disponibilidades
     echo '<form id="Sform" action= "../actions/action_add_reser.php" method="POST">';
         
         echo '<input type="text" name="idM" value="' . $id . '" hidden>';
-
-        echo '<label for= "datIni">Data de Inicio</label>';
-        echo '<input type= "date" name= "dataInicio" id= "datIni">';
-
-        echo '<label for = "dataFim">Data de Fim</label>';
-        echo '<input type= "date" name= "dataFim" id= "datFim" >';
         
+        echo '<label for= "datIni">Data de Inicio</label>';
+        echo '<input type= "text" name= "dataInicio" id= "datIni" readonly value=' . $checkin . '>';
+
+        echo '<br></br>';
+        
+        echo '<label for = "dataFim">Data de Fim</label>';
+        echo '<input type= "text" name= "dataFim" id= "datFim" readonly value=' . $checkout . '>';
+        
+        echo '<div id="preco">';
         echo '<p>Preco por noite:</p> <p id="precoD">' . $place['preco'] . '</p>';
+        echo '</div>';
+
+        echo '<div id="DPT">';
         echo '<p>Preco Total:</p>';
         echo '<input type="text" name= "precoT" id="precoT" readonly>';
-        
+        echo '</div>';
+
         echo '<br></br>';
 
-        echo '<input type= "submit" value= "Book Now">';
+        echo '<input id="btn" type= "submit" value= "Book Now">';
     echo '</form>';
 
     //Preço (utilizar javascript)
@@ -105,3 +113,5 @@ function list_images($id){
     }
 }
 ?>
+
+    

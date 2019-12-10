@@ -108,7 +108,7 @@ window.addEventListener("load", () => {
         <div id="login" class="hidden">
             <button class="close-button">x</button>
             <h3>Login</h3>
-            <form id="idForm" method="POST" action="../PHP/login.php  ">
+            <form id="idForm" method="POST" action="../actions/action_login.php">
 
                 <label for="idEmail">Email</label>
                 <input id="idEmail" type="email" name="email" autocomplete="off" required>
@@ -130,7 +130,46 @@ window.addEventListener("load", () => {
     /* PAGE RENDERS */
 
     renderElemParentId("slide1", loginDiv);
+
+    let form = document.getElementById('idForm')
+    form.addEventListener('submit', SubmitForm)
+
+    function SubmitForm(event){
+
+        let email= document.getElementById('idEmail').value     // email value
     
+        //Ajax Request
+        let request = new XMLHttpRequest()
+
+        request.addEventListener("load",function(){
+            
+
+            let response= JSON.parse(this.responseText)
+            
+
+            if(response=="0"){
+                alert("Email não existe!")
+                event.preventDefault()
+            }else{
+                console.log("hello")
+            }
+
+        })
+
+        request.open('POST', "../api/api_user_exists.php",false)
+        request.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
+        request.send(encodeForAjax({'email': email}))
+        
+        
+
+    }
+    
+    // Helper function
+    function encodeForAjax(data) {
+        return Object.keys(data).map(function(k){
+            return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+        }).join('&')
+    }
 
     /* CALLS TO ACTION */
 

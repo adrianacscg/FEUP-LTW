@@ -2,20 +2,37 @@
 
   include_once('../includes/database.php');
 
-  function isLoginCorrect($username, $password) {
+  function isLoginCorrect($email, $password) {
     
-    global $dbh;
+    //tenta ligar à base de dados
+    try{
+      $dbh= Database::instance()->db();
+
+    }catch(Exception $e){
+      return $e;
+    }
     
     $passwordhashed = hash('sha256', $password);
 
     try {
-      $stmt = $dbh->prepare('SELECT * FROM Utilizador WHERE username = ? AND password = ?');
-      $stmt->execute(array($username, $passwordhashed));
-      if($stmt->fetch() !== false) {
-        return getID($username);
+
+      $stmt = $dbh->prepare('SELECT * FROM Utilizador WHERE email = ? AND password = ?');
+
+      $stmt->execute(array($email, $passwordhashed));
+
+      $pessoa=$stmt->fetch();
+
+      if(empty($pessoa)) {
+
+        return -1;
+
+      }else{
+
+        return $pessoa['idUtilizador'];
       }
-      else return -1;
+    
     } catch(PDOException $e) {
+      
       return -1;
     }
   }

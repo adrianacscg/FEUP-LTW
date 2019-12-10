@@ -110,20 +110,27 @@ if($_SESSION['email'] == null)
             echo ("<a style='font-weight:bold'>No Bookings!</a>");
             echo ("<br><br>");
         }
-
-        foreach ($bookings as $idBooking) {
+        
+        
+        foreach ($bookings as $booking) {
+            
+            /*
             foreach ($idBooking as $booking)
                 $idBooking = $booking;
+            */
+            $idBooking= $booking['idMoradia'];
 
             echo ('<div class="slideshow-container">');
             $images = getImgsMoradia($idBooking);
             $counterimg = 0;
             $counterbookings++;
 
-            foreach ($images as $image) {
+            foreach ($images as $imagee) {
+                /*
                 foreach ($image as $pathimage)
                     $image = $pathimage;
-
+                */
+                $image=$imagee['caminho'];
                 echo ("<div class='mySlides$counterbookings'>");
                 echo ("<img src={$image}" . ' ' . 'width="100%" height="380px">');
                 echo ('</div>');

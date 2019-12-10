@@ -26,6 +26,8 @@
         <h1><a href="main.html">Travel Crib</a></h1>
     </header>
 
-        <?php list_place($_GET['id']);?>
+        <?php list_place($_GET['id'],$_GET['ci'],$_GET['co']);?>
+
+        
     </body>
 </html>

@@ -1,0 +1,47 @@
+
+body{
+    background-color: #b3dfde;
+    color: rgb(255, 255, 255);
+    margin-left: 4em;
+    font-family: sans-serif;
+}
+
+#datIni{
+    margin-left: 2em;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#datFim{
+    margin-left: 2.8em;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#preco{
+    display: flex;
+}
+
+#precoD{
+    
+    margin-left: 1em;
+}
+
+#DPT{
+    display: flex;
+    
+}
+
+
+#precoT{
+    margin-top: 1em;
+    margin-left: 3em;
+    height: 1em;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#btn{
+    border-radius: 10px;
+    margin-left: 1em;
+}
