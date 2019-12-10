@@ -14,6 +14,8 @@ const slider = sliderElement => {
 
     const init = () => {
 
+        /* VERTICAL SLIDER */ 
+
         document.body.classList.add('slider-body');
 
         
@@ -122,6 +124,8 @@ const slider = sliderElement => {
     };
 
     
+    /* SLIDER FUNCTIONS */
+
     /* Prevent double scrolling */
 
     const detectChangeEnd = () => {

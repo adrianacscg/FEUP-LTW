@@ -11,20 +11,6 @@ body.slider-body {
 
 
 
-input{
-    
-    margin: auto;
-    display: block;
-    border-radius: 10px;
-    width: 30em;
-    padding: 5px;
-    border-style: solid;
-    border-color: white;
-    color:inherit;
-    background-color: rgba(255, 255, 255, 0.76);
-
-}
-
 .slider-container {
     position: relative;
     display: block;

@@ -8,65 +8,63 @@
         <title>Travel Crib</title>
 
         <link rel="stylesheet" href="../CSS/v-slider.css">
+        <link rel="stylesheet" href="../CSS/index.css">
 
-        <style>
-            #slide1 {
-                background: linear-gradient(225deg, #ffc27d, #ff8e93);
-            }
-
-            #slide2 {
-                background: linear-gradient(#f3defc, #63a3e6);
-            }
-
-            #slide3 {
-                background: linear-gradient(#d2fcad, #22eaeb);
-            }
-
-            #slide4 {
-                background: linear-gradient(#f0bed4, #a163f5);
-            }
-
-
-            section>span {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                font-size: 7vw;
-                font-family: sans-serif;
-                text-transform: uppercase;
-                color: #fff;
-            }
-        </style>
+        <script src="https://use.fontawesome.com/326caf9766.js"></script>
     </head>
 
     <body>
         <div class="slides">
             <section id="slide1">
-                <button id="id_login" type="button">Login</button>
-            
-                <button id="id_register" type="button">Register</button>
-                <span>Travel Crib</span>
-                <div id="search_bar" >
-                    <input type="search">
+                <div>
+                    <button class= "login_button">Login |</button>
+                    
+                    <a id="register" href="../pages/register.html">Register</a>
+
+                </div>
+                
+                <span id="main_title" style="display:block">Travel Crib</span>
+
+                <div class="search-container" >
+                    <i class="fa fa-search search-icon"></i>
+                    <input class="search-box" type="search" placeholder="Search Location">
                 </div>
             </section>
 
             <section id="slide2">
                 <span>Why book with us?</span>
+                <div id="icons">
+                    <div>
+                        <img src="../icons/icon3.png">
+                        <p>Best Housing Variety</p>
+                    </div>
+                    <div>
+                        <img src="../icons/icon1.png">
+                        <p>Safe Payments</p>
+                    </div>
+                    <div>
+                        <img src="../icons/icon2.png">
+                        <p>Safe Stay</p>
+                    </div>
+
+                </div>
             </section>
 
             <section id="slide3">
                 <span>How does it work?</span>
+                
             </section>
 
             <section id="slide4">
-                <span>Find your crib or rent on our platform</span>
+                <span id="title_slide4">Find your crib or rent on our platform</span>
+                <button type="button" id="register_button"><a href="../pages/register.html">Register</a></button>
             </section>
 
         </div>
 
-        <script src="../JS/v-slider.js"></script>
+        
+        <script type="text/javascript" src="../JS/login-box.js" ></script>
+        <script type="text/javascript" src="../JS/v-slider.js"></script>
         
         <script>
             slider('.slides');
