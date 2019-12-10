@@ -22,29 +22,27 @@
     updateProperty($iduser, $newnome, $newpreco, $newlocalizacao, $newtipo, $newcancelamento, $newrating, $idproperty); 
 
     $diretorio = "../img/Bookings";
-    
-    echo("dont working");
+
     if(!is_dir($diretorio)){ 
 	   echo "Pasta $diretorio nao existe";
       }else
       {   
-          echo($_FILES['foto']);
         $arquivo = isset($_FILES['foto']) ? $_FILES['foto'] : FALSE;
-        echo($arquivo);
         
 	    for ($controle = 0; $controle < count($arquivo['name']); $controle++){
-            echo("lolh");
+            
             $destino = $diretorio."/".$arquivo['name'][$controle];
 		        if(move_uploaded_file($arquivo['tmp_name'][$controle], $destino)){
                      echo("Upload realizado com sucesso<br>"); 
                      // Insere na base de dados
-                     addImagesProperty($idProperty, $destino);
+                     addImagesProperty($idproperty, $destino);
 	    	        }else{
 			            echo "Erro ao realizar upload";
                     }   
                 }    
     }
 
-
+ //Redirect to profile page
+ header('Location: ../pages/profile.php');
 
 ?>

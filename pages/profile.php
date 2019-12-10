@@ -253,7 +253,7 @@ include_once('../database/db_user.php');
                 <a>1 a 5</a> 
                 <br><br>
                 <label for="fotos">Adicione Fotos á Moradia</label>
-                <input type="file" name="foto[]" multiple="multiple" norequired 4/>
+                <input type="file" name="foto[]" multiple="multiple" >
                 <br>
                 <label class="bt-file">Pode selecionar mais que uma!</label>
                 <br><br>');
