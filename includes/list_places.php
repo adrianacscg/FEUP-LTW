@@ -6,6 +6,7 @@ function list_places($localidade,$checkin,$checkout){
     if($checkin==""){
         $places=get_places($localidade);
     }else {
+        
         $places=get_places($localidade, $checkin, $checkout);
     }
     

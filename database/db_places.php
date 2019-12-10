@@ -102,8 +102,8 @@
                 $stmt = $dbh->prepare('SELECT * 
                                    FROM Moradia M
                                    WHERE M.localizacao = ? AND idMoradia NOT IN
-                                            ( SELECT idMoradia FROM Reserva WHERE ( ? BETWEEN dataInicio AND dataFim) AND (? BETWEEN dataInicio AND dataFim)');
-                                   
+                                            ( SELECT idMoradia FROM Reserva WHERE ( ? BETWEEN dataInicio AND dataFim) OR (? BETWEEN dataInicio AND dataFim)) GROUP BY idMoradia');
+                      
                 $stmt ->execute(array($location,$checkin,$checkout));
             }
             
