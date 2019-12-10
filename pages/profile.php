@@ -4,7 +4,12 @@ include_once('../PHP/userinfo.php');
 include_once('../PHP/moradiasinfo.php');
 include_once('../PHP/propertiesinfo.php');
 include_once('../database/db_user.php');
+
+//Redirect to profile page
+if($_SESSION['email'] == null)  
+    header('Location: ../html/index.html');
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en-US">
