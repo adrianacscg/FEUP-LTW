@@ -1,7 +1,7 @@
 <?php
 include_once('../includes/database.php');
 
-function updateProperty($iduser, $newnome, $newpreco, $newlocalizacao, $newtipo, $newcancelamento, $newrating, $idproperty)
+function updateProperty($iduser, $newnome, $newpreco, $newlocalizacao, $newtipo, $newcancelamento, $newrating, $newdescription, $newaddress, $idproperty) 
 {
     //tenta ligar à base de dados
     try {
@@ -16,11 +16,8 @@ function updateProperty($iduser, $newnome, $newpreco, $newlocalizacao, $newtipo,
             $stmt = $dbh->prepare('UPDATE Moradia SET nome = ? WHERE idUtilizador = ? AND idMoradia = ?');            
     
             if($stmt->execute(array($newnome, $iduser, $idproperty)))
-              return true;
-         else{
-            return false;
-          } 
-    
+              echo("ok");
+         
             $stmt->execute();
         } catch (PDOException $e) {
     
@@ -34,11 +31,8 @@ function updateProperty($iduser, $newnome, $newpreco, $newlocalizacao, $newtipo,
             $stmt = $dbh->prepare('UPDATE Moradia SET preco = ?, WHERE idUtilizador = ? AND idMoradia = ?');            
     
             if($stmt->execute(array($newpreco, $iduser, $idproperty)))
-              return true;
-         else{
-            return false;
-          } 
-    
+                echo("ok");
+         
             $stmt->execute();
         } catch (PDOException $e) {
     
@@ -53,10 +47,7 @@ function updateProperty($iduser, $newnome, $newpreco, $newlocalizacao, $newtipo,
             $stmt = $dbh->prepare('UPDATE Moradia SET localizacao = ? WHERE idUtilizador = ? AND idMoradia = ?');            
     
             if($stmt->execute(array($newlocalizacao, $iduser, $idproperty)))
-              return true;
-         else{
-            return false;
-          } 
+                echo("ok");
     
             $stmt->execute();
         } catch (PDOException $e) {
@@ -71,11 +62,8 @@ function updateProperty($iduser, $newnome, $newpreco, $newlocalizacao, $newtipo,
             $stmt = $dbh->prepare('UPDATE Moradia SET tipo = ? WHERE idUtilizador = ? AND idMoradia = ?');            
     
             if($stmt->execute(array($newtipo, $iduser, $idproperty)))
-              return true;
-         else{
-            return false;
-          } 
-    
+                echo("ok");
+
             $stmt->execute();
         } catch (PDOException $e) {
     
@@ -89,10 +77,7 @@ function updateProperty($iduser, $newnome, $newpreco, $newlocalizacao, $newtipo,
             $stmt = $dbh->prepare('UPDATE Moradia SET cancelamento = ? WHERE idUtilizador = ? AND idMoradia = ?');            
     
             if($stmt->execute(array($newcancelamento, $iduser, $idproperty)))
-              return true;
-         else{
-            return false;
-          } 
+               echo("ok");
     
             $stmt->execute();
         } catch (PDOException $e) {
@@ -108,10 +93,37 @@ function updateProperty($iduser, $newnome, $newpreco, $newlocalizacao, $newtipo,
             $stmt = $dbh->prepare('UPDATE Moradia SET rating = ? WHERE idUtilizador = ? AND idMoradia = ?');            
     
             if($stmt->execute(array($newrating, $iduser, $idproperty)))
-              return true;
-         else{
-            return false;
-          } 
+                echo("ok");
+    
+            $stmt->execute();
+        } catch (PDOException $e) {
+    
+            return $e;
+        }
+    }
+
+    if($newdescription != null) {
+        try {
+
+            $stmt = $dbh->prepare('UPDATE Moradia SET descricao = ? WHERE idUtilizador = ? AND idMoradia = ?');            
+    
+            if($stmt->execute(array($newdescription, $iduser, $idproperty)))
+                echo("ok");
+    
+            $stmt->execute();
+        } catch (PDOException $e) {
+    
+            return $e;
+        }
+    }
+
+    if($newaddress != null) {
+        try {
+
+            $stmt = $dbh->prepare('UPDATE Moradia SET morada = ? WHERE idUtilizador = ? AND idMoradia = ?');            
+    
+            if($stmt->execute(array($newaddress, $iduser, $idproperty)))
+                echo("ok");
     
             $stmt->execute();
         } catch (PDOException $e) {
@@ -121,7 +133,7 @@ function updateProperty($iduser, $newnome, $newpreco, $newlocalizacao, $newtipo,
     }
 }
 
-function addProperty($iduser, $nome, $preco, $localizacao, $tipo, $cancelamento, $rating)
+function addProperty($iduser, $nome, $preco, $localizacao, $tipo, $cancelamento, $rating, $description, $address)
 {
     //tenta ligar à base de dados
     try{
@@ -134,8 +146,8 @@ function addProperty($iduser, $nome, $preco, $localizacao, $tipo, $cancelamento,
     //tenta correr a query
     try {
 
-      $stmt = $dbh->prepare('INSERT INTO Moradia(nome, preco, localizacao, tipo, cancelamento, rating, idUtilizador)
-          VALUES (:Nome,  :Preco, :Localizacao, :Tipo, :Cancelamento, :Rating, :IdUtilizador)');
+      $stmt = $dbh->prepare('INSERT INTO Moradia(nome, preco, localizacao, tipo, cancelamento, rating, idUtilizador, descricao, morada)
+          VALUES (:Nome,  :Preco, :Localizacao, :Tipo, :Cancelamento, :Rating, :IdUtilizador, :Descricao, :Morada)');
         
       $stmt->bindParam(':Nome', $nome);
       $stmt->bindParam(':Preco', $preco);
@@ -144,6 +156,8 @@ function addProperty($iduser, $nome, $preco, $localizacao, $tipo, $cancelamento,
       $stmt->bindParam(':Cancelamento', $cancelamento);
       $stmt->bindParam(':Rating', $rating);
       $stmt->bindParam(':IdUtilizador', $iduser);
+      $stmt->bindParam(':Descricao', $description);
+      $stmt->bindParam(':Morada', $address);
       
       $stmt->execute();
       

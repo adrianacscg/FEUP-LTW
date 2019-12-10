@@ -8,16 +8,18 @@ include_once('../database/db_user.php');
 $email = $_SESSION['email'];
 $iduser = getID($email); 
 
-//guarda a nova password
+//guarda as novas informacoes da propriedade
 $newnome = $_POST['nome'];
 $newpreco = $_POST['preco'];
 $newlocalizacao = $_POST['localizacao'];
 $newtipo = $_POST['tipo'];
 $newcancelamento = $_POST['cancelamento'];
 $newrating = $_POST['rating'];
+$newdescription = $_POST['description'];
+$newaddress = $_POST['address'];
 
 
-$idProperty = addProperty($iduser, $newnome, $newpreco, $newlocalizacao, $newtipo, $newcancelamento, $newrating); 
+$idProperty = addProperty($iduser, $newnome, $newpreco, $newlocalizacao, $newtipo, $newcancelamento, $newrating, $newdescription, $newaddress); 
          
 $diretorio = "../img/Bookings";
 

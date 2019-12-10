@@ -233,29 +233,35 @@ include_once('../database/db_user.php');
                 <br><br>');
             echo ("<input type='hidden' id='propertyId' name='propertyId' value='$idproperty'>");
             echo ('
-                <label for="idNome">Nome da Propriedade</label>
+                <label for="idNome">Property Name</label>
                 <input id="idNome" type="text" name="nome" autocomplete="on" >
                 <br><br>
-                <label for="idPreco">Preço</label>
+                <label for="idPreco">Price</label>
                 <input id="idPreco" type="number" name="preco" autocomplete="on" >
                 <br><br>
-                <label for="idLocalizacao">Localização</label>
+                <label for="idLocalizacao">Location</label>
                 <input id="idLocalizacao" type="text" name="localizacao" autocomplete="on" >
                 <br><br>
-                <label for="idTipo">Tipo de Moradia</label>
+                <label for="idTipo">Type</label>
                 <input id="idTipo" type="text" name="tipo" autocomplete="on" >
                 <br><br>
-                <label for="idcancelamento">Cancelamento Gratuito</label>
+                <label for="idcancelamento">Free Cancellation ?</label>
                 <input id="idcancelamento" type="text" name="cancelamento" autocomplete="on" >
                 <br><br>
                 <label for="idrating">Rating</label>
                 <input id="idrating" type="number" name="rating" autocomplete="on" >
                 <a>1 a 5</a> 
                 <br><br>
-                <label for="fotos">Adicione Fotos á Moradia</label>
+                <label for="iddescription">Description</label>
+                <input id="iddescription" type="text" name="description" size= "50" autocomplete="on" >
+                <br><br>    
+                <label for="idaddress">Address</label>
+                <input id="idaddress" type="text" name="address" autocomplete="on" >
+                <br><br>
+                <label for="fotos">Add Photos to Property</label>
                 <input type="file" name="foto[]" multiple="multiple" >
                 <br>
-                <label class="bt-file">Pode selecionar mais que uma!</label>
+                <label class="bt-file">You can select more than one!</label>
                 <br><br>');
 
             echo ('<input id="updateproperty" type="submit" value="Update">
@@ -271,31 +277,37 @@ include_once('../database/db_user.php');
         <div id="addproperty" class="modalproperty">
             <a href="#close" title="Close" class="close">X</a>
             <form action="../actions/action_add_property.php" method="POST" enctype="multipart/form-data">
-                <label for="idNome">Nome da Propriedade</label>
+                <label for="idNome">Property Name</label>
                 <input id="idNome" type="text" name="nome" autocomplete="on" required>
                 <br><br>
-                <label for="idPreco">Preço</label>
+                <label for="idPreco">Price</label>
                 <input id="idPreco" type="number" name="preco" autocomplete="on" required>
                 <br><br>
-                <label for="idLocalizacao">Localização</label>
+                <label for="idLocalizacao">Location</label>
                 <input id="idLocalizacao" type="text" name="localizacao" autocomplete="on" required>
                 <br><br>
-                <label for="idTipo">Tipo de Moradia</label>
+                <label for="idTipo">Type</label>
                 <input id="idTipo" type="text" name="tipo" autocomplete="on" required>
                 <br><br>
-                <label for="idcancelamento">Cancelamento Gratuito</label>
+                <label for="idcancelamento">Free Cancellation ?</label>
                 <input id="idcancelamento" type="text" name="cancelamento" autocomplete="on" required>
                 <br><br>
                 <label for="idrating">Rating</label>
                 <input id="idrating" type="number" name="rating" autocomplete="on" required>
                 <a>1 a 5</a>
                 <br><br>
-                <label for="fotos">Fotos</label>
+                <label for="iddescription">Description</label>
+                <input id="iddescription" type="text" name="description" size= "50" autocomplete="on" required>
+                <br><br>
+                <label for="idaddress">Address</label>
+                <input id="idaddress" type="text" name="address" autocomplete="on" required>
+                <br><br>
+                <label for="fotos">Photos</label>
                 <input type="file" name="foto[]" multiple="multiple" required />
                 <br>
-                <label class="bt-file">Pode selecionar mais que uma!</label>
+                <label class="bt-file">You can select more than one!</label>
                 <br><br>
-                <input id="addproperty" type="submit" name="adicionar" value="Adicionar">
+                <input id="addproperty" type="submit" name="adicionar" value="Add">
                 <br><br>
             </form>
         </div>

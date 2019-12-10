@@ -16,10 +16,12 @@
     $newtipo = $_POST['tipo'];
     $newcancelamento = $_POST['cancelamento'];
     $newrating = $_POST['rating'];
+    $newdescription = $_POST['description'];
+    $newaddress = $_POST['address'];
 
     $idproperty = $_POST['propertyId'];
 
-    updateProperty($iduser, $newnome, $newpreco, $newlocalizacao, $newtipo, $newcancelamento, $newrating, $idproperty); 
+    updateProperty($iduser, $newnome, $newpreco, $newlocalizacao, $newtipo, $newcancelamento, $newrating, $newdescription, $newaddress, $idproperty); 
 
     $diretorio = "../img/Bookings";
 
