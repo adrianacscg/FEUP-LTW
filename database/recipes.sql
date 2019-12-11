@@ -91,3 +91,12 @@ create table Critica(
 	PRIMARY KEY (idUtilizador,idMoradia)
 
 );
+
+CREATE TABLE Chat (
+  idMensagem INTEGER PRIMARY KEY AUTOINCREMENT,
+  idRemetente INTEGER REFERENCES Utilizador(idUtilizador) ON DELETE set null ON UPDATE cascade,
+  idRecetor INTEGER REFERENCES Utilizador(idUtilizador) ON DELETE set null ON UPDATE cascade,
+  date INTEGER NOT NULL,
+  nome TEXT,
+  texto TEXT
+);
