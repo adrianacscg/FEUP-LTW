@@ -8,6 +8,7 @@
         <title>RentAHouse</title>
         <link rel="stylesheet" type="text/CSS" href="../CSS/search.css">
         <script src="../JS/search.js" defer></script>
+        <script src="../JS/showslides.js" async></script>
         <meta charset="UTF-8">
     </head>
     <body>

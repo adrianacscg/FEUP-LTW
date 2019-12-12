@@ -1,9 +1,10 @@
 <?php
 include_once('../database/db_places.php');
+include_once('../database/db_user.php');
+include_once('../PHP/db_user.php');
+include_once('../PHP/moradiasinfo.php');
 
 function list_places($localidade,$checkin,$checkout,$preco){
-
-    
     
     if($checkin==""){
         $places=get_places($localidade);
@@ -44,7 +45,6 @@ function list_place($id,$checkin,$checkout){
 
     //perguntar ao joao como fez para fazer Display das imagens
 
-    
     list_images($id);
     
     //lista as comodidades existentes
@@ -111,19 +111,41 @@ function list_comodidades($id){
 
 function list_images($id){
 
-    //contem imagens da moradia
-    $imgs= getImagesPlaces($id);
-    
-    if(empty($imgs)){
-        echo '<p> Esta moradia nao tem fotos!</p>';
-    }else{
-        
-        foreach($imgs as $img){
-            
-            echo '<img src="'. $img['caminho'] . '" width="200" height= "200" >';  
-        }
-    }
-}
-?>
+    //testar adicionar propriedade e ver slides no search.php POR CAUSA DO MYSLIDES$ID
 
+        echo ('<div class="slideshow-container">');
+
+         //contem imagens da moradia
+        $images = getImgsMoradia($id);     
+
+        foreach ($images as $imagee) {
+            $image = $imagee['caminho'];
+            echo ("<div class='mySlides$id'>");
+            echo ("<img src={$image}" . ' ' . 'width="100%" height="380px">');
+            echo ('</div>');
+            
+        }
+
+        // Next and previous buttons 
+        echo ("<a class='prev' onclick='plusSlides(-1,$id)'>&#10094;</a>");
+        echo ("<a class='next' onclick='plusSlides(1,$id)'>&#10095;</a>");
+
+        // caption
+        echo ('<div class="fundo"><br></div>');
+        echo ('<div class="caption1"><a>');
+        echo (getNameMoradia($id));
+        echo ('</a></div>');
+        echo ('<div class="forday"><br>&nbsp;/&nbsp;night</div>');
+        echo ('<div class="price"><br>');
+        echo (getPrice($id));
+        echo ('</div>');
+
+        $Rating = getRating($id);
+
+        for ($i = 1; $i <= $Rating; $i++) {
+            echo ("<div class='star{$i}'>");
+            echo ('<img src="../icons/star.png" width="25px" height="25px" /> </div>');
+        }
+        echo ('</div>'); // end showslides
     
+}
