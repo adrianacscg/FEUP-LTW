@@ -1,9 +1,10 @@
 body{
-    width: 60em;
+    width: auto;
+    display: grid;
+    grid-template-columns: 60% 40%;
 }
 
 form{
-    display: flex;
     
     text-align: center;
     margin-left: 30em;
@@ -21,4 +22,16 @@ form{
 
 #datFim{
     border-radius: 10px;
+}
+
+aside{
+    
+    grid-row-start: 1;
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+div{
+    grid-column-start: 1;
+    grid-column-end: 2;
 }

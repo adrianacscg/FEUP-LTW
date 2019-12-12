@@ -1,26 +1,38 @@
 <?php
 include_once('../database/db_places.php');
 
-function list_places($localidade,$checkin,$checkout){
+function list_places($localidade,$checkin,$checkout,$preco){
+
+    
     
     if($checkin==""){
         $places=get_places($localidade);
-    }else {
-        
-        $places=get_places($localidade, $checkin, $checkout);
+    }else{
+        if($preco=="") $preco=100000;
+        $places=get_places($localidade, $checkin, $checkout,$preco);
+    }
+
+    //Verifica se existem localidades com a especificacao pretendida
+    if(empty($places)){
+        echo '<p> Nao existem moradias nessa localidade! </p>';
+        return;
     }
     
-    echo '<ul>';
+    
     foreach($places as $place){
-        
-        echo '<li>' . $place['nome'] . '</li>';
-        list_images($place['idMoradia']);
-        echo '<li>Preco/dia: ' . $place['preco'] .'</li>';
-        echo '<li>' . "<a href=../pages/anuncio.php?id=". $place['idMoradia'] . '&ci=' . $checkin . '&co=' . $checkout .">Ver Casa</a>" . '</li>';
-        
+        echo '<div id ="' . $place['idMoradia'] . '" >';
+            echo '<ul>';
+            
+                echo '<li>' . $place['nome'] . '</li>';
+                list_images($place['idMoradia']);
+                echo '<li>Preco/dia: ' . $place['preco'] .'</li>';
+                echo '<li>' . "<a href=../pages/anuncio.php?id=". $place['idMoradia'] . '&ci=' . $checkin . '&co=' . $checkout .">Ver Casa</a>" . '</li>';
+            echo '</ul>';
+        echo '</div>';
         echo '<br></br>';
+      
     }
-    echo '</ul>';
+    
 
 }
 

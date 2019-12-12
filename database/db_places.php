@@ -78,7 +78,7 @@
 
     }
 
-    function get_places($location,$checkin=0,$checkout=0){
+    function get_places($location,$checkin=0,$checkout=0, $preco=1000000){
 
         try{
             $dbh = Database::instance()->db();
@@ -101,10 +101,10 @@
                 
                 $stmt = $dbh->prepare('SELECT * 
                                    FROM Moradia M
-                                   WHERE M.localizacao = ? AND idMoradia NOT IN
+                                   WHERE M.localizacao = ? AND preco <= ? AND idMoradia NOT IN
                                             ( SELECT idMoradia FROM Reserva WHERE ( ? BETWEEN dataInicio AND dataFim) OR (? BETWEEN dataInicio AND dataFim)) GROUP BY idMoradia');
                       
-                $stmt ->execute(array($location,$checkin,$checkout));
+                $stmt ->execute(array($location,$preco,$checkin,$checkout));
             }
             
             return $stmt->fetchAll();

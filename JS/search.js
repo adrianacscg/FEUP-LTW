@@ -11,8 +11,6 @@ let dataAtualS = yyyy + '-' + mm + '-' + dd
 let dateI = document.getElementById('datIni')
 let dateF = document.getElementById('datFim')
 
-dateI.value= dataAtualS
-
 dateI.addEventListener('change', dateChangeI)
 dateF.addEventListener('change', dateChangeF)
 
@@ -54,5 +52,16 @@ function LetsSubmit(event){
         alert("Get your fucking shit together and input some fcking dates")
     }
 }
+
+
+//code section to update value of ranger to textbox
+let RangeValue= document.getElementById('Ranger')
+
+RangeValue.addEventListener('change', showOnTextbox)
+
+function showOnTextbox(event){
+    document.getElementById('RangeValue').value=event.target.value
+}
+
 
 
