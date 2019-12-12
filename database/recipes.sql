@@ -97,6 +97,6 @@ CREATE TABLE Chat (
   idRemetente INTEGER REFERENCES Utilizador(idUtilizador) ON DELETE set null ON UPDATE cascade,
   idRecetor INTEGER REFERENCES Utilizador(idUtilizador) ON DELETE set null ON UPDATE cascade,
   date INTEGER NOT NULL,
-  nome TEXT,
+  nomeRem TEXT,
   texto TEXT
 );

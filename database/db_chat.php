@@ -1,6 +1,7 @@
 <?php
     include_once('../includes/database.php');
     
+    //função que retorna o nome das pessoas que a pessoa com id=$id mandou mensagem
     function get_people_chat($id){
 
         //tenta ligar à base de dados
@@ -15,7 +16,7 @@
         //tenta fazer a query
         try{
 
-            $stmt = $dbh->prepare('SELECT * FROM Chat WHERE id = ? OR ');
+            $stmt = $dbh->prepare('SELECT idRecetor FROM Chat WHERE idRemetente = ? GROUP BY idRecetor');
             $stmt ->execute(array($id));
 
         }catch (PDOException $e){
@@ -23,7 +24,7 @@
             return array();
         }
         
-        return $stmt->fetch();
+        return $stmt->fetchAll();
     }
 
 ?>
