@@ -20,15 +20,15 @@ function list_places($localidade,$checkin,$checkout,$preco){
     
     
     foreach($places as $place){
-        echo '<div id ="' . $place['idMoradia'] . '" >';
-            echo '<ul>';
+        
+        echo '<ul>';
             
-                echo '<li>' . $place['nome'] . '</li>';
-                list_images($place['idMoradia']);
-                echo '<li>Preco/dia: ' . $place['preco'] .'</li>';
-                echo '<li>' . "<a href=../pages/anuncio.php?id=". $place['idMoradia'] . '&ci=' . $checkin . '&co=' . $checkout .">Ver Casa</a>" . '</li>';
-            echo '</ul>';
-        echo '</div>';
+            echo '<li>' . $place['nome'] . '</li>';
+            list_images($place['idMoradia']);
+            echo '<li>Preco/dia: ' . $place['preco'] .'</li>';
+            echo '<li>' . "<a href=../pages/anuncio.php?id=". $place['idMoradia'] . '&ci=' . $checkin . '&co=' . $checkout .">Ver Casa</a>" . '</li>';
+        echo '</ul>';
+        
         echo '<br></br>';
       
     }
