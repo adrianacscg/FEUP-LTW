@@ -251,5 +251,23 @@ function updateUserPhoto($userID, $photoPath) {
     }
   }
 
+  function getUserName($id){
 
+    //tenta ligar à base de dados
+    try{
+      $dbh= Database::instance()->db();
+
+    }catch(Exception $e){
+      return $e;
+    }
+
+    try {
+        $stmt = $dbh->prepare('SELECT * FROM Utilizador WHERE idUtilizador = ?');
+        $stmt->execute(array($id));
+            
+        return $stmt->fetch();
+      }catch(PDOException $e) {
+        return false;
+      }
+  }
 ?>

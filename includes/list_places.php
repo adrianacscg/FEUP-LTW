@@ -53,6 +53,7 @@ function list_place($id,$checkin,$checkout){
 
     list_comodidades($id);
     
+
     echo '<br></br>';
     // disponibilidades
     echo '<form id="Sform" action= "../actions/action_add_reser.php" method="POST">';
@@ -81,12 +82,8 @@ function list_place($id,$checkin,$checkout){
         echo '<input id="btn" type= "submit" value= "Book Now">';
     echo '</form>';
 
-    //Preço (utilizar javascript)
     
-    
-    
-
-        
+    echo '<a href= ../pages/chat_Pessoa.php?pessoa=' . $place['idUtilizador'] . ' > Speak to the Owner </a>';
 
 }
 
