@@ -204,8 +204,27 @@ body {
     
 }
 
+
 #MyBookings h3{
-    margin:2em;
+    margin-left: 4em;
+}
+
+
+#MyBookings h3 a{
+    text-decoration: none;
+    color: white;
+}
+
+#MyBookings h3 a[href^="#cancelreservation"]{
+    color: #ff4040;
+}
+
+#MyBookings img[src$="cross.png"] { 
+    position: relative;
+    bottom: 46px; 
+    left: 30px;
+    width: 35px;
+    height: 35px;     
 }
 
 #MyProperties{
@@ -535,7 +554,7 @@ footer p{
   .modalproperty {
     position: fixed;
     right: 0;
-    bottom: 30px;
+    bottom: 0px;
     left: 0;
     font-family: Arial, Helvetica, sans-serif;
     background: rgba(0,0,0,0.8);

@@ -3,10 +3,11 @@ session_start();
 include_once('../PHP/userinfo.php');
 include_once('../PHP/moradiasinfo.php');
 include_once('../PHP/propertiesinfo.php');
+include_once('../PHP/cancellation_booking.php');
 include_once('../database/db_user.php');
 
 //Redirect to profile page
-if($_SESSION['email'] == null)  
+if ($_SESSION['email'] == null)
     header('Location: ../html/index.html');
 ?>
 
@@ -110,15 +111,9 @@ if($_SESSION['email'] == null)
             echo ("<a style='font-weight:bold'>No Bookings!</a>");
             echo ("<br><br>");
         }
-        
-        
+
         foreach ($bookings as $booking) {
-            
-            /*
-            foreach ($idBooking as $booking)
-                $idBooking = $booking;
-            */
-            $idBooking= $booking['idMoradia'];
+            $idBooking = $booking['idMoradia'];
 
             echo ('<div class="slideshow-container">');
             $images = getImgsMoradia($idBooking);
@@ -126,11 +121,7 @@ if($_SESSION['email'] == null)
             $counterbookings++;
 
             foreach ($images as $imagee) {
-                /*
-                foreach ($image as $pathimage)
-                    $image = $pathimage;
-                */
-                $image=$imagee['caminho'];
+                $image = $imagee['caminho'];
                 echo ("<div class='mySlides$counterbookings'>");
                 echo ("<img src={$image}" . ' ' . 'width="100%" height="380px">');
                 echo ('</div>');
@@ -157,7 +148,7 @@ if($_SESSION['email'] == null)
                 echo ("<div class='star{$i}'>");
                 echo ('<img src="../icons/star.png" width="25px" height="25px" /> </div>');
             }
-            echo ('</div>');
+            echo ('</div>'); // end showslides
 
             //Dates and Total Amount Paid
             echo ('<h3> Dates: ');
@@ -171,9 +162,30 @@ if($_SESSION['email'] == null)
             echo ('€');
             echo ('</h3>');
 
-            echo ('</div>');
+            //Cancellation booking
+
+            $cancellationfree = getCancellation($idBooking);
+            $dtstartbooking = getDateStart($idBooking);
+
+            $dtstart = date("Y-m-d", strtotime($dtstartbooking));
+            $today = date("Y-m-d"); 
+
+            if ($today < $dtstart) {
+                echo("<div class='#cancelreservation$idBooking'> ");
+                //echo("<p> </p> ");
+                // CancelReservation($idBooking)
+                
+                echo("</div>");
+                
+                echo ("<h3><a href='#cancelreservation$idBooking'>Cancel Reservation</a></h3>");
+                echo ("<a href='#cancelreservation$idBooking'> <img src='../icons/cross.png' alt='cross'> </a>");
+            }
+
+
         }
         ?>
+            
+
     </section>
 
     <section id="MyProperties">
@@ -196,18 +208,17 @@ if($_SESSION['email'] == null)
             }
         }
 
-        foreach ($properties as $idproperty) {
-            foreach ($idproperty as $property)
-                $idproperty = $property;
+        foreach ($properties as $property) {
+            $idproperty = $property['idMoradia'];
+
 
             echo ('<div class="slideshow-container">');
             $images = getImgsMoradia($idproperty);
             $counterimg = 0;
             $counterproperties++;
 
-            foreach ($images as $image) {
-                foreach ($image as $pathimage)
-                    $image = $pathimage;
+            foreach ($images as $imagee) {
+                $image = $imagee['caminho'];
 
                 echo ("<div class='PmySlides$counterproperties'>");
                 echo ("<img src={$image}" . ' ' . 'width="100%" height="380px">');
@@ -280,7 +291,8 @@ if($_SESSION['email'] == null)
                 <br><br>
             </form>
         </div>');
-            
+
+            // edit property
             echo ("<h3><a href='#changeproperty$idproperty'>Edit Existing Property</a></h3>");
             echo ("<a href='#changeproperty$idproperty'> <img src='../icons/lapis.png' alt='Pencil'> </a>");
         }
@@ -309,7 +321,7 @@ if($_SESSION['email'] == null)
                 <a>1 a 5</a>
                 <br><br>
                 <label for="iddescription">Description</label>
-                <input id="iddescription" type="text" name="description" size= "50" autocomplete="on" required>
+                <input id="iddescription" type="text" name="description" size="50" autocomplete="on" required>
                 <br><br>
                 <label for="idaddress">Address</label>
                 <input id="idaddress" type="text" name="address" autocomplete="on" required>
