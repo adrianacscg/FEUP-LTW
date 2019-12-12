@@ -1,29 +1,12 @@
 <?php
 include_once('../includes/database.php');
 
-function getCancellation($idbooking) {
-    
-    //tenta ligar à base de dados
-    try{
-        $dbh= Database::instance()->db();
-  
-      }catch(Exception $e){
-        return $e;
-    }
+$idbooking = $_GET['idbooking'];
 
-    try {
-      $stmt = $dbh->prepare('SELECT cancelamento FROM Moradia WHERE idMoradia = :idMoradia');
-      $stmt->bindParam(':idMoradia', $idbooking);
-      $stmt->execute();
-      $cancellation_y_n = $stmt->fetchColumn();
-      
-      if(strcasecmp($cancellation_y_n, "Sim") == 0)
-        return true;
-        else return false;
-    
-    }catch(PDOException $e) {
-      return -1;
-    }
+if($idbooking != null)
+{
+  CancelReservation($idbooking);
+  header('Location: ../pages/profile.php');
 }
 
 function CancelReservation($idbooking) {

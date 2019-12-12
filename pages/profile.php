@@ -3,7 +3,7 @@ session_start();
 include_once('../PHP/userinfo.php');
 include_once('../PHP/moradiasinfo.php');
 include_once('../PHP/propertiesinfo.php');
-include_once('../PHP/cancellation_booking.php');
+include_once('../PHP/getCancel.php');
 include_once('../database/db_user.php');
 
 //Redirect to profile page
@@ -171,17 +171,9 @@ if ($_SESSION['email'] == null)
             $today = date("Y-m-d"); 
 
             if ($today < $dtstart) {
-                echo("<div class='#cancelreservation$idBooking'> ");
-                //echo("<p> </p> ");
-                // CancelReservation($idBooking)
-                
-                echo("</div>");
-                
-                echo ("<h3><a href='#cancelreservation$idBooking'>Cancel Reservation</a></h3>");
-                echo ("<a href='#cancelreservation$idBooking'> <img src='../icons/cross.png' alt='cross'> </a>");
+                echo("<h3><a href='../PHP/cancellation_booking.php?idbooking=$idBooking'>Cancel Reservation</a></h3>");
+                echo("<a href='../PHP/cancellation_booking.php?idbooking=$idBooking'> <img src='../icons/cross.png' alt='cross'> </a>");
             }
-
-
         }
         ?>
             

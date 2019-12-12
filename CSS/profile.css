@@ -215,7 +215,7 @@ body {
     color: white;
 }
 
-#MyBookings h3 a[href^="#cancelreservation"]{
+#MyBookings h3 a[href^="../PHP/cancellation_booking.php?"]{
     color: #ff4040;
 }
 
