@@ -18,6 +18,19 @@ dateF.addEventListener('change', dateChangeF)
 
 let idM=document.getElementById('idMor')
 
+//calcula preco
+
+let DateToChange= new Date(dateF.value)
+let DateInicial= new Date(dateI.value)
+
+let Difference_In_Time = DateToChange.getTime() - DateInicial.getTime();
+        
+let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); 
+
+if(Difference_In_Days>0){
+
+    document.getElementById('precoT').value = (Difference_In_Days + 1) * document.getElementById('precoD').innerHTML
+}
 
 function dateChangeI(event){
 
@@ -33,8 +46,8 @@ function dateChangeI(event){
 
 function dateChangeF(event){
 
-    let DateToChange= new Date(event.target.value)
-    let DateInicial= new Date(dateI.value)
+    DateToChange= new Date(event.target.value)
+    DateInicial= new Date(dateI.value)
 
     if(DateInicial > DateToChange){
         event.target.value=dateI
@@ -47,12 +60,12 @@ function dateChangeF(event){
             document.getElementById('precoT').value="";
             return;
         }
-        let Difference_In_Time = DateToChange.getTime() - DateInicial.getTime();
+        Difference_In_Time = DateToChange.getTime() - DateInicial.getTime();
         
 
-        let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); 
+        Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); 
 
-        document.getElementById('precoT').value = Difference_In_Days * document.getElementById('precoD').innerHTML
+        document.getElementById('precoT').value = (Difference_In_Days + 1) * document.getElementById('precoD').innerHTML
     }
 }
 
@@ -67,15 +80,15 @@ function LetsSubmit(event){
 
     event.preventDefault()
     if( dateI.value=="" || dateF.value==""){
-        event.preventDefault()
+        
         alert("Get your fucking shit together and input some fucking dates")
     }else{
         let request = new XMLHttpRequest();
 
         request.addEventListener("load", function(){
-
+            console.log(this)
             let response= JSON.parse(this.responseText)
-            console.log(response)
+            
             
             if(response=="0"){
                 event.preventDefault();
@@ -84,10 +97,11 @@ function LetsSubmit(event){
 
 
         });
-
-        request.open('POST', "../api/api_check_dates",false)
+        
+        request.open('POST', "../api/api_check_dates.php",false)
         request.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
-        request.send(encodeForAjax({'idM':idM.value,'ci': dateI,'co': dateF}))
+        console.log(request)
+        request.send(encodeForAjax({'idM':idM.value,'ci': dateI.value,'co': dateF.value}))
     }
     
 }

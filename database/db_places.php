@@ -116,12 +116,13 @@
 
     }
 
-    function check_dates($idM,$ci,$co){
+    function check_dates($idM, $ci, $co){
 
         try{
             $dbh = Database::instance()->db();
 
         }catch (Exception $e){
+
             echo $e->getMessage();
             return array();
         }
@@ -133,20 +134,25 @@
             $stmt = $dbh->prepare('SELECT * 
                                 FROM Moradia M
                                 WHERE idMoradia IN
-                                        ( SELECT idMoradia FROM Reserva WHERE ( ? BETWEEN dataInicio AND dataFim) OR (? BETWEEN dataInicio AND dataFim)) GROUP BY idMoradia');
+                                ( SELECT idMoradia FROM Reserva WHERE idMoradia = ? AND ( ? BETWEEN dataInicio AND dataFim) OR (? BETWEEN dataInicio AND dataFim))');
                     
             $stmt ->execute(array($idM,$ci,$co));
             
             $result=$stmt->fetch();
             
-            return empty($result);
+            //se estiver vazio significa que nao existem reservas, logo pode reservar
+            if( empty($result)){
+                return "1";
+            }else{
+                return "0";
+            }
             
 
         }catch (PDOException $e){
             echo $e->getMessage();
             return array();
         }
-
+        
     }
 
 ?>
