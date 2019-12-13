@@ -58,15 +58,15 @@ function list_place($id,$checkin,$checkout){
     // disponibilidades
     echo '<form id="Sform" action= "../actions/action_add_reser.php" method="POST">';
         
-        echo '<input type="text" name="idM" value="' . $id . '" hidden>';
+        echo '<input id="idMor" type="text" name="idM" value="' . $id . '" hidden>';
         
         echo '<label for= "datIni">Data de Inicio</label>';
-        echo '<input type= "text" name= "dataInicio" id= "datIni" readonly value=' . $checkin . '>';
+        echo '<input type= "date" name= "dataInicio" id= "datIni" value=' . $checkin . '>';
 
         echo '<br></br>';
         
         echo '<label for = "dataFim">Data de Fim</label>';
-        echo '<input type= "text" name= "dataFim" id= "datFim" readonly value=' . $checkout . '>';
+        echo '<input type= "date" name= "dataFim" id= "datFim" value=' . $checkout . '>';
         
         echo '<div id="preco">';
         echo '<p>Preco por noite:</p> <p id="precoD">' . $place['preco'] . '</p>';

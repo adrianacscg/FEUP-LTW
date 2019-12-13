@@ -1,11 +1,102 @@
 'use strict'
 
-let ci=new Date(document.getElementById('datIni').value)
+let dataAtual= new Date()
 
-let co = new Date(document.getElementById('datFim').value)
+let dd = String(dataAtual.getDate()).padStart(2, '0')
+let mm = String(dataAtual.getMonth() + 1).padStart(2, '0') 
+let yyyy = dataAtual.getFullYear()
 
-let Difference_In_Time = co.getTime() - ci.getTime(); 
+let dataAtualS = yyyy + '-' + mm + '-' + dd
 
-let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); 
+let dateI = document.getElementById('datIni')
+let dateF = document.getElementById('datFim')
 
-document.getElementById('precoT').value = Difference_In_Days * document.getElementById('precoD').innerHTML
+dateI.addEventListener('change', dateChangeI)
+dateF.addEventListener('change', dateChangeF)
+
+//id da Moradia
+
+let idM=document.getElementById('idMor')
+
+
+function dateChangeI(event){
+
+    let DateToChange= new Date(event.target.value)
+    let DateFinal= new Date(dateF.value)
+
+    if(DateToChange < dataAtual || DateToChange > DateFinal){
+        event.target.value=dataAtualS
+        //nao será com alert
+        alert("Hey dumbass, introduce a fucking valid date")
+    }
+}
+
+function dateChangeF(event){
+
+    let DateToChange= new Date(event.target.value)
+    let DateInicial= new Date(dateI.value)
+
+    if(DateInicial > DateToChange){
+        event.target.value=dateI
+        //nao será com alert
+        alert("Hey dumbshit, introduce a fucking valid date") 
+    }else{
+        
+        if(event.target.value=="") {
+            
+            document.getElementById('precoT').value="";
+            return;
+        }
+        let Difference_In_Time = DateToChange.getTime() - DateInicial.getTime();
+        
+
+        let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); 
+
+        document.getElementById('precoT').value = Difference_In_Days * document.getElementById('precoD').innerHTML
+    }
+}
+
+//Button submit
+
+let submit=document.getElementById('Sform')
+
+
+submit.addEventListener('submit',LetsSubmit)
+
+function LetsSubmit(event){
+
+    event.preventDefault()
+    if( dateI.value=="" || dateF.value==""){
+        event.preventDefault()
+        alert("Get your fucking shit together and input some fucking dates")
+    }else{
+        let request = new XMLHttpRequest();
+
+        request.addEventListener("load", function(){
+
+            let response= JSON.parse(this.responseText)
+            console.log(response)
+            
+            if(response=="0"){
+                event.preventDefault();
+                alert("Já existe uma reserva para essa data!")
+            }
+
+
+        });
+
+        request.open('POST', "../api/api_check_dates",false)
+        request.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
+        request.send(encodeForAjax({'idM':idM.value,'ci': dateI,'co': dateF}))
+    }
+    
+}
+
+
+
+// Helper function
+function encodeForAjax(data) {
+    return Object.keys(data).map(function(k){
+      return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+    }).join('&')
+}

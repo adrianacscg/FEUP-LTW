@@ -54,7 +54,7 @@ function checkEmail(event){
     request.open('POST', "../api/api_user_exists.php",false)
     request.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
     request.send(encodeForAjax({'email': email}))
-    console.log(request)
+    
 
     
 }

@@ -116,4 +116,37 @@
 
     }
 
+    function check_dates($idM,$ci,$co){
+
+        try{
+            $dbh = Database::instance()->db();
+
+        }catch (Exception $e){
+            echo $e->getMessage();
+            return array();
+        }
+
+        try
+        {
+           
+                
+            $stmt = $dbh->prepare('SELECT * 
+                                FROM Moradia M
+                                WHERE idMoradia IN
+                                        ( SELECT idMoradia FROM Reserva WHERE ( ? BETWEEN dataInicio AND dataFim) OR (? BETWEEN dataInicio AND dataFim)) GROUP BY idMoradia');
+                    
+            $stmt ->execute(array($idM,$ci,$co));
+            
+            $result=$stmt->fetch();
+            
+            return empty($result);
+            
+
+        }catch (PDOException $e){
+            echo $e->getMessage();
+            return array();
+        }
+
+    }
+
 ?>
