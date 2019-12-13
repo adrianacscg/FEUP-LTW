@@ -136,7 +136,7 @@ if ($_SESSION['email'] == null)
 
             // caption
             echo ('<div class="fundo"><br></div>');
-            echo ('<div class="caption1"><a>');
+            echo ('<div class="caption1"><a href="../pages/anuncio.php">');
             echo (getNameMoradia($idBooking));
             echo ('</a></div>');
             echo ('<div class="forday"><br>&nbsp;/&nbsp;night</div>');

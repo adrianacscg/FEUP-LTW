@@ -125,6 +125,11 @@
     font-size: 25px;
 }
 
+.caption1 a {
+    text-decoration: none;
+    color:white;
+}
+
 .slideshow-container .star1{
     position: absolute;
     width: 480px;

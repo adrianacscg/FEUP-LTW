@@ -5,7 +5,7 @@
 
     
     if(!isset($_GET['id'])){
-        die(header('Location: ../html/main.html'));
+        die(header('Location: ../html/index.html'));
     }
     
     
