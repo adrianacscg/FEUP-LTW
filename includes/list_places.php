@@ -1,7 +1,6 @@
 <?php
 include_once('../database/db_places.php');
 include_once('../database/db_user.php');
-include_once('../PHP/db_user.php');
 include_once('../PHP/moradiasinfo.php');
 
 function list_places($localidade,$checkin,$checkout,$preco){
@@ -107,8 +106,6 @@ function list_comodidades($id){
 }
 
 function list_images($id){
-
-    //testar adicionar propriedade e ver slides no search.php POR CAUSA DO MYSLIDES$ID
 
         echo ('<div class="slideshow-container">');
 

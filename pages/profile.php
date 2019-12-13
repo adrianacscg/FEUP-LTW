@@ -19,6 +19,8 @@ if ($_SESSION['email'] == null)
     <title>Tavel Crib - Profile</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/CSS" href="../CSS/profile.css">
+    <link rel="stylesheet" type="text/CSS" href="../CSS/showslides.css">
+    <link rel="stylesheet" type="text/CSS" href="../CSS/footer.css">
     <script src="../JS/changesuser.js" defer></script>
     <script src="../JS/changecard.js" defer></script>
     <script src="../JS/showslides.js" async></script>

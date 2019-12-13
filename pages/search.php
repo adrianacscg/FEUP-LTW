@@ -7,13 +7,14 @@
     <head>
         <title>RentAHouse</title>
         <link rel="stylesheet" type="text/CSS" href="../CSS/search.css">
+        <link rel="stylesheet" type="text/CSS" href="../CSS/showslides.css">
+        <link rel="stylesheet" type="text/CSS" href="../CSS/footer.css">
         <script src="../JS/search.js" defer></script>
         <script src="../JS/showslides.js" async></script>
         <meta charset="UTF-8">
     </head>
     <body>
-        
-
+    
         <?php
             //filtra caracteres que nao sao letras
             if(isset($_GET['loc']))
@@ -38,4 +39,9 @@
         </aside>
         
     </body>
+<footer>
+    <h1> Travel Crib </h1>
+    <a href="main.html#about">About Us</a>
+    <p> made with &#10084 2019 &#9400 Copyright </p>
+</footer>
 </html>
