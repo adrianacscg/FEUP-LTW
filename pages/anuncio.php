@@ -28,6 +28,7 @@
 
         <?php list_place($_GET['id'],$_GET['ci'],$_GET['co']);?>
 
+
         
     </body>
 </html>

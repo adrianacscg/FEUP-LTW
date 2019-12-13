@@ -9,18 +9,19 @@
 
         }catch (Exception $e){
             echo $e->getMessage();
-            return array();
+            return false;
         }
 
         //tenta fazer a query
         try{
 
-            $stmt = $dbh->prepare('INSERT INTO Reserva VALUES (? ,? ,? ,? ,?)');
+            $stmt = $dbh->prepare('INSERT INTO Reserva(precoTotal,dataInicio,dataFim, idMoradia, idUtilizador) VALUES (? ,? ,? ,? ,?)');
             $stmt ->execute(array($precoTotal,$checkin,$checkout,$idM,$idU));
+            return true;
 
         }catch (PDOException $e){
             echo $e->getMessage();
-            return array();
+            return false;
         }
     }
 

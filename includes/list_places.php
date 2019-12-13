@@ -56,7 +56,7 @@ function list_place($id,$checkin,$checkout){
 
     echo '<br></br>';
     // disponibilidades
-    echo '<form id="Sform" action= "../actions/action_adsd_reser.php" method="POST">';
+    echo '<form id="Sform" action= "../actions/action_add_reser.php" method="POST">';
         
         echo '<input id="idMor" type="text" name="idM" value="' . $id . '" hidden>';
         

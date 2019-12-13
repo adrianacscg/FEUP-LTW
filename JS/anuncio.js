@@ -78,10 +78,11 @@ submit.addEventListener('submit',LetsSubmit)
 
 function LetsSubmit(event){
 
-    event.preventDefault()
+    
     if( dateI.value=="" || dateF.value==""){
         
         alert("Get your fucking shit together and input some fucking dates")
+        event.preventDefault()
     }else{
         let request = new XMLHttpRequest();
 
