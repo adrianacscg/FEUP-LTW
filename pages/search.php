@@ -37,7 +37,7 @@
             if(isset($_GET['loc']))
                 list_places($loc,$ci,$co,$val);
             else
-                echo '<p> Introduza a localidade (obrigatório) </p>';
+                echo '<p> Introduce a place to search </p>';
 
         ?>
         <aside>

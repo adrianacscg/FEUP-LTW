@@ -6,6 +6,8 @@ include_once('../includes/session.php');
 
 function list_places($localidade,$checkin,$checkout,$preco){
     
+    $localidade=ucfirst(strtolower($localidade));
+
     if($checkin==""){
         $places=get_places($localidade);
     }else{
