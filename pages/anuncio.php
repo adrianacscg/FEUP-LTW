@@ -5,7 +5,7 @@
 
     
     if(!isset($_GET['id'])){
-        die(header('Location: ../html/index.html'));
+        die(header('Location: ../pages/search.php'));
     }
     
     
@@ -28,7 +28,24 @@
         <h1><a href="main.html">Travel Crib</a></h1>
     </header>
 
-        <?php list_place($_GET['id'],$_GET['ci'],$_GET['co']);?>
+        <?php 
+        
+        $id= preg_replace("/[^0-9]/",'',$_GET['id']);
+
+        if (isset($_GET['ci'])) 
+            $ci=preg_replace('/[^0-9\-]/','',$_GET['ci']);
+        else
+            $ci="";
+        
+        if (isset($_GET['co']))
+            $co=preg_replace('/[^0-9\-]/','',$_GET['co']);
+        else
+            $co="";
+
+        list_place($id,$ci,$co);
+        
+        
+        ?>
 
 
         

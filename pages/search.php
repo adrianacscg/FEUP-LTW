@@ -16,23 +16,40 @@
     <body>
     
         <?php
-            //filtra caracteres que nao sao letras
+            //filtra os caracteres que nao letras
+            if (isset($_GET['loc']))
+                $loc=preg_replace("/[^a-zA-Z\s]/",'',$_GET['loc']);
+            else
+                $loc="";
+
+            if (isset($_GET['ci'])) 
+                $ci=preg_replace('/[^0-9\-]/','',$_GET['ci']);
+            
+            if (isset($_GET['co']))
+                $co=preg_replace('/[^0-9\-]/','',$_GET['co']);
+
+            if (isset($_GET['rval']))
+                $val=preg_replace('/[^0-9]/','',$_GET['rval']);
+            else
+                $val="";
+
+
             if(isset($_GET['loc']))
-                list_places(preg_replace ("/[^a-zA-Z\s]/", '', $_GET['loc']),$_GET['ci'],$_GET['co'],$_GET['rval']);
+                list_places($loc,$ci,$co,$val);
             else
                 echo '<p> Introduza a localidade (obrigatório) </p>';
 
         ?>
         <aside>
             <form id= "Sform" method="GET" action= "search.php">
-                <input type="text" id="loca" placeholder="where do you want to go?" name= "loc" value="<?php if(isset($_GET['loc'])) {echo $_GET['loc'];}?>" required>
-                <input type="date" id="datIni" placeholder="check-in" name="ci" value= "<?php if(isset($_GET['ci'])) {echo $_GET['ci'];}?>">
-                <input type="date" id="datFim" placeholder="check-out" name="co" value = "<?php if(isset($_GET['co'])) {echo $_GET['co'];}?>">
+                <input type="text" id="loca" placeholder="where do you want to go?" name= "loc" value="<?=$loc;?>" required>
+                <input type="date" id="datIni" placeholder="check-in" name="ci" value= "<?=$ci;?>">
+                <input type="date" id="datFim" placeholder="check-out" name="co" value = "<?=$co;?>">
                 
                 <p>Filter</p>
                 <br></br>
-                <input type= "range" id="Ranger" name="range" value= "<?php if(isset($_GET['rval'])) {echo $_GET['rval'];}?>" min="0" max= "10000" step="10">
-                <input type="text" id="RangeValue" name="rval" readonly value= "<?php if(isset($_GET['rval'])) {echo $_GET['rval'];}?>">
+                <input type= "range" id="Ranger" name="range" value= "<?=$val;?>" min="0" max= "10000" step="10">
+                <input type="text" id="RangeValue" name="rval" readonly value= "<?=$val;?>">
                 <br></br>
                 <input type="submit" id="submitFilter" value="Filtrar">
             </form>
@@ -41,7 +58,7 @@
     </body>
 <footer>
     <h1> Travel Crib </h1>
-    <a href="main.html#about">About Us</a>
+    <a href="../html/index.html#slide3">About Us</a>
     <p> made with &#10084 2019 &#9400 Copyright </p>
 </footer>
 </html>

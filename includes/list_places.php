@@ -2,6 +2,7 @@
 include_once('../database/db_places.php');
 include_once('../database/db_user.php');
 include_once('../PHP/moradiasinfo.php');
+include_once('../includes/session.php');
 
 function list_places($localidade,$checkin,$checkout,$preco){
     
@@ -57,6 +58,10 @@ function list_place($id,$checkin,$checkout){
     // disponibilidades
     echo '<form id="Sform" action= "../actions/action_add_reser.php" method="POST">';
         
+        // necessario para prevenir ataques csrf  
+        echo '<input type="hidden" name="csrf" value="'. $_SESSION['csrf'] . '">';
+
+
         echo '<input id="idMor" type="text" name="idM" value="' . $id . '" hidden>';
         
         echo '<label for= "datIni">Data de Inicio</label>';

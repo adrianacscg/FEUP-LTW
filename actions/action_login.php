@@ -9,7 +9,7 @@
     $id=isLoginCorrect($email, $password);
     
     
-    if ($id!=-1) {
+    if ($id!==false) {
         
         $_SESSION['email'] = $email;
         $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Logged in successfully!');

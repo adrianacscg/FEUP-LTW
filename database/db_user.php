@@ -9,30 +9,28 @@
       $dbh= Database::instance()->db();
 
     }catch(Exception $e){
+      echo $e->getMessage();
       return $e;
     }
-    
-    $passwordhashed = hash('sha256', $password);
+  
 
     try {
 
-      $stmt = $dbh->prepare('SELECT * FROM Utilizador WHERE email = ? AND password = ?');
+      $stmt = $dbh->prepare('SELECT * FROM Utilizador WHERE email = ?');
 
-      $stmt->execute(array($email, $passwordhashed));
+      $stmt->execute(array($email));
 
       $pessoa=$stmt->fetch();
 
-      if(empty($pessoa)) {
-
-        return -1;
-
-      }else{
-
+      if($pessoa !== false && password_verify($password,$pessoa['password'])){
         return $pessoa['idUtilizador'];
+      }else {
+        return false;
       }
     
     } catch(PDOException $e) {
-      
+
+      echo $e->getMessage();
       return -1;
     }
   }
@@ -40,13 +38,14 @@
   //Função que adiciona um utilizador na base de dados
   function createUser($password, $name, $email) {
     
-    $passwordhashed = hash('sha256', $password);
+    $options=['cost'=>12];
 
     //tenta ligar à base de dados
     try{
       $dbh= Database::instance()->db();
 
     }catch(Exception $e){
+      echo $e->getMessage();
       return $e;
     }
 
@@ -54,17 +53,14 @@
     try {
 
       $stmt = $dbh->prepare('INSERT INTO Utilizador(nomeCompleto, email, password)
-          VALUES (:Name,  :Email, :Password)');
+          VALUES (?, ?, ?)');
         
-      $stmt->bindParam(':Name', $name);
-      $stmt->bindParam(':Email', $email);
-      $stmt->bindParam(':Password', $passwordhashed);
-      
-      $stmt->execute();
+      $stmt->execute(array($name,$email,password_hash($password, PASSWORD_DEFAULT, $options)));
       
   
     }catch(PDOException $e) {
       
+      echo $e->getMessage();
       return $e;
     }
 
