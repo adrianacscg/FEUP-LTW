@@ -4,7 +4,7 @@
     include_once('../database/db_user.php');
     
     //nome completo
-    $name= $_POST['firstName'] .' '. $_POST['lastName'];
+    $name= trim($_POST['firstName']) .' '. trim($_POST['lastName']);
     
     
     //cria utilizador   

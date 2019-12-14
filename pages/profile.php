@@ -1,5 +1,5 @@
 <?php
-session_start();
+include_once('../includes/session.php');
 include_once('../PHP/userinfo.php');
 include_once('../PHP/moradiasinfo.php');
 include_once('../PHP/propertiesinfo.php');

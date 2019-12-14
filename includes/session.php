@@ -1,8 +1,8 @@
 
 <?php
+
   session_set_cookie_params(0, '/', 'localhost', true, true);
   session_start();
-  session_regenerate_id(true);
 
   function generate_random_token() {
     return bin2hex(openssl_random_pseudo_bytes(32));
