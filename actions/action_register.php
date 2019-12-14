@@ -17,7 +17,10 @@
     $_SESSION['id'] = $id_user;
 
     //Redirect to main page
-    header('Location: ' . $_SESSION['lastPage']);
+    if(isset($_SESSION['lastPage']))
+        die(header('Location: ' . $_SESSION['lastPage']));
+    else 
+        die(header('Location: ../html/index.html'));
     
 
 ?>
