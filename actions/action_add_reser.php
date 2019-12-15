@@ -1,7 +1,8 @@
 <?php
     include_once('../database/db_reservation.php');
     include_once('../includes/session.php');
-    die;
+    
+    
     if (!isset($_SESSION['id'])){
         $_SESSION['lastPage']= '../pages/anuncio.php?id='. $_POST['idM'] ;
         die(header('Location: ../pages/register.html'));

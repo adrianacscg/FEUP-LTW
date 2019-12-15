@@ -102,7 +102,7 @@
                 $stmt = $dbh->prepare('SELECT * 
                                    FROM Moradia M
                                    WHERE M.localizacao = ? AND preco <= ? AND idMoradia NOT IN
-                                            ( SELECT idMoradia FROM Reserva WHERE ( ? BETWEEN dataInicio AND dataFim) OR (? BETWEEN dataInicio AND dataFim)) GROUP BY idMoradia');
+                                            ( SELECT idMoradia FROM Reserva WHERE (  strftime("%s", dataInicio) BETWEEN strftime("%s", ?) AND strftime("%s", ?)  OR strftime("%s", dataFim) BETWEEN strftime("%s", ?) AND strftime("%s", ?)) GROUP BY idMoradia');
                       
                 $stmt ->execute(array($location,$preco,$checkin,$checkout));
             }
@@ -133,17 +133,9 @@
                 
             $stmt = $dbh->prepare('SELECT idMoradia
                                      FROM Reserva WHERE idMoradia = ? AND 
-                                     ( 
-                                         
-                                         strftime("%s", ?) BETWEEN strftime("%s", dataInicio) AND strftime("%s", dataFim)
-                                          
-                                      OR
-                                        
-                                        strftime("%s", ?) BETWEEN strftime("%s", dataInicio) AND strftime("%s", dataFim)
-                                        
-                                     ) ');
+                                     ( strftime("%s", dataInicio) BETWEEN strftime("%s", ?) AND strftime("%s", ?)  OR strftime("%s", dataFim) BETWEEN strftime("%s", ?) AND strftime("%s", ?))');
                     
-            $stmt ->execute(array($idM,$ci,$co));
+            $stmt ->execute(array($idM,$ci,$co,$ci,$co));
             
             $result=$stmt->fetchAll();
             
