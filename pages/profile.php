@@ -37,7 +37,7 @@ if ($_SESSION['email'] == null)
             <li><a href="#MyProfile">My Profile</a></li>
             <li><a href="#MyBookings">My Bookings</a></li>
             <li><a href="#MyProperties">My Properties</a></li>
-            <li><a href="main.html">Logout</a></li>
+            <li><a href="../actions/action_logout.php">Logout</a></li>
         </ul>
     </nav>
     <section id="MyProfile">
@@ -341,7 +341,7 @@ if ($_SESSION['email'] == null)
 </body>
 <footer>
     <h1> Travel Crib </h1>
-    <a href="main.html#about">About Us</a>
+    <a href="index.html">About Us</a>
     <p> made with &#10084 2019 &#9400 Copyright </p>
 </footer>
 
