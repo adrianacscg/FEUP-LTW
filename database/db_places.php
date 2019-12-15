@@ -131,14 +131,21 @@
         {
            
                 
-            $stmt = $dbh->prepare('SELECT * 
-                                FROM Moradia M
-                                WHERE idMoradia IN
-                                ( SELECT idMoradia FROM Reserva WHERE idMoradia = ? AND ( ? BETWEEN dataInicio AND dataFim) OR (? BETWEEN dataInicio AND dataFim))');
+            $stmt = $dbh->prepare('SELECT idMoradia
+                                     FROM Reserva WHERE idMoradia = ? AND 
+                                     ( 
+                                         
+                                         strftime("%s", ?) BETWEEN strftime("%s", dataInicio) AND strftime("%s", dataFim)
+                                          
+                                      OR
+                                        
+                                        strftime("%s", ?) BETWEEN strftime("%s", dataInicio) AND strftime("%s", dataFim)
+                                        
+                                     ) ');
                     
             $stmt ->execute(array($idM,$ci,$co));
             
-            $result=$stmt->fetch();
+            $result=$stmt->fetchAll();
             
             //se estiver vazio significa que nao existem reservas, logo pode reservar
             if( empty($result)){

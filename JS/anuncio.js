@@ -79,6 +79,8 @@ submit.addEventListener('submit',LetsSubmit)
 function LetsSubmit(event){
 
     
+    
+    
     if( dateI.value=="" || dateF.value==""){
         
         alert("Get your fucking shit together and input some fucking dates")
@@ -93,7 +95,7 @@ function LetsSubmit(event){
             
             if(response=="0"){
                 event.preventDefault();
-                alert("Já existe uma reserva para essa data!")
+                alert("There is already a reservation for that date!")
             }
 
 
@@ -101,9 +103,11 @@ function LetsSubmit(event){
         
         request.open('POST', "../api/api_check_dates.php",false)
         request.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
-        console.log(request)
+        console.log(dateF.value)
         request.send(encodeForAjax({'idM':idM.value,'ci': dateI.value,'co': dateF.value}))
+        
     }
+
     
 }
 
