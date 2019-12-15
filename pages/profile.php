@@ -136,7 +136,11 @@ if ($_SESSION['email'] == null)
 
             // caption
             echo ('<div class="fundo"><br></div>');
-            echo ('<div class="caption1"><a href="../pages/anuncio.php">');
+            echo ("<div class='caption1'><a href='../pages/anuncio.php?id=$idBooking&ci=");
+            echo(getDateStart($idBooking));
+            echo('&co=');
+            echo(getDateFinish($idBooking));
+            echo(" '> ");
             echo (getNameMoradia($idBooking));
             echo ('</a></div>');
             echo ('<div class="forday"><br>&nbsp;/&nbsp;night</div>');
@@ -226,7 +230,9 @@ if ($_SESSION['email'] == null)
 
             // caption
             echo ('<div class="fundo"><br></div>');
-            echo ('<div class="caption1"><a>');
+            echo ("<div class='caption1'><a href='../pages/anuncio.php?id=$idproperty&ci=");
+            echo('&co=');
+            echo(" '> ");
             echo (getNameMoradia($idproperty));
             echo ('</a></div>');
             echo ('<div class="forday"><br>&nbsp;/&nbsp;night</div>');
