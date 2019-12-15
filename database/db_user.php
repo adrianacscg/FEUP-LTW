@@ -100,8 +100,9 @@
   }
 
   function updateUserPassword($email, $newpassword) {
-    $passwordhashed = hash('sha256', $newpassword);
-    
+
+    $options=['cost'=>12];
+   
     //tenta ligar à base de dados
     try{
       $dbh= Database::instance()->db();
@@ -112,6 +113,8 @@
 
     try {
       $stmt = $dbh->prepare('UPDATE Utilizador SET Password = ? WHERE email = ?');
+      $stmt->execute(array(password_hash($newpassword, PASSWORD_DEFAULT, $options), $email));
+      
         
     }catch(PDOException $e) {
       return false;
@@ -119,6 +122,7 @@
 }
 
 function updateUserEmail($email, $newemail){
+  
   //tenta ligar à base de dados
   try{
     $dbh= Database::instance()->db();
