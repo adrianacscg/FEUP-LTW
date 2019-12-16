@@ -32,7 +32,7 @@
                         $message="";
                     }
                 ?>
-                <input id="message" type="text" value=<?=$message;?> readonly >
+                <input id="message" type="text" value="<?=$message;?>" hidden readonly >
                 
                 <span id="main_title" style="display:block">Travel Crib</span>
 

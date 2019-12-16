@@ -20,7 +20,7 @@
     </head>
     <body>
         <header>
-            <h1><a href="../html/index.html">Travel Crib</a></h1>
+            <h1><a href="../html/index.php">Travel Crib</a></h1>
         </header>
         <nav id="menu">
             <input type="checkbox" id="hamburger">
@@ -41,12 +41,19 @@
             else
                 $loc="";
 
+        
+
             if (isset($_GET['ci'])) 
                 $ci=preg_replace('/[^0-9\-]/','',$_GET['ci']);
+            else
+                $ci="";
             
-            if (isset($_GET['co']))
+            if (isset($_GET['co'])){
                 $co=preg_replace('/[^0-9\-]/','',$_GET['co']);
-
+            }
+            else{ 
+                $co="";
+            }
             if (isset($_GET['rval'])){
 
                 $val=preg_replace('/[^0-9]/','',$_GET['rval']);

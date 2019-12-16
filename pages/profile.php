@@ -30,7 +30,7 @@ if ($_SESSION['email'] == null)
 
 <body>
     <header>
-        <h1><a href="../html/index.html">Travel Crib</a></h1>
+        <h1><a href="../html/index.php">Travel Crib</a></h1>
     </header>
     <nav id="menu">
         <input type="checkbox" id="hamburger">

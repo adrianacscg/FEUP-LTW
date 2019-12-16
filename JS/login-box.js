@@ -183,6 +183,9 @@ window.addEventListener("load", () => {
 
     /* Error Message*/
     
-
+    let msg= document.getElementById('message').value
+    if(msg=="Login failed!"){
+        alert("Login failed!");
+    }
 
 });
