@@ -341,7 +341,7 @@ if ($_SESSION['email'] == null)
 </body>
 <footer>
     <h1> Travel Crib </h1>
-    <a href="index.html">About Us</a>
+    <a href="../html/about.html">About Us</a>
     <p> made with &#10084 2019 &#9400 Copyright </p>
 </footer>
 

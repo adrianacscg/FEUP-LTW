@@ -1,0 +1,21 @@
+body{
+    background-color: #b3dfde;
+}
+
+h1, p, h2{
+    color: white;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+h1{
+    text-align: center;
+}
+
+#ltw{
+    text-decoration: underline;
+}
+
