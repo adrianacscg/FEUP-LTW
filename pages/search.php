@@ -47,17 +47,20 @@
             if (isset($_GET['co']))
                 $co=preg_replace('/[^0-9\-]/','',$_GET['co']);
 
-            if (isset($_GET['rval']))
+            if (isset($_GET['rval'])){
+
                 $val=preg_replace('/[^0-9]/','',$_GET['rval']);
 
-                if($val<=0){
+                if($val<=0 || $val==""){
                     $val=0;
                 }
-            else
-                $val="";
-            
-            $types=array();
+            }
+            else{
+                $val=0;
+            }
 
+            $types=array();
+            
             if(isset($_GET['apartment'])){
                 if($_GET['apartment'] == "on"){
                     $types[]="Apartamento";
@@ -84,13 +87,22 @@
                     
                 }
             }
-
-
             
+            if (isset($_GET['quantity'])){
+                
+                $rating=preg_replace('/[^0-9]/','',$_GET['quantity']);
+
+                if($rating<=0 || $rating==""){
+                    $rating=0;
+                }
+            }
+            else{
+                $rating=0;
+            }
 
             if(isset($_GET['loc'])){
                 
-                list_places($loc,$ci,$co,$val,$types);
+                list_places($loc,$ci,$co,$val,$types,$rating);
             }else{
                 echo '<h3> Introduce a place to search </h3>';
             }
