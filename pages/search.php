@@ -26,9 +26,9 @@
             <input type="checkbox" id="hamburger">
             <label class="hamburger" for="hamburger"></label>
             <ul>
-                <li><a href="#MyProfile">My Profile</a></li>
-                <li><a href="#MyBookings">My Bookings</a></li>
-                <li><a href="#MyProperties">My Properties</a></li>
+                <li><a href="profile.php">My Profile</a></li>
+                <li><a href="profile.php">My Bookings</a></li>
+                <li><a href="profile.php">My Properties</a></li>
                 <li><a href="../actions/action_logout.php">Logout</a></li>
             </ul>
         </nav>
