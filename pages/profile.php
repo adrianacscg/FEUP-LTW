@@ -16,7 +16,7 @@ if ($_SESSION['email'] == null)
 <html lang="en-US">
 
 <head>
-    <title>Tavel Crib - Profile</title>
+    <title>Travel Crib - Profile</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/CSS" href="../CSS/profile.css">
     <link rel="stylesheet" type="text/CSS" href="../CSS/showslides.css">

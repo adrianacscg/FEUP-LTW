@@ -56,7 +56,7 @@
             if(isset($_GET['loc']))
                 list_places($loc,$ci,$co,$val);
             else
-                echo '<p> Introduce a place to search </p>';
+                echo '<h3> Introduce a place to search </h3>';
 
         ?>
         <aside>
@@ -90,6 +90,9 @@
                 <input type="checkbox" id="ac" name="ac">
                 <label for="wifi">Wi-fi</label>
                 <input type="checkbox" id="wifi" name="wifi">
+                <br></br>
+                <p>Rating</p>
+                <input type="number" name="quantity" min="1" max="5">
                 <br></br>
                 <input type="submit" id="submitFilter" value="Filtrar">
             </form>
