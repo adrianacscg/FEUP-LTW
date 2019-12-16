@@ -27,8 +27,8 @@ body > header a{
     color: white;
     padding: 1em;
     position: relative;
-    left: 700px;
-
+    margin-left: 92%;
+     
 }
 
 #menu .hamburger:before {
