@@ -136,3 +136,9 @@ body {
     margin-top: 1em;
     margin-left: 4em;
 }
+
+.clean{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}

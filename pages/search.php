@@ -130,20 +130,11 @@
                 <label for="hostel">Hostel</label>
                 <input type="checkbox" id="hostel" name="hostel">
                 <br></br>
-                <p>Comodities</p>
-                <label for="pets">Pets allowed</label>
-                <input type="checkbox" id="pets" name="pets">
-                <label for="pool">Pool</label>
-                <input type="checkbox" id="pool" name="pool">
-                <label for="ac">AC</label>
-                <input type="checkbox" id="ac" name="ac">
-                <label for="wifi">Wi-fi</label>
-                <input type="checkbox" id="wifi" name="wifi">
-                <br></br>
                 <p>Rating</p>
                 <input type="number" name="quantity" min="1" max="5">
                 <br></br>
                 <input type="submit" id="submitFilter" value="Filtrar">
+                <a class = "clean" href="search.php">Clean filters</a>
             </form>
         </aside>
         
