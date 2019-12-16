@@ -19,6 +19,6 @@
     } else {
         
         $_SESSION['messages'][] = array('type' => 'error', 'content' => 'Login failed!');
-        header('Location: ../html/index.html');
+        header('Location: ../html/index.php');
     }
 ?>
