@@ -2,6 +2,8 @@
 <?php
     include_once('../includes/session.php');
     include_once('../includes/list_places.php');
+    include_once('../includes/components/footer.php');
+    include_once('../includes/components/header.php');
 
     
     if(!isset($_GET['id'])){
@@ -18,6 +20,10 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/CSS" href="../CSS/anuncio.css">
         <link rel="stylesheet" type="text/CSS" href="../CSS/showslidesA.css">
+
+        <link rel="stylesheet" type="text/CSS" href="../includes/components/footer.css">
+        <link rel="stylesheet" type="text/CSS" href="../includes/components/header.css">
+
         <script src="../JS/showslides.js" async></script>
         <script src="../JS/anuncio.js" defer></script>
  
@@ -25,9 +31,10 @@
     <body>
         
     <header>
-        <h1><a href="main.html">Travel Crib</a></h1>
+        <?php draw_header();?>
     </header>
-
+        <br></br>
+        <div id="content">
         <?php 
         
         $id= preg_replace("/[^0-9]/",'',$_GET['id']);
@@ -46,8 +53,12 @@
         
         
         ?>
+        </div>
 
 
         
     </body>
+    <?php
+        draw_footer();
+    ?>
 </html>
