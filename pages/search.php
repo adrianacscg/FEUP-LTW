@@ -19,6 +19,19 @@
         <meta charset="UTF-8">
     </head>
     <body>
+        <header>
+            <h1><a href="../html/index.html">Travel Crib</a></h1>
+        </header>
+        <nav id="menu">
+            <input type="checkbox" id="hamburger">
+            <label class="hamburger" for="hamburger"></label>
+            <ul>
+                <li><a href="#MyProfile">My Profile</a></li>
+                <li><a href="#MyBookings">My Bookings</a></li>
+                <li><a href="#MyProperties">My Properties</a></li>
+                <li><a href="../actions/action_logout.php">Logout</a></li>
+            </ul>
+        </nav>
     
         <?php
 
@@ -52,10 +65,31 @@
                 <input type="date" id="datIni" placeholder="check-in" name="ci" value= "<?=$ci;?>">
                 <input type="date" id="datFim" placeholder="check-out" name="co" value = "<?=$co;?>">
                 
-                <p>Filter</p>
+                <h3>Filter</h3>
                 <br></br>
+                <label for="Ranger">Price: </label>
                 <input type= "range" id="Ranger" name="range" value= "<?=$val;?>" min="0" max= "10000" step="10">
                 <input type="text" id="RangeValue" name="rval" readonly value= "<?=$val;?>">
+                <br></br>
+                <p>Type</p>
+                <label for="apartment">Apartment</label>
+                <input type="checkbox" id="apartment" name="apartment">
+                <label for="house">House</label>
+                <input type="checkbox" id="house" name="house">
+                <label for="hotel">Hotel</label>
+                <input type="checkbox" id="hotel" name="hotel">
+                <label for="hostel">Hostel</label>
+                <input type="checkbox" id="hostel" name="hostel">
+                <br></br>
+                <p>Comodities</p>
+                <label for="pets">Pets allowed</label>
+                <input type="checkbox" id="pets" name="pets">
+                <label for="pool">Pool</label>
+                <input type="checkbox" id="pool" name="pool">
+                <label for="ac">AC</label>
+                <input type="checkbox" id="ac" name="ac">
+                <label for="wifi">Wi-fi</label>
+                <input type="checkbox" id="wifi" name="wifi">
                 <br></br>
                 <input type="submit" id="submitFilter" value="Filtrar">
             </form>
