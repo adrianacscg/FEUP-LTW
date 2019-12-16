@@ -4,15 +4,17 @@ include_once('../database/db_user.php');
 include_once('../PHP/moradiasinfo.php');
 include_once('../includes/session.php');
 
-function list_places($localidade,$checkin,$checkout,$preco){
+function list_places($localidade,$checkin,$checkout,$preco,$types){
     
     $localidade=ucfirst(strtolower($localidade));
 
+    
     if($checkin==""){
         $places=get_places($localidade);
     }else{
         if($preco=="") $preco=100000;
-        $places=get_places($localidade, $checkin, $checkout,$preco);
+
+        $places=get_places($localidade, $checkin, $checkout,$preco,$types);
     }
 
     //Verifica se existem localidades com a especificacao pretendida
@@ -26,11 +28,12 @@ function list_places($localidade,$checkin,$checkout,$preco){
         
         echo '<ul>';
             
-            echo '<li>' . $place['nome'] . '</li>';
             list_images($place['idMoradia']);
-            echo '<li>Preco/dia: ' . $place['preco'] .'</li>';
-            echo '<li>' . "<a href=../pages/anuncio.php?id=". $place['idMoradia'] . '&ci=' . $checkin . '&co=' . $checkout .">Ver Casa</a>" . '</li>';
+            echo "<a href=../pages/anuncio.php?id=". $place['idMoradia'] . '&ci=' . $checkin . '&co=' . $checkout .">Ver Casa</a>";
+            
         echo '</ul>';
+
+        echo '<br></br>';
         
         echo '<br></br>';
       

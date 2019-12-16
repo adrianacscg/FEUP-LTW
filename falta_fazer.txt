@@ -17,3 +17,7 @@ Extras faziveis:
 - Tourists should be able to send messages to owners, and owners should be able to reply.
 - Tourists should be able to rate and add comments to places they have stayed there. 
   Owners should be able to reply to those comments.
+
+
+- testar search
+- adicionar pesquisar por rating
