@@ -7,8 +7,6 @@
     $name= trim($_POST['firstName']) .' '. trim($_POST['lastName']);
 
     $name= preg_replace("/[^a-zA-z]/",'',$name);
-
-    
     
     //cria utilizador   
     $id_user = createUser($_POST['password'], $name, $_POST['email']);

@@ -12,12 +12,12 @@ function PassMatching(event){
 
     if (pass == event.target.value){
         
-        document.getElementById('idSubmit').disabled = false
+        canSubmit = true
         document.getElementById('match').style.display= "none"
 
     }else {
 
-        document.getElementById('idSubmit').disabled = true
+        canSubmit = false
         document.getElementById('match').style.display= "inline"
 
     }
@@ -36,6 +36,8 @@ function checkEmail(event){
     //Ajax Request
     let request = new XMLHttpRequest()
 
+    
+
     request.addEventListener("load",function(){
         
 
@@ -43,11 +45,14 @@ function checkEmail(event){
         console.log(response)
 
         if(response=="1"){
+
             document.getElementById('checked').style.display = "inline"
             event.preventDefault()
-        }else{
-            console.log("hello")
-        }   
+        } else if(canSubmit==false){
+            
+            document.getElementById('checked').style.display = "none"
+            event.preventDefault()
+        }
 
     })
 
@@ -70,15 +75,18 @@ function encodeForAjax(data) {
 
 let emailV= document.getElementById('idEmail')
 
+
+let canSubmit=true;
+
 emailV.addEventListener('change',verificateEmail)
 
 function verificateEmail(event){
     if (emailV.value.length>30){
 
-        document.getElementById('idSubmit').disabled = true
+        canSubmit = false
         document.getElementById('over').style.display= "inline"
     }else{
-        document.getElementById('idSubmit').disabled = false
+        canSubmit = true
         document.getElementById('over').style.display= "none"
     }
 

@@ -78,7 +78,7 @@
 
     }
 
-    function get_places($location,$checkin=0,$checkout=0, $preco=1000000){
+    function get_places($location,$checkin=0,$checkout=0, $preco=1000000, $types=array(),$rating=0){
 
         try{
             $dbh = Database::instance()->db();
@@ -99,15 +99,30 @@
                 
             }else {
                 
-                $stmt = $dbh->prepare('SELECT * 
-                                   FROM Moradia M
-                                   WHERE M.localizacao = ? AND preco <= ? AND idMoradia NOT IN
-                                            ( SELECT idMoradia FROM Reserva WHERE (  strftime("%s", dataInicio) BETWEEN strftime("%s", ?) AND strftime("%s", ?)  OR strftime("%s", dataFim) BETWEEN strftime("%s", ?) AND strftime("%s", ?)) GROUP BY idMoradia');
+                $stmt = $dbh->prepare('SELECT * FROM Moradia M WHERE M.localizacao = ? AND preco <= ? AND rating >= ? AND idMoradia NOT IN ( SELECT idMoradia FROM Reserva WHERE (strftime("%s", dataInicio) BETWEEN strftime("%s", ?) AND strftime("%s", ?)  OR strftime("%s", dataFim) BETWEEN strftime("%s", ?) AND strftime("%s", ?)) )');
                       
-                $stmt ->execute(array($location,$preco,$checkin,$checkout));
+                $stmt ->execute(array($location,$preco,$rating,$checkin,$checkout,$checkin,$checkout));
             }
             
-            return $stmt->fetchAll();
+            $moradias = $stmt->fetchAll();
+
+
+
+            if(empty($types)){
+                return $moradias;
+            }else {
+
+                $result=array();
+                foreach($moradias as $moradia){
+
+                    if(in_array($moradia['tipo'],$types)==true){
+                        
+                        $result[]=$moradia;
+                    }
+                }
+                return $result;
+            }
+            
 
         }catch (PDOException $e){
             echo $e->getMessage();
