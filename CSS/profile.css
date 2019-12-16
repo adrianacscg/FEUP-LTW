@@ -46,6 +46,8 @@ body > header a{
     max-height: 5em;
     float: right;
     display: flex;
+    width: 11em;
+   
 }
 
 #hamburger:checked + .hamburger:before {
