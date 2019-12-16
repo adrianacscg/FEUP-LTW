@@ -64,12 +64,12 @@ input{
 }
 
 /*Paragrafo de PasswordMatch*/
-#match{
+#match,#over{
     display: none;
-    color: red;
+    color: rgb(133, 5, 5);
 }
 
-#checked{
+#checked {
     display: none;
-    color: red;
+    color: rgb(133, 5, 5);
 }

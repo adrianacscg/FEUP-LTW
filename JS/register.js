@@ -66,4 +66,20 @@ function encodeForAjax(data) {
     }).join('&')
 }
 
+//email
 
+let emailV= document.getElementById('idEmail')
+
+emailV.addEventListener('change',verificateEmail)
+
+function verificateEmail(event){
+    if (emailV.value.length>30){
+
+        document.getElementById('idSubmit').disabled = true
+        document.getElementById('over').style.display= "inline"
+    }else{
+        document.getElementById('idSubmit').disabled = false
+        document.getElementById('over').style.display= "none"
+    }
+
+}
