@@ -1,3 +1,7 @@
+<?php
+    include_once('../includes/components/hamburguer.php');
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -16,12 +20,11 @@
     <body>
         <div class="slides">
             <section id="slide1">
-                <div>
-                    <button class= "login_button">Login |</button>
-                    
-                    <a id="register" href="../pages/register.html">Register</a>
 
-                </div>
+                <?php
+                    draw_hamburguer();
+                ?>
+                
                 
                 <span id="main_title" style="display:block">Travel Crib</span>
 
