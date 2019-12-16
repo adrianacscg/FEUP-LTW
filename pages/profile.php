@@ -5,6 +5,7 @@ include_once('../PHP/moradiasinfo.php');
 include_once('../PHP/propertiesinfo.php');
 include_once('../PHP/getCancel.php');
 include_once('../database/db_user.php');
+include_once('../includes/components/footer.php');
 
 //Redirect to profile page
 if ($_SESSION['email'] == null)
@@ -24,6 +25,7 @@ if ($_SESSION['email'] == null)
     <script src="../JS/changesuser.js" defer></script>
     <script src="../JS/changecard.js" defer></script>
     <script src="../JS/showslides.js" async></script>
+    <script src="../JS/property.js" defer></script>
 </head>
 
 <body>
@@ -339,10 +341,7 @@ if ($_SESSION['email'] == null)
         <a href="#addproperty"><img src="../icons/+.png" alt="Symbol More"> </a>
     </section>
 </body>
-<footer>
-    <h1> Travel Crib </h1>
-    <a href="../html/about.html">About Us</a>
-    <p> made with &#10084 2019 &#9400 Copyright </p>
-</footer>
-
+<?php
+        draw_footer();
+    ?>
 </html>

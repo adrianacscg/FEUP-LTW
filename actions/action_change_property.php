@@ -10,14 +10,16 @@
     $iduser = getID($email); 
 
     //guarda as informações novas da propriedade
-    $newnome = $_POST['nome'];
-    $newpreco = $_POST['preco'];
-    $newlocalizacao = $_POST['localizacao'];
-    $newtipo = $_POST['tipo'];
-    $newcancelamento = $_POST['cancelamento'];
-    $newrating = $_POST['rating'];
-    $newdescription = $_POST['description'];
-    $newaddress = $_POST['address'];
+    $newnome = preg_replace("/[^a-zA-z]/",'',$_POST['nome']);
+    $newpreco = preg_replace("/[^0-9]/",'',$_POST['preco']);
+    $newlocalizacao = preg_replace("/[^a-zA-z]/",'',$_POST['localizacao']);
+    $newlocalizacao = strtolower($newlocalizacao);
+    $newtipo = preg_replace("/[^a-zA-z]/",'',$_POST['tipo']);
+    $newcancelamento = preg_replace("/[^a-zA-z]/",'',$_POST['cancelamento']);
+    $newrating = preg_replace("/[^0-9]/",'',$_POST['rating']);
+    
+    $newdescription = preg_replace("/[^a-zA-Z0-9]/",'',$_POST['description']);
+    $newaddress = preg_replace("/[^a-zA-z0-9]/",'',$_POST['address']);
 
     $idproperty = $_POST['propertyId'];
 
