@@ -16,6 +16,10 @@
     <body>
     
         <?php
+            print_r($_SESSION);
+            die;
+
+
             //filtra os caracteres que nao letras
             if (isset($_GET['loc']))
                 $loc=preg_replace("/[^a-zA-Z\s]/",'',$_GET['loc']);

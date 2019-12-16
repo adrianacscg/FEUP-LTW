@@ -48,7 +48,9 @@ function list_place($id,$checkin,$checkout){
     //perguntar ao joao como fez para fazer Display das imagens
 
     list_images($id);
-    
+
+    echo '<br></br>';
+
     //lista as comodidades existentes
 
     echo '<h3>Comodidades:</h3>';
@@ -88,9 +90,10 @@ function list_place($id,$checkin,$checkout){
         echo '<input id="btn" type= "submit" value= "Book Now">';
     echo '</form>';
 
-    
-    echo '<a href= ../pages/chat_Pessoa.php?pessoa=' . $place['idUtilizador'] . ' > Speak to the Owner </a>';
+    echo '<br></br>';
+    echo '<a href= ../pages/search.php> Go to search </a>';
 
+    
 }
 
 function list_comodidades($id){

@@ -17,7 +17,7 @@
         <title>Travel Crib</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/CSS" href="../CSS/anuncio.css">
-        <link rel="stylesheet" type="text/CSS" href="../CSS/showslides.css">
+        <link rel="stylesheet" type="text/CSS" href="../CSS/showslidesA.css">
         <script src="../JS/showslides.js" async></script>
         <script src="../JS/anuncio.js" defer></script>
  

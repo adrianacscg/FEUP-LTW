@@ -15,7 +15,6 @@
         $_SESSION['messages'][] = array('type' => 'success', 'content' => 'Logged in successfully!');
         $_SESSION['id'] = $id;
         
-
         header('Location: ../pages/search.php');
     } else {
         
