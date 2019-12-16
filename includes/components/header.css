@@ -1,0 +1,17 @@
+/*Header*/
+body > header{
+    text-align: center;
+    color: white;  
+    margin-bottom: 2em;
+    border-bottom: 2px solid white;     
+}
+
+body > header a{
+    padding: 1rem;
+    position: relative;
+    top: 35px;  
+    text-decoration: none;
+    color: white;
+    background: #b3dfde;
+        
+}

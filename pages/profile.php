@@ -8,7 +8,7 @@ include_once('../database/db_user.php');
 
 //Redirect to profile page
 if ($_SESSION['email'] == null)
-    header('Location: ../html/index.html');
+    header('Location: ../html/index.php');
 ?>
 
 

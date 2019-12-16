@@ -18,7 +18,7 @@
     if(isset($_SESSION['lastPage']))
         die(header('Location: ' . $_SESSION['lastPage']));
     else 
-        die(header('Location: ../html/index.html'));
+        die(header('Location: ../html/index.php'));
     
 
 ?>

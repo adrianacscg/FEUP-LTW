@@ -1,14 +1,19 @@
 <?php
     include_once("../includes/list_places.php");
+    include_once('../includes/components/footer.php');
+    include_once('../includes/components/header.php');
 ?>
 
 <!DOCTYPE html>
 <html lang="en-US">
     <head>
-        <title>RentAHouse</title>
+        <title>Travel Crib</title>
         <link rel="stylesheet" type="text/CSS" href="../CSS/search.css">
         <link rel="stylesheet" type="text/CSS" href="../CSS/showslides.css">
         <link rel="stylesheet" type="text/CSS" href="../CSS/footer.css">
+        <link rel="stylesheet" type="text/CSS" href="../includes/components/footer.css">
+        <link rel="stylesheet" type="text/CSS" href="../includes/components/header.css">
+
         <script src="../JS/search.js" defer></script>
         <script src="../JS/showslides.js" async></script>
         <meta charset="UTF-8">
@@ -16,9 +21,6 @@
     <body>
     
         <?php
-            print_r($_SESSION);
-            die;
-
 
             //filtra os caracteres que nao letras
             if (isset($_GET['loc']))
@@ -60,9 +62,7 @@
         </aside>
         
     </body>
-<footer>
-    <h1> Travel Crib </h1>
-    <a href="../html/index.html#slide3">About Us</a>
-    <p> made with &#10084 2019 &#9400 Copyright </p>
-</footer>
+    <?php
+        draw_footer();
+    ?>
 </html>
