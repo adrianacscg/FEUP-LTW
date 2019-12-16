@@ -11,7 +11,7 @@
 
             echo '</div>';
         }else {
-            echo '<a href= "../pages/profile.php">Go to Perfil</a>';
+            echo '<a href= "../pages/profile.php">Go to Profile</a>';
         }
     }
 

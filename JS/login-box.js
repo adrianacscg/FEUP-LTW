@@ -181,6 +181,7 @@ window.addEventListener("load", () => {
     onClickClassName("close-button", 0, () => fadeOut(document.getElementById("login"), 10));
     onClickClassName("close-button", 0, () => document.getElementById("login").classList.add("hidden"));
 
+    /* Error Message*/
     
 
 

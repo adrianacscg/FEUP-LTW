@@ -1,5 +1,6 @@
 <?php
     include_once('../includes/components/hamburguer.php');
+    include_once('../includes/session.php');
 ?>
 
 <!DOCTYPE html>
@@ -23,8 +24,15 @@
 
                 <?php
                     draw_hamburguer();
+                    
+                    if(isset($_SESSION['messages'])){
+                        $message=end($_SESSION['messages']);
+                        $message=$message['content'];
+                    }else{
+                        $message="";
+                    }
                 ?>
-                
+                <input id="message" type="text" value=<?=$message;?> readonly >
                 
                 <span id="main_title" style="display:block">Travel Crib</span>
 
