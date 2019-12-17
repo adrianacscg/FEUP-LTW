@@ -1,2 +1,0 @@
-File action_register.php:
-- É segura guardar o id do utilizador na session?
