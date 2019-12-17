@@ -284,3 +284,7 @@ form #idSubmit {
     -moz-appearance: none;
 }
 
+#aProfile{
+    margin:0.8em;
+    display: inline-block;
+}

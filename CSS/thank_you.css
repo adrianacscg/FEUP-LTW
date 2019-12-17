@@ -268,3 +268,10 @@
   #header{
       text-align: center;
   }
+
+  a{
+    margin: 1em;
+    text-decoration: none;
+    color:#292D39;
+    font-weight: bold;
+  }

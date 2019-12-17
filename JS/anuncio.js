@@ -37,10 +37,11 @@ function dateChangeI(event){
     let DateToChange= new Date(event.target.value)
     let DateFinal= new Date(dateF.value)
 
-    if(DateToChange < dataAtual || DateToChange > DateFinal){
+
+    if((DateToChange < dataAtual || DateToChange > DateFinal) && dateF.value!=""){
         event.target.value=dataAtualS
         //nao será com alert
-        alert("Hey dumbass, introduce a fucking valid date")
+        alert("Please introduce a valid date")
     }
 }
 
@@ -52,7 +53,7 @@ function dateChangeF(event){
     if(DateInicial > DateToChange){
         event.target.value=dateI
         //nao será com alert
-        alert("Hey dumbshit, introduce a fucking valid date") 
+        alert("Please introduce a valid date") 
     }else{
         
         if(event.target.value=="") {
@@ -83,7 +84,7 @@ function LetsSubmit(event){
     
     if( dateI.value=="" || dateF.value==""){
         
-        alert("Get your fucking shit together and input some fucking dates")
+        alert("Please introduce a valid date")
         event.preventDefault()
     }else{
         let request = new XMLHttpRequest();
