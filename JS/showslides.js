@@ -1,16 +1,18 @@
 //------------ Para os Bookings
 
+//indice para situar no slide atual
 var slideIndex = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
 
 /* Class the members of each slideshow group with different CSS classes */
-var slideId = []; 
+var slideId = [];  
 var strslides = "mySlides";
 for($i=0; $i<50; $i++)
 {
-  slideId.push(strslides.concat($i));
+  slideId.push(strslides.concat($i)); // id do slider
   showSlides(1, $i);
 }
 
+// avança ou recua no slider
 function plusSlides(n, no) {
   showSlides(slideIndex[no] += n, no);
 }
@@ -18,17 +20,18 @@ function plusSlides(n, no) {
 function currentSlide(n, no) {
   showSlides(slideIndex[no] = n, no);
 }
-
+ //no - id do slider 
+ //n - numero do slide
 function showSlides(n, no) {
   var i;
-  var x = document.getElementsByClassName(slideId[no]);
-  if(x.length != 0) { 
+  var x = document.getElementsByClassName(slideId[no]); //myslidesid
+  if(x.length != 0) {  //verifica se existe imagens
   if (n > x.length) {slideIndex[no] = 1}
-  if (n < 1) {slideIndex[no] = x.length}
-  for (i = 0; i < x.length; i++) {
+  if (n < 1) {slideIndex[no] = x.length} // guarda no array o numero de imagens
+  for (i = 0; i < x.length; i++) { //esconde todo o resto das imagens
     x[i].style.display = "none";
   }
-  x[slideIndex[no]-1].style.display = "block";
+  x[slideIndex[no]-1].style.display = "block"; //mostra a imagem atual
  } else return null;
 }
 
