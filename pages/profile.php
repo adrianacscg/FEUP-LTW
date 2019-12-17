@@ -22,10 +22,10 @@ if ($_SESSION['email'] == null)
     <link rel="stylesheet" type="text/CSS" href="../CSS/profile.css">
     <link rel="stylesheet" type="text/CSS" href="../CSS/showslides.css">
     <link rel="stylesheet" type="text/CSS" href="../CSS/footer.css">
+    <script src="../JS/property.js" defer></script>
     <script src="../JS/changesuser.js" defer></script>
     <script src="../JS/changecard.js" defer></script>
     <script src="../JS/showslides.js" async></script>
-    <script src="../JS/property.js" defer></script>
 </head>
 
 <body>
@@ -90,7 +90,7 @@ if ($_SESSION['email'] == null)
                     echo htmlentities('Card:' . ' ' . $card);
                 } else echo ("No credit cards!");
                 ?></a></h3>
-        <a href="#changecard"> <img src="../icons/lapis.png" alt="Symbol More"> </a>
+        <a href="#changecard"> <img src="../icons/lapis.PNG" alt="Symbol More"> </a>
         <h3><a href="#changecard">Edit Card</a></h3>
         <div id="changecard" class="modalcard">
             <a href="#close" title="Close" class="close">X</a>
@@ -154,7 +154,7 @@ if ($_SESSION['email'] == null)
 
             for ($i = 1; $i <= $Rating; $i++) {
                 echo ("<div class='star{$i}'>");
-                echo ('<img src="../icons/star.png" width="25px" height="25px" /> </div>');
+                echo ('<img src="../icons/star.PNG" width="25px" height="25px" /> </div>');
             }
             echo ('</div>'); // end showslides
 
@@ -246,7 +246,7 @@ if ($_SESSION['email'] == null)
 
             for ($i = 1; $i <= $Rating; $i++) {
                 echo ("<div class='star{$i}'>");
-                echo ('<img src="../icons/star.png" width="25px" height="25px" /> </div>');
+                echo ('<img src="../icons/star.PNG" width="25px" height="25px" /> </div>');
             }
             echo ('</div>');
             echo ('<br>');
@@ -261,8 +261,8 @@ if ($_SESSION['email'] == null)
                 <label for="idNome">Property Name</label>
                 <input id="idNome" type="text" name="nome" autocomplete="on" >
                 <br><br>
-                <label for="idPreco">Price</label>
-                <input id="idPreco" type="number" name="preco" autocomplete="on" >
+                <label for="idPreco2">Price</label>
+                <input id="idPreco2" type="number" name="preco" autocomplete="on" >
                 <br><br>
                 <label for="idLocalizacao">Location</label>
                 <input id="idLocalizacao" type="text" name="localizacao" autocomplete="on" >
@@ -273,8 +273,8 @@ if ($_SESSION['email'] == null)
                 <label for="idcancelamento">Free Cancellation ?</label>
                 <input id="idcancelamento" type="text" name="cancelamento" autocomplete="on" >
                 <br><br>
-                <label for="idrating">Rating</label>
-                <input id="idrating" type="number" name="rating" autocomplete="on" >
+                <label for="idrating2">Rating</label>
+                <input id="idrating2" type="number" name="rating" autocomplete="on" >
                 <a>1 a 5</a> 
                 <br><br>
                 <label for="iddescription">Description</label>
@@ -289,14 +289,14 @@ if ($_SESSION['email'] == null)
                 <label class="bt-file">You can select more than one!</label>
                 <br><br>');
 
-            echo ('<input id="updateproperty" type="submit" value="Update">
+            echo ('<input id="updateproperty" type="submit" name="update_p" value="Update Property">
                 <br><br>
             </form>
         </div>');
 
             // edit property
             echo ("<h3><a href='#changeproperty$idproperty'>Edit Existing Property</a></h3>");
-            echo ("<a href='#changeproperty$idproperty'> <img src='../icons/lapis.png' alt='Pencil'> </a>");
+            echo ("<a href='#changeproperty$idproperty'> <img src='../icons/lapis.PNG' alt='Pencil'> </a>");
         }
         ?>
 
@@ -333,12 +333,12 @@ if ($_SESSION['email'] == null)
                 <br>
                 <label class="bt-file">You can select more than one!</label>
                 <br><br>
-                <input id="addproperty" type="submit" name="adicionar" value="Add">
+                <input id="addproperty1" type="submit" name="adicionar" value="Add">
                 <br><br>
             </form>
         </div>
         <h3><a href="#addproperty">Add Property </a></h3>
-        <a href="#addproperty"><img src="../icons/+.png" alt="Symbol More"> </a>
+        <a href="#addproperty"><img src="../icons/+.PNG" alt="Symbol More"> </a>
     </section>
 </body>
 <?php

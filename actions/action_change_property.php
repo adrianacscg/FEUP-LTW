@@ -18,8 +18,8 @@
     $newcancelamento = preg_replace("/[^a-zA-z]/",'',$_POST['cancelamento']);
     $newrating = preg_replace("/[^0-9]/",'',$_POST['rating']);
     
-    $newdescription = preg_replace("/[^a-zA-Z0-9]/",'',$_POST['description']);
-    $newaddress = preg_replace("/[^a-zA-z0-9]/",'',$_POST['address']);
+    $newdescription = $_POST['description'];
+    $newaddress = $_POST['address'];
 
     $idproperty = $_POST['propertyId'];
 

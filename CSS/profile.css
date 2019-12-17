@@ -47,7 +47,6 @@ body > header a{
     float: right;
     display: flex;
     width: 11em;
-   
 }
 
 #hamburger:checked + .hamburger:before {
@@ -249,7 +248,7 @@ body {
     color: white;
 }
 
-#MyProperties img[src$="+.png"] { 
+#MyProperties img[src$="+.PNG"] { 
     position: relative;
     bottom: 52px; 
     left: 7px;  
@@ -258,7 +257,7 @@ body {
    
 }
 
-#MyProperties img[src$="lapis.png"] { 
+#MyProperties img[src$="lapis.PNG"] { 
     position: relative;
     bottom: 55px; 
     left: 10px;
